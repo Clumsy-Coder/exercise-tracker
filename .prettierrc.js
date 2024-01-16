@@ -12,10 +12,10 @@ const config = {
   useTabs: false,
   jsxSingleQuote: true,
   singleAttributePerLine: true,
-  // tailwindConfig: './tailwind.config.ts',
-  // tailwindFunctions: ['clsx', 'cva'],
+  tailwindConfig: './tailwind.config.ts',
+  tailwindFunctions: ['clsx', 'cva', 'cn', 'tw'],
   // tailwindAttributes: ['containerStyles', 'otherClasses'],
-  // plugins: ['prettier-plugin-tailwindcss'],
+  plugins: ['prettier-plugin-tailwindcss'],
 };
 
 module.exports = config
