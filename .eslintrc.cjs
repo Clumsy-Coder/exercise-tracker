@@ -4,6 +4,7 @@ const config = {
     "next",
     "next/core-web-vitals",
     "prettier",                       // npm package eslint-config-prettier
+    "plugin:prettier/recommended",    // npm package eslint-plugin-prettier
   ]
 }
 
