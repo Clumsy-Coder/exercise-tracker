@@ -3,6 +3,7 @@ const config = {
   "extends": [
     "next",
     "next/core-web-vitals",
+    "prettier",                       // npm package eslint-config-prettier
   ]
 }
 
