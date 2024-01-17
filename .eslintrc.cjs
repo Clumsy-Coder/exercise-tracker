@@ -19,7 +19,8 @@ const config = {
   },
   rules: {
     'prettier/prettier': 'warn',
-    'react/react-in-jsx-scope': 'off', // https://stackoverflow.com/a/61160875/3053548
+    'react/react-in-jsx-scope': 'off', // https://stackoverflow.com/a/61160875/3053548,
+    'import/prefer-default-export': 'off',
   },
 };
 
