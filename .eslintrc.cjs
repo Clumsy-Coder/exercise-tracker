@@ -11,6 +11,9 @@ const config = {
   ],
   plugins: ['@typescript-eslint'],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: './tsconfig.json',
+  },
   rules: {
     'prettier/prettier': 'warn',
   },
