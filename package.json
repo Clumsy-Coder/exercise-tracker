@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "npm run lint:tsc && npm run lint:eslint",
     "lint:tsc": "tsc --build tsconfig.json .",
-    "lint:eslint": "next lint"
+    "lint:eslint": "next lint",
+    "format:check": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "next": "14.0.4",
