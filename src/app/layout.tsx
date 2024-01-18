@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
@@ -19,6 +20,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       {/* obtained from https://ui.shadcn.com/docs/installation/next#fonts  */}
       <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
