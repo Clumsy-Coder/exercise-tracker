@@ -15,6 +15,7 @@ const config = {
   ],
   plugins: [
     '@typescript-eslint',
+    'eslint-plugin-tsdoc', // https://tsdoc.org/
     'react',
   ],
   parser: '@typescript-eslint/parser',
@@ -25,6 +26,7 @@ const config = {
     'prettier/prettier': 'warn',
     'react/react-in-jsx-scope': 'off', // https://stackoverflow.com/a/61160875/3053548,
     'import/prefer-default-export': 'off',
+    'tsdoc/syntax': 'warn',
   },
 };
 
