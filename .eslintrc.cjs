@@ -9,10 +9,14 @@ const config = {
     'airbnb-typescript', // npm package eslint-config-airbnb-typescript
     'airbnb/hooks', // npm package eslint-config-airbnb
     'eslint:recommended',
+    'plugin:react/recommended', // npm package eslint-plugin-react
     'plugin:@typescript-eslint/recommended', // npm package @typescript-eslint/eslint-plugin
     'plugin:prettier/recommended', // npm package eslint-plugin-prettier
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
