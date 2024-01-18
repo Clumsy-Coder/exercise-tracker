@@ -1,0 +1,57 @@
+---
+
+name: Bug report
+description: Create a report to help us improve
+labels: [bug]
+title: "[bug]: "
+
+body:
+  - type: input
+    id: version
+    attributes:
+      label: version
+      placeholder: 1.0.0-development.5 Build ID 626ecaa
+    validations:
+      required: true
+  - type: input
+    id: system-version
+    attributes:
+      label: "Operating system/version"
+      placeholder: "macOS 11.5"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      placeholder: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: A clear and concise description of what you expected to happen
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots or recording ([Asciinema](asciinema.org)) to help explain your problem.
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      placeholder: Add any additional context about the problem here.
