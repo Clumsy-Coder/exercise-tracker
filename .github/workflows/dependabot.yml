@@ -1,0 +1,36 @@
+---
+
+name: Dependabot automerge
+on: pull_request
+# description: Automerge dependabot pull requests
+#
+# auto merge Dependabot pull requests
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request
+
+jobs:
+  automerge-pr:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    if: |
+      github.actor == 'dependabot[bot]' &&
+      (
+        startsWith(github.event.pull_request.title, 'build(deps):') ||
+        startsWith(github.event.pull_request.title, 'build(devDep):') ||
+        startsWith(github.event.pull_request.title, 'ci(github-action):') ||
+        startsWith(github.event.pull_request.title, 'ci(docker):')
+      )
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1.6.0
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+      # make sure to enable 'auto-merge' in the repo
+      # https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-auto-merge-for-pull-requests-in-your-repository
+      - name: Enable auto-merge for Dependabot PRs
+        run: gh pr merge --auto --rebase "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
