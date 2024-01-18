@@ -1,0 +1,59 @@
+---
+
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: 'npm'  # See documentation for possible values
+    directory: '/'   # Location of package manifests
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 20
+    commit-message:
+      prefix: 'build(deps): '
+      prefix-development: 'build(devDep): '
+    target-branch: 'development'
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+    groups:
+      nivo-charts:
+        patterns:
+          - '@nivo/*'
+    pull-request-branch-name:
+      # Separate sections of the branch name with a hyphen
+      # for example, `dependabot-npm_and_yarn-next_js-acorn-6.4.1`
+      separator: "-"
+
+  # auto update github action used in workflows
+  # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 20
+    commit-message:
+      prefix: 'ci(github-action): '
+    target-branch: 'development'
+    pull-request-branch-name:
+      # Separate sections of the branch name with a hyphen
+      # for example, `dependabot-npm_and_yarn-next_js-acorn-6.4.1`
+      separator: "-"
+
+  # auto update docker images used in the dockerfile
+  # https://dev.to/oracle2025/how-to-keep-a-dockerfile-updated-with-dependabot-1mdn
+  - package-ecosystem: 'docker'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    open-pull-requests-limit: 20
+    commit-message:
+      prefix: 'ci(docker): '
+    target-branch: 'development'
+    pull-request-branch-name:
+      # Separate sections of the branch name with a hyphen
+      # for example, `dependabot-npm_and_yarn-next_js-acorn-6.4.1`
+      separator: "-"
