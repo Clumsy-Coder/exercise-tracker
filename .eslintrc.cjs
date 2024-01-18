@@ -1,3 +1,4 @@
+// eslint-disable-next-line tsdoc/syntax
 /** @type {import("eslint").Linter.Config} */
 const config = {
   root: true,
@@ -26,7 +27,15 @@ const config = {
     'prettier/prettier': 'warn',
     'react/react-in-jsx-scope': 'off', // https://stackoverflow.com/a/61160875/3053548,
     'import/prefer-default-export': 'off',
+    'max-len': 'off',
+    'react/jsx-props-no-spreading': ['off'],
     'tsdoc/syntax': 'warn',
+    'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+    '@typescript-eslint/no-unused-vars': 'warn',
+    'react/require-default-props': 'off',
+    'react/jsx-first-prop-new-line': ['warn', 'multiline-multiprop'],
+    'react/jsx-max-props-per-line': ['warn', { maximum: 1, when: 'multiline' }],
+    '@typescript-eslint/no-shadow': 'off',
   },
 };
 
