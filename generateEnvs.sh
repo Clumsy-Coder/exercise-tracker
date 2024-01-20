@@ -6,8 +6,18 @@
 set -x
 # generate ENVs
 
+# if running vercel. it has `vercel.json` file OR if running github actions
+#   return npm package version
+# else
+#   return value from npm script `generateVersion`
+if [ -f vercel.json ] || [ -n "$CI" ]; then
+  BUILD_VERSION=$(npm pkg get version | tr -d '\"')
+else
+  BUILD_VERSION=$(npm run -s generateVersion)
+fi
+
 {
-  echo "NEXT_PUBLIC_BUILD_VERSION=$(npm run -s generateVersion)"
+  echo "NEXT_PUBLIC_BUILD_VERSION=$BUILD_VERSION"
   echo "NEXT_PUBLIC_BUILD_ID=$(npm run -s generateBuildId)"
   echo "NEXT_PUBLIC_BUILD_TIME=$(date +%s)"                       # build date & time in unix time
 } > .env.local
