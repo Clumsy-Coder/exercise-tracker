@@ -20,5 +20,5 @@ fi
   echo "NEXT_PUBLIC_BUILD_VERSION=$BUILD_VERSION"
   echo "NEXT_PUBLIC_BUILD_ID=$(npm run -s generateBuildId)"
   echo "NEXT_PUBLIC_BUILD_TIME=$(date +%s)"                       # build date & time in unix time
-} > .env.local
+} > .env
 
