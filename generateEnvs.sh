@@ -10,7 +10,7 @@ set -x
 #   return npm package version
 # else
 #   return value from npm script `generateVersion`
-if [ -f vercel.json ] || [ -n "$CI" ]; then
+if [ -z "$(git status --porcelain)" ]; then
   BUILD_VERSION=$(npm pkg get version | tr -d '\"')
 else
   BUILD_VERSION=$(npm run -s generateVersion)
