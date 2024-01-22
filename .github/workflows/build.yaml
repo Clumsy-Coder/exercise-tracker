@@ -131,3 +131,32 @@ jobs:
 
       - run: echo "$GITHUB_ENV"
 
+  ################################################################################################
+  # build docker images using reusable workflow and github action matrix
+  docker-build-image:
+    needs: prepare-docker-build
+    strategy:
+      matrix:
+        # using paired matrix values
+        # obtained from
+        # https://stackoverflow.com/a/76547617/3053548
+        include:
+          - version: latest
+            publish: ${{ needs.prepare-docker-build.outputs.publish == 'true' }}
+          # next version
+          - version: ${{ needs.prepare-docker-build.outputs.next_version }}
+            publish: ${{ needs.prepare-docker-build.outputs.publish == 'true' }}
+          # nightly
+          - version: nightly
+            publish: ${{ github.ref == 'refs/heads/development' }}
+          # branches that are not `development` or `main`
+          # used for testing code of development branches
+          - version: ${{ needs.prepare-docker-build.outputs.git_ref  }}
+            publish: ${{ github.ref != 'refs/heads/development' && github.ref != 'refs/heads/main' && github.actor != 'dependabot[bot]' }}
+
+    uses: ./.github/workflows/reusable-docker-build.yml
+    with:
+      publish: ${{ matrix.publish }}
+      tags: ${{ matrix.version }}
+    secrets: inherit
+
