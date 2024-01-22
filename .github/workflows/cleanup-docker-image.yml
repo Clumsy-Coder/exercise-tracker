@@ -1,0 +1,82 @@
+---
+
+# remove docker image that's NOT from `main` or `development`
+#
+# branch created from `development` will create docker image with the tagname of the branch name
+# after a pull request is merged to the `development` branch, this github action will remove
+# docker image with the tagname of the `development` branch
+#
+# Ex:
+# - branch name `620` from `development` branch is created
+# - committed some code
+#   - github action creates docker image with tagname `620`
+# - created a pull request
+# - after pull request closed and merged, this github action will remove the docker image with tagname `620`
+#
+# code obtained from
+# - extracting json property conditionally
+#   - https://stackoverflow.com/a/47887662/3053548
+# - GET list of docker images
+#   - https://docs.github.com/en/rest/packages/packages?apiVersion=2022-11-28#list-package-versions-for-a-package-owned-by-a-user
+# - github action to extract version ID
+#   - https://github.com/actions/delete-package-versions/issues/101#issuecomment-1553166050
+name: Cleanup docker image on PR merge
+on:
+  pull_request_target:
+    types:
+      - closed
+      # - opened
+    branches-ignore:
+      - main
+
+env:
+  FORCE_COLOR: true
+  CONTAINER_REGISTRY: ghcr.io
+  IMAGE_NAME: clumsy-coder/exercise-tracker
+  PACKAGE_NAME: exercise-tracker
+
+permissions:
+  # needed for pushing docker images from branches created by dependabot[bot].
+  # check
+  # - https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs#defining-access-for-the-github_token-scopes
+  # - https://github.blog/changelog/2021-10-06-github-actions-workflows-triggered-by-dependabot-prs-will-respect-permissions-key-in-workflows/
+  # - https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#responding-to-events
+  packages: write
+  pull-requests: write
+  contents: write
+
+jobs:
+  remove-dev-image:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    env:
+      HEAD_REF: ${{ github.event.pull_request.head.ref }}
+    steps:
+      - name: replace `/` with `-` in branch name
+        # mainly used for branches created by dependabot. they contain `/` which docker tagname cannot have
+        #   https://docs.docker.com/engine/reference/commandline/tag/#description
+        #   https://stackoverflow.com/a/73799519/3053548
+        #   https://stackoverflow.com/a/73467468/3053548
+        run: echo "HEAD_REF=${HEAD_REF//\//-}" >> "$GITHUB_ENV"
+
+      - run: echo "$GITHUB_ENV"
+
+      - name: Get Version ID of docker image
+        run: |
+          curl -L \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          https://api.github.com/users/${{ github.repository_owner }}/packages/container/${{ env.PACKAGE_NAME }}/versions >> containerMeta.json ;
+          echo "VERSION_ID=$(jq -r '.[] | select(.metadata.container.tags[] == "${{ env.HEAD_REF }}").id' containerMeta.json)" >> "$GITHUB_ENV" ;
+
+      - name: Print version ID
+        run: echo ${{ env.VERSION_ID }}
+
+      - name: Remove pull request image from container registry
+        uses: actions/delete-package-versions@v4
+        if: ${{ env.VERSION_ID != '' }}
+        with:
+          package-name: ${{ env.PACKAGE_NAME }}
+          package-type: 'container'
+          package-version-ids: "${{ env.VERSION_ID }}"
