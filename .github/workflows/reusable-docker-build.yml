@@ -1,0 +1,123 @@
+---
+
+name: Build and push Docker image
+
+# When calling this workflow, ensure you use
+#   secrets: inherit
+# So the DOCKER_USERNAME and DOCKER_PASSWORD are available.
+
+on:
+  workflow_call:
+    inputs:
+      publish:
+        type: boolean
+        description: Whether to publish the image to Github Registry
+        required: false
+        default: false
+      tags:
+        type: string
+        required: true
+        description: docker image version
+      # labels:
+      #   type: string
+      #   required: true
+      #   description: docker image labels
+
+env:
+  FORCE_COLOR: true
+  CONTAINER_REGISTRY: ghcr.io
+  IMAGE_NAME: clumsy-coder/exercise-tracker
+  PACKAGE_NAME: exercise-tracker
+
+permissions:
+  # needed for pushing docker images from branches created by dependabot[bot].
+  # check
+  # - https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs#defining-access-for-the-github_token-scopes
+  # - https://github.blog/changelog/2021-10-06-github-actions-workflows-triggered-by-dependabot-prs-will-respect-permissions-key-in-workflows/
+  # - https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#responding-to-events
+  #
+  # check issue
+  # - #649
+  # check commit
+  # - 1548272
+  # - cc87aba
+  # - 5f9737d
+  packages: write
+
+jobs:
+  build-and-push:
+    name: Docker Build and Push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: generate GIT_SHA and GIT_REF to GITHUB_ENV
+        run: |
+          {
+            echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)"
+            echo "GIT_REF=$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match)"
+          } >> "$GITHUB_ENV"
+
+      - name: Create .env for NextJS
+        run: |
+          {
+            printf "NEXT_PUBLIC_BUILD_VERSION=%s\n"      "${{ inputs.tags }}"
+            printf "NEXT_PUBLIC_BUILD_ID=%s\n"           "$(echo ${{ github.sha }} | cut -c -7)"
+            printf "NEXT_PUBLIC_BUILD_TIME=%s\n"         "$(date +%s)"
+          } >> .env
+
+      - name: View .env
+        run: cat .env
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker image metadata
+        id: meta
+        uses: docker/metadata-action@v5.5.0
+        with:
+          images: ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}
+          labels: |
+            org.opencontainers.image.authors=${{ github.repository_owner }}
+            org.opencontainers.image.ref.name=${{ env.GIT_REF }}
+            org.opencontainers.image.version=${{ inputs.tags }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./dockerfile
+          pull: true
+          # push: ${{ inputs.publish }}
+          load: true
+          tags: ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ inputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: View current docker images
+        run: docker images
+
+      - name: Push docker image
+        if: ${{ inputs.publish }}
+        run: docker push ${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ inputs.tags }}
+
+      - name: Remove untagged image on container registry
+        if: ${{ inputs.publish }}
+        uses: actions/delete-package-versions@v4
+        with:
+          package-name: ${{ env.PACKAGE_NAME }}
+          package-type: 'container'
+          delete-only-untagged-versions: 'true'
