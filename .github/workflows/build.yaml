@@ -37,3 +37,25 @@ jobs:
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: npm ci --include=dev
 
+  ################################################################################################
+  # lint source code using ESlint and Typescript
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Lint project
+        run: npm run lint
+
