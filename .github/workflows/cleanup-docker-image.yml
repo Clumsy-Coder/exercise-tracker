@@ -72,7 +72,7 @@ jobs:
           echo "VERSION_ID=$(jq -r '.[] | select(.metadata.container.tags[] == "$HEAD_REF").id' containerMeta.json)" >> "$GITHUB_ENV" ;
 
       - name: Print version ID
-        run: echo ${{ env.VERSION_ID }}
+        run: echo "$VERSION_ID"
 
       - name: Remove pull request image from container registry
         uses: actions/delete-package-versions@v4
