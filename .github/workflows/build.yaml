@@ -180,3 +180,42 @@ jobs:
             || contains(needs.*.result, 'cancelled')
           }}
 
+  ################################################################################################
+
+  semantic-release:
+    # obtained from
+    # - https://github.com/semantic-release/semantic-release/blob/master/docs/recipes/ci-configurations/github-actions.md#githubworkflowsreleaseyml-configuration-for-node-projects
+    permissions:
+      contents: write       # to be able to publish a GitHub release
+      issues: write         # to be able to comment on released issues
+      pull-requests: write  # to be able to comment on released pull requests
+      # id-token: write       # to enable use of OIDC for npm provenance
+
+    # prerequisite of a job that uses matrix
+    # https://github.com/orgs/community/discussions/42010#discussioncomment-4439644
+    needs: docker-build-image
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/development'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - run: npm install --production=false
+
+      - name: semantic-release
+        run: npx semantic-release --ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+####################################################################################################
