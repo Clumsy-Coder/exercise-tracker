@@ -160,3 +160,23 @@ jobs:
       tags: ${{ matrix.version }}
     secrets: inherit
 
+  ################################################################################################
+  # verify matrix job results
+  # since branch protection rules can't group the job matrix together as a required status check.
+  # this will serve as a workaround
+  # code obtained from
+  # - https://github.com/orgs/community/discussions/26822#discussioncomment-5122101
+  matrix-results:
+    needs: docker-build-image
+    runs-on: ubuntu-latest
+    name: verify job matrix results
+    if: always()
+    steps:
+      - run: exit 1
+        # see https://stackoverflow.com/a/67532120/4907315
+        if: >-
+          ${{
+               contains(needs.*.result, 'failure')
+            || contains(needs.*.result, 'cancelled')
+          }}
+
