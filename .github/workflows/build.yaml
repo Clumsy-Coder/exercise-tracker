@@ -59,3 +59,75 @@ jobs:
       - name: Lint project
         run: npm run lint
 
+  ################################################################################################
+  # prepare docker built
+  # extract the next version tag
+  prepare-docker-build:
+    needs: install
+    runs-on: ubuntu-latest
+    outputs:
+      NEXT_VERSION: ${{ steps.set-env.outputs.NEXT_VERSION }}
+      PUBLISH: ${{ steps.set-env.outputs.PUBLISH }}
+      BUILD_DATE: ${{ steps.set-env.outputs.BUILD_DATE }}
+      GIT_SHA: ${{ steps.set-env.outputs.GIT_SHA }}
+      GIT_REF: ${{ steps.set-env.outputs.GIT_REF }}
+      new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
+      new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Extract next semantic-release version
+        # run: npx semantic-release --dry-run --branches="*"
+        run: npx semantic-release --dry-run
+        id: get-next-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # needed in case semantic-release doesn't run on branches other than 'main' or 'development'
+      - name: Set NEXT_VERSION if there's NO new release
+        if: |
+          steps.get-next-version.outputs.new-release-published == '' ||
+          steps.get-next-version.outputs.new-release-published == 'false'
+        run: |
+          node -p "require('./package').version"
+          node -p "require('./package').version" |  awk '{print "NEXT_VERSION=" $1}' >> "$GITHUB_ENV"
+          echo "PUBLISH=false" >> "$GITHUB_ENV"
+
+      - name: Set NEXT_VERSION if there's a NEW release
+        if: steps.get-next-version.outputs.new-release-published == 'true'
+        run: |
+          echo ${{ steps.get-next-version.outputs.new-release-version }}
+          echo "NEXT_VERSION=${{ steps.get-next-version.outputs.new-release-version }}" >> "$GITHUB_ENV"
+          echo "PUBLISH=true" >> "$GITHUB_ENV"
+
+      - name: Set Environment Variables
+        id: set-env
+        run: |
+          {
+            echo "NEXT_VERSION=$NEXT_VERSION"
+            echo "PUBLISH=$PUBLISH"
+            echo "BUILD_DATE=$(date +'%Y-%m-%d %H:%M:%S')"
+            echo "GIT_SHA=$(echo ${{ github.sha }} | cut -c1-7)"
+            # replace `/` with `-`
+            # mainly used for branches created by dependabot. they contain `/` which docker tagname cannot have
+            #   https://docs.docker.com/engine/reference/commandline/tag/#description
+            #   https://stackoverflow.com/a/73799519/3053548
+            #   https://stackoverflow.com/a/73467468/3053548
+            echo "GIT_REF=${GITHUB_REF_NAME//\//-}"
+            # echo "GHCR_IMAGE=$(echo 'console.log("ghcr.io/${{ github.repository }}".toLowerCase())' | node -)" >> $GITHUB_ENV
+          } | tee -a "$GITHUB_ENV" "$GITHUB_OUTPUT"
+
+      - run: echo "$GITHUB_ENV"
+
