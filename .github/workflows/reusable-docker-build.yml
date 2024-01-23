@@ -116,6 +116,7 @@ jobs:
 
       - name: Remove untagged image on container registry
         if: ${{ inputs.publish }}
+        continue-on-error: true
         uses: actions/delete-package-versions@v4
         with:
           package-name: ${{ env.PACKAGE_NAME }}
