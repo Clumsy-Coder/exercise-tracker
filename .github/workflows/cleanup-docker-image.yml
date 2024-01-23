@@ -28,12 +28,18 @@ on:
       # - opened
     branches-ignore:
       - main
+  workflow_dispatch:
+    inputs:
+      branchname:
+        description: Name of the branch to remove docker image with tagname of
+        required: true
 
 env:
   FORCE_COLOR: true
   CONTAINER_REGISTRY: ghcr.io
   IMAGE_NAME: clumsy-coder/exercise-tracker
   PACKAGE_NAME: exercise-tracker
+  BRANCH_NAME: ${{ inputs.branchname }} || ${{ github.event.pull_request.head.ref }}
 
 permissions:
   # needed for pushing docker images from branches created by dependabot[bot].
