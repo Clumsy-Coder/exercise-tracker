@@ -141,8 +141,9 @@ jobs:
         # obtained from
         # https://stackoverflow.com/a/76547617/3053548
         include:
+          # latest code release on `main` branch
           - version: latest
-            publish: ${{ needs.prepare-docker-build.outputs.publish == 'true' }}
+            publish: ${{ needs.prepare-docker-build.outputs.publish == 'true' && github.ref == 'refs/heads/main' }}
           # next version
           - version: ${{ needs.prepare-docker-build.outputs.next_version }}
             publish: ${{ needs.prepare-docker-build.outputs.publish == 'true' }}
