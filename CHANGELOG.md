@@ -1,3 +1,10 @@
+## [1.0.0-development.3](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.2...v1.0.0-development.3) (2024-1-24)
+
+
+### :bug: Bug Fixes
+
+* **workflows:** using ENV for `jq` when extracting container ID ([cb57bda](https://github.com/Clumsy-Coder/exercise-tracker/commit/cb57bda71eb059a8418eb2593256e236e60809d7))
+
 ## [1.0.0-development.2](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.1...v1.0.0-development.2) (2024-1-24)
 
 
