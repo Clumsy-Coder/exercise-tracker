@@ -1,3 +1,30 @@
+## [1.0.0-development.2](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.1...v1.0.0-development.2) (2024-1-24)
+
+
+### :sparkles: Features
+
+* **components:** add navbar component ([4e6a9b5](https://github.com/Clumsy-Coder/exercise-tracker/commit/4e6a9b5ddc86591ea005d8c587040aa9ea6e1bd2)), closes [#17](https://github.com/Clumsy-Coder/exercise-tracker/issues/17)
+
+
+### :octopus: Miscellaneous Chores
+
+* add site config ([9e4bd29](https://github.com/Clumsy-Coder/exercise-tracker/commit/9e4bd2933b4944fb5392b2617e3f8d6245b20302))
+* **layout:** render navbar component ([1eabb06](https://github.com/Clumsy-Coder/exercise-tracker/commit/1eabb0638c5533943ac565db58018f81cb68b007)), closes [#17](https://github.com/Clumsy-Coder/exercise-tracker/issues/17)
+* **types:** add type for nav link ([8954dcc](https://github.com/Clumsy-Coder/exercise-tracker/commit/8954dcca7ebbcd8a6165a9355fdd6cf6f006cfe8))
+* **types:** add type for site config ([392f627](https://github.com/Clumsy-Coder/exercise-tracker/commit/392f62707fcfb9d50a46e695d339eb4e3e14d54d)), closes [/github.com/shadcn-ui/taxonomy/blob/651f984e52edd65d40ccd55e299c1baeea3ff017/types/index.d.ts#L30-L39](https://github.com/Clumsy-Coder//github.com/shadcn-ui/taxonomy/blob/651f984e52edd65d40ccd55e299c1baeea3ff017/types/index.d.ts/issues/L30-L39)
+
+
+### :package: Build System
+
+* **typescript:** exclude `.next/` folder ([cab4327](https://github.com/Clumsy-Coder/exercise-tracker/commit/cab4327194c034d4a21ab0e2526429c2641ea655))
+
+
+### :construction_worker: Continuous Integration
+
+* **workflows:** dispatch `cleanup-docker-image` manually ([7504d92](https://github.com/Clumsy-Coder/exercise-tracker/commit/7504d92ccf2299d2b563293bf04228fccf02e462))
+* **workflows:** push docker image with tagname `latest` on `main` branch ([addc1a1](https://github.com/Clumsy-Coder/exercise-tracker/commit/addc1a1ec873a67884acf9472827e556f85ba3fa))
+* **workflows:** update CodeQL config ([f1e9417](https://github.com/Clumsy-Coder/exercise-tracker/commit/f1e94178c907322ae242c2c7147ffa6a38b61172))
+
 ## 1.0.0-development.1 (2024-1-23)
 
 
