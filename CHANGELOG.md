@@ -1,3 +1,26 @@
+## [1.0.0-development.4](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.3...v1.0.0-development.4) (2024-1-25)
+
+
+### :sparkles: Features
+
+* **components:navbar:** add Drawer for smaller screens ([46245b4](https://github.com/Clumsy-Coder/exercise-tracker/commit/46245b4627c0c95c70f8715f4273bf5e16030a1f)), closes [#19](https://github.com/Clumsy-Coder/exercise-tracker/issues/19)
+* **components:navbar:** hide nav links in smaller screen ([9047117](https://github.com/Clumsy-Coder/exercise-tracker/commit/9047117d51e1c16939d710bfb32e7bfff552e295)), closes [#19](https://github.com/Clumsy-Coder/exercise-tracker/issues/19)
+
+
+### :recycle: Code Refactoring
+
+* **utils:** move `links` array to `utils/index.ts` ([97f489f](https://github.com/Clumsy-Coder/exercise-tracker/commit/97f489f2737a8d0d94447b90ad51907642218293))
+
+
+### :package: Build System
+
+* **shadcn:** add component `Drawer` ([4f10056](https://github.com/Clumsy-Coder/exercise-tracker/commit/4f10056ce1443101eaf56f378a8a8cba0ae663ad))
+
+
+### :construction_worker: Continuous Integration
+
+* **workflows:cleanup:** segment getting all container ID and filtering by branchname ([fcd1165](https://github.com/Clumsy-Coder/exercise-tracker/commit/fcd116535d1018d3f5eb0ee6d9df4306fd40b389))
+
 ## [1.0.0-development.3](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.2...v1.0.0-development.3) (2024-1-24)
 
 
