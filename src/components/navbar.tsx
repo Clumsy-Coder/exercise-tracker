@@ -81,18 +81,20 @@ const Navbar = () => {
         </Link>
         {/*-------------------------------------------------------------------------------------*/}
         {/* Other links */}
-        {links.slice(1).map((item) => (
-          <Link
-            key={`navlink-${item.title}`}
-            href={item.href}
-            className={cn(
-              'flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm',
-              item.href.startsWith(`/${segment}`) ? 'text-foreground' : 'text-foreground/60',
-            )}
-          >
-            {item.title}
-          </Link>
-        ))}
+        <div className='hidden sm:flex'>
+          {links.slice(1).map((item) => (
+            <Link
+              key={`navlink-${item.title}`}
+              href={item.href}
+              className={cn(
+                'flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm hover:underline',
+                item.href.startsWith(`/${segment}`) ? 'text-foreground' : 'text-foreground/60',
+              )}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </div>
       </nav>
     </div>
   );
