@@ -2,18 +2,11 @@
 
 import { Dumbbell } from 'lucide-react';
 import Link from 'next/link';
-
-import { siteConfig } from '@/site/config';
-import { NavbarLink } from '@/types';
-import { cn } from '@/lib/utils';
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-export const links: NavbarLink[] = [
-  {
-    title: 'Exercise-tracker',
-    href: '/',
-  },
-];
+import { siteConfig } from '@/site/config';
+import { cn } from '@/lib/utils';
+import { links } from '@/utils';
 
 // obtained from
 // https://github.com/shadcn-ui/taxonomy/blob/main/components/main-nav.tsx
