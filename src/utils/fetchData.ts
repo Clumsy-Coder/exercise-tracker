@@ -8,3 +8,10 @@ export const exerciseOptions = {
     'X-RapidAPI-Key': process.env.EXERCISE_DB_API,
   },
 };
+
+// --------------------------------------------------------------------------------------------- //
+
+/**
+ * URL for fetching all Exercises
+ */
+export const fetchAllExercises = () => `https://exercisedb.p.rapidapi.com/exercises`;
