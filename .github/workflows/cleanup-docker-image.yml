@@ -87,7 +87,7 @@ jobs:
         run: echo "$VERSION_ID"
 
       - name: Remove pull request image from container registry
-        uses: actions/delete-package-versions@v4
+        uses: actions/delete-package-versions@v5
         if: ${{ env.VERSION_ID != '' }}
         with:
           package-name: ${{ env.PACKAGE_NAME }}
