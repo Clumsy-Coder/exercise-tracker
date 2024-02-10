@@ -20,7 +20,10 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang='en'>
+    <html
+      lang='en'
+      suppressHydrationWarning
+    >
       {/* obtained from https://ui.shadcn.com/docs/installation/next#fonts  */}
       <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
         <ReactQueryClientProvider>
