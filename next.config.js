@@ -11,6 +11,15 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.exercisedb.io',
+        pathname: '/image/**',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
