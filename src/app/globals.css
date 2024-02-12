@@ -74,3 +74,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.exercises__exercises-wrapper {
+  @apply grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full gap-8 pt-14;
+}
+
+.exercise-card {
+  @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl;
+}
+
+.exercise-card__content {
+  @apply w-full flex justify-between items-start gap-2;
+}
+
+.exercise-card__content-title {
+  @apply text-[22px] leading-[26px] font-bold capitalize;
+}
