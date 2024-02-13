@@ -19,3 +19,12 @@ export const fetchAllExercises = () => {
 export const fetchTargetList = () => {
   return axios.get<string[]>('/api/exercises/targets').then((res) => res.data);
 };
+
+/**
+ * Server action for fetching exercise equipment list
+ *
+ * Fetches from URL `/api/exercises/equipments`
+ */
+export const fetchEquipmentList = () => {
+  return axios.get<string[]>('/api/exercises/equipments').then((res) => res.data);
+};
