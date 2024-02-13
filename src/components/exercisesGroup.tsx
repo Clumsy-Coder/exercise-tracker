@@ -14,6 +14,24 @@ type Props = {
 const DEFAULT_SHOW_LIMIT = 6;
 const SHOW_LIMIT_INCREMENT = 6;
 
+/**
+ * Component for displaying a group of exercise cards.
+ * Has ability to
+ * - search exercises
+ *   - search by exercise name
+ *   - search by equipment
+ *   - search by target
+ *   - search by secondary muscles
+ * - use pagination (to prevent displaying all the exercises at once)
+ *
+ * Used in pages that display a group of exercises
+ * Ex:
+ * - all exercises
+ * - leg exercises
+ * - chest exercises
+ * - cable machine exercises
+ * - assisted exercises
+ */
 const ExercisesGroup = ({ exercises }: Props) => {
   // number of exercises to display at a time
   const [showLimit, setShowLimit] = useState(DEFAULT_SHOW_LIMIT);
