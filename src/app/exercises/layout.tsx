@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 
 import { QueryKey } from '@/hooks';
-import { fetchAllExercises, fetchTargetList } from '@/server/actions';
+import { fetchAllExercises, fetchEquipmentList, fetchTargetList } from '@/server/actions';
 
 const ExercisesLayout = async ({ children }: PropsWithChildren) => {
   const queryClient = new QueryClient();
@@ -13,6 +13,10 @@ const ExercisesLayout = async ({ children }: PropsWithChildren) => {
   await queryClient.prefetchQuery({
     queryKey: [QueryKey.targetList],
     queryFn: async () => fetchTargetList(),
+  });
+  await queryClient.prefetchQuery({
+    queryKey: [QueryKey.equipmentList],
+    queryFn: async () => fetchEquipmentList(),
   });
 
   return (
