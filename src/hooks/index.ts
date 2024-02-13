@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { fetchAllExercises, fetchTargetList } from '@/server/actions';
+import { fetchAllExercises, fetchEquipmentList, fetchTargetList } from '@/server/actions';
 
 export enum QueryKey {
   /**
@@ -12,6 +12,11 @@ export enum QueryKey {
    * Query key for fetching target list
    */
   targetList = 'target-list',
+
+  /**
+   * Query key for fetching equipment list
+   */
+  equipmentList = 'equipment-list',
 }
 
 // --------------------------------------------------------------------------------------------- //
@@ -40,6 +45,21 @@ export const useFetchTargetList = () => {
   return useQuery({
     queryKey: [QueryKey.targetList],
     queryFn: fetchTargetList,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+  });
+};
+
+/**
+ * React query hook for fetching equipment list
+ *
+ * Uses server action `fetchEquipmentList`
+ */
+export const useFetchEquipmentList = () => {
+  return useQuery({
+    queryKey: [QueryKey.equipmentList],
+    queryFn: fetchEquipmentList,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     staleTime: Infinity,
