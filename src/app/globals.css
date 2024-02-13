@@ -92,3 +92,31 @@
 .exercise-card__content-title {
   @apply text-[22px] leading-[26px] font-bold capitalize;
 }
+
+/*
+ * Used in input that has a clear button.
+ *
+ * This class will apply styles from `Input` into the div
+ *
+ * Make sure to disable default className for Input.
+ * Ex:
+ * - remove shadow
+ * - remove border
+ * - remove ring when the input is focused
+ *
+ * to be used on the wrapping div
+ * the div children will contain `Input` and button
+ *
+ * Ex:
+ * <div className="input-with-clear-button">
+ *   <Input className="border-0 shadow-none focus-visible:ring-0" />
+ *   <Button >
+ *     <Icon />
+ *   </Button>
+ * </div>
+ *
+ */
+.input-with-clear-button {
+  @apply rounded-md border border-input bg-transparent shadow-sm transition-colors focus-within:ring-1 focus-within:ring-ring
+}
+
