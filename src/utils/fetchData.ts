@@ -19,3 +19,8 @@ export const exerciseOptions = {
  */
 export const fetchAllExercises = (limit = 10) =>
   `https://exercisedb.p.rapidapi.com/exercises?limit=${limit}`;
+
+/**
+ * URL for fetching target list
+ */
+export const fetchTargetListUrl = () => `https://exercisedb.p.rapidapi.com/exercises/targetList`;
