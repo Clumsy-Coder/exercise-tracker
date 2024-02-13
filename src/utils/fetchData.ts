@@ -24,3 +24,9 @@ export const fetchAllExercisesUrl = (limit = 10) =>
  * URL for fetching target list
  */
 export const fetchTargetListUrl = () => `https://exercisedb.p.rapidapi.com/exercises/targetList`;
+
+/**
+ * URL for fetching exercise equipment list
+ */
+export const fetchEquipmentListUrl = () =>
+  `https://exercisedb.p.rapidapi.com/exercises/equipmentList`;
