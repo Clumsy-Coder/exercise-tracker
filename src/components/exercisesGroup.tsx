@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { X } from 'lucide-react';
 
 import ExerciseCard from '@/components/exerciseCard';
 import { Button } from '@/components/ui/button';
@@ -55,18 +56,31 @@ const ExercisesGroup = ({ exercises }: Props) => {
 
   return (
     <div className='flex flex-col items-center'>
-      <div className='flex w-full items-center justify-center gap-5'>
-        {/* Search exercises */}
-        <Input
-          type='search'
-          placeholder='Search an exercise'
-          onChange={(event) => {
-            setSearchString(event.target.value);
-            setShowLimit(DEFAULT_SHOW_LIMIT);
-          }}
-          value={searchStr}
-          className='md:w-[40rem] '
-        />
+      <div className='flex w-full items-center justify-center gap-3 md:w-[40rem]'>
+        {/* Search exercises with a clear button */}
+        <div className='input-with-clear-button flex w-full  justify-between'>
+          <Input
+            type='search'
+            placeholder='Search an exercise'
+            onChange={(event) => {
+              setSearchString(event.target.value);
+              setShowLimit(DEFAULT_SHOW_LIMIT);
+            }}
+            value={searchStr}
+            className='w-full border-0 shadow-none focus-visible:ring-0 md:w-[40rem]'
+          />
+          <Button
+            variant='ghost'
+            size='icon'
+            onClick={() => {
+              setSearchString('');
+              setShowLimit(DEFAULT_SHOW_LIMIT);
+            }}
+            className=''
+          >
+            <X className='h-4 w-4' />
+          </Button>
+        </div>
         {/* Display number of exercises displayed */}
         <p className='whitespace-nowrap text-neutral-500 dark:text-neutral-400'>
           {new Intl.NumberFormat('us').format(exercisesToDisplay.length).toString()} exercises
