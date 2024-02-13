@@ -17,7 +17,7 @@ export const exerciseOptions = {
  * @param limit - max number exercises to fetch
  * @defaultValue `limit` - `10`
  */
-export const fetchAllExercises = (limit = 10) =>
+export const fetchAllExercisesUrl = (limit = 10) =>
   `https://exercisedb.p.rapidapi.com/exercises?limit=${limit}`;
 
 /**
