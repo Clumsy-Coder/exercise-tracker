@@ -3,7 +3,7 @@
   "version": "1.0.0-development.4",
   "private": true,
   "scripts": {
-    "dev": "npm run generateEnv && next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "npm run lint:tsc && npm run lint:eslint",
