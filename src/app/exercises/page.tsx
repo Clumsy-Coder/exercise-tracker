@@ -14,6 +14,57 @@ import { Separator } from '@/components/ui/separator';
 import { useFetchAllExercises, useFetchEquipmentList, useFetchTargetList } from '@/hooks';
 import { cn } from '@/lib/utils';
 
+type ExercisesByTargetType = {
+  /**
+   * Data returned from API
+   * - `/api/exercises/targets`
+   * - `/api/exercises/equipments`
+   */
+  data: string[];
+  /**
+   * Function to generate the link using the exercise type (target or equipment)
+   */
+  exerciseLinkFn: (arg0: string) => string;
+};
+/**
+ * Render links to the exercises by type. Ex: exercise by target or equipment
+ *
+ * This component is used to prevent repeating code. Before it was manually creating links in 4 places. Prone to bugs
+ * - Accordion `Exercises by Target`
+ * - Accordion `Exercises by Equipment`
+ * - `Exercises by Target`
+ * - `Exercises by Equipment`
+ *
+ * Usage: Render links for exercises by target
+ * ```typescriptreact
+ *    <ExercisesBy
+ *      data={targetListData}
+ *      exerciseLinkFn={(target) => `/exercises/targets/${target}`}
+ *    />
+ *
+ * ```
+ */
+const ExercisesBy = ({ data, exerciseLinkFn }: ExercisesByTargetType) => (
+  <>
+    {data.map((exerciseType) => (
+      <Link
+        key={`exerciseType-${exerciseType}`}
+        // variant='outline'
+        href={exerciseLinkFn(exerciseType)}
+        className={cn(
+          buttonVariants({ variant: 'outline' }),
+          'capitalize',
+          'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
+        )}
+      >
+        {exerciseType.replaceAll('-', ' ')}
+      </Link>
+    ))}
+  </>
+);
+
+// --------------------------------------------------------------------------------------------- //
+
 type ExercisesAccordionType = {
   /**
    * Data returned when fetching from `/api/exercises/targets`
