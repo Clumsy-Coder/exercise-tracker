@@ -58,7 +58,7 @@ const ExercisesGroup = ({ exercises }: Props) => {
     <div className='flex flex-col items-center'>
       <div className='flex w-full items-center justify-center gap-3 md:w-[40rem]'>
         {/* Search exercises with a clear button */}
-        <div className='input-with-clear-button flex w-full  justify-between'>
+        <div className='input-with-clear-button flex w-full justify-between'>
           <Input
             type='search'
             placeholder='Search an exercise'
@@ -67,7 +67,7 @@ const ExercisesGroup = ({ exercises }: Props) => {
               setShowLimit(DEFAULT_SHOW_LIMIT);
             }}
             value={searchStr}
-            className='w-full border-0 shadow-none focus-visible:ring-0 md:w-[40rem]'
+            className='border-0 shadow-none focus-visible:ring-0'
           />
           <Button
             variant='ghost'
