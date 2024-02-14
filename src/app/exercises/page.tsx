@@ -104,20 +104,10 @@ const ExercisesAccordion = ({
           {/* <h2 className='mb-3 text-4xl font-semibold'>Exercises by Target</h2> */}
           {/* <div className='flex flex-wrap gap-2'> */}
           <div className='flex flex-wrap gap-2'>
-            {exercisesByTarget.map((target) => (
-              <Link
-                key={`target-${target}`}
-                // variant='outline'
-                href={`/exercises/targets/${target}`}
-                className={cn(
-                  buttonVariants({ variant: 'outline' }),
-                  'capitalize',
-                  'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
-                )}
-              >
-                {target.replaceAll('-', ' ')}
-              </Link>
-            ))}
+            <ExercisesBy
+              data={exercisesByTarget}
+              exerciseLinkFn={(target) => `/exercises/targets/${target}`}
+            />
           </div>
         </div>
       </AccordionContent>
@@ -132,26 +122,17 @@ const ExercisesAccordion = ({
           {/* <h2 className='mb-3 text-4xl font-semibold'>Exercises by Equipment</h2> */}
           {/* <div className='flex flex-wrap gap-2'> */}
           <div className='flex flex-wrap gap-2'>
-            {exercisesByEquipment.map((equipment) => (
-              <Link
-                key={`target-${equipment}`}
-                // variant='outline'
-                href={`/exercises/equipments/${equipment}`}
-                className={cn(
-                  buttonVariants({ variant: 'outline' }),
-                  'capitalize',
-                  'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
-                )}
-              >
-                {equipment.replaceAll('-', ' ')}
-              </Link>
-            ))}
+            <ExercisesBy
+              data={exercisesByEquipment}
+              exerciseLinkFn={(equipment) => `/exercises/equipments/${equipment}`}
+            />
           </div>
         </div>
       </AccordionContent>
     </AccordionItem>
   </Accordion>
 );
+
 
 // --------------------------------------------------------------------------------------------- //
 
@@ -188,20 +169,10 @@ const ExercisesPage = () => {
           <h2 className='mb-3 text-4xl font-semibold'>Exercises by Target</h2>
           {/* <div className='flex flex-wrap gap-2'> */}
           <div className='flex flex-wrap gap-2'>
-            {targetListData.map((target) => (
-              <Link
-                key={`target-${target}`}
-                // variant='outline'
-                href={`/exercises/targets/${target}`}
-                className={cn(
-                  buttonVariants({ variant: 'outline' }),
-                  'capitalize',
-                  'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
-                )}
-              >
-                {target.replaceAll('-', ' ')}
-              </Link>
-            ))}
+            <ExercisesBy
+              data={targetListData}
+              exerciseLinkFn={(target) => `/exercises/targets/${target}`}
+            />
           </div>
         </div>
         {/* Exercises by Equipment */}
@@ -209,20 +180,10 @@ const ExercisesPage = () => {
           <h2 className='mb-3 text-4xl font-semibold'>Exercises by Equipment</h2>
           {/* <div className='flex flex-wrap gap-2'> */}
           <div className='flex flex-wrap gap-2'>
-            {equipmentListData.map((equipment) => (
-              <Link
-                key={`target-${equipment}`}
-                // variant='outline'
-                href={`/exercises/equipments/${equipment}`}
-                className={cn(
-                  buttonVariants({ variant: 'outline' }),
-                  'capitalize',
-                  'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
-                )}
-              >
-                {equipment.replaceAll('-', ' ')}
-              </Link>
-            ))}
+            <ExercisesBy
+              data={equipmentListData}
+              exerciseLinkFn={(equipment) => `/exercises/equipments/${equipment}`}
+            />
           </div>
         </div>
       </div>
@@ -233,4 +194,3 @@ const ExercisesPage = () => {
 };
 
 export default ExercisesPage;
-
