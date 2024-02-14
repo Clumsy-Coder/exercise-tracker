@@ -130,52 +130,56 @@ const ExercisesPage = () => {
           exercisesByEquipment={equipmentListData}
         />
       </div>
-      {/* Exercises by target */}
-      <div className='my-4 '>
-        <h2 className='mb-3 text-4xl font-semibold'>Exercises by Target</h2>
-        {/* <div className='flex flex-wrap gap-2'> */}
-        <div className='flex flex-wrap gap-2'>
-          {targetListData.map((target) => (
-            <Link
-              key={`target-${target}`}
-              // variant='outline'
-              href={`/exercises/targets/${target}`}
-              className={cn(
-                buttonVariants({ variant: 'outline' }),
-                'capitalize',
-                'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
-              )}
-            >
-              {target.replaceAll('-', ' ')}
-            </Link>
-          ))}
+      {/* Display Exercises by target and equipment in larger screens */}
+      <div className='hidden lg:flex lg:flex-col'>
+        {/* Exercises by target */}
+        <div className='my-4 '>
+          <h2 className='mb-3 text-4xl font-semibold'>Exercises by Target</h2>
+          {/* <div className='flex flex-wrap gap-2'> */}
+          <div className='flex flex-wrap gap-2'>
+            {targetListData.map((target) => (
+              <Link
+                key={`target-${target}`}
+                // variant='outline'
+                href={`/exercises/targets/${target}`}
+                className={cn(
+                  buttonVariants({ variant: 'outline' }),
+                  'capitalize',
+                  'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
+                )}
+              >
+                {target.replaceAll('-', ' ')}
+              </Link>
+            ))}
+          </div>
+        </div>
+        {/* Exercises by Equipment */}
+        <div className='my-4 '>
+          <h2 className='mb-3 text-4xl font-semibold'>Exercises by Equipment</h2>
+          {/* <div className='flex flex-wrap gap-2'> */}
+          <div className='flex flex-wrap gap-2'>
+            {equipmentListData.map((equipment) => (
+              <Link
+                key={`target-${equipment}`}
+                // variant='outline'
+                href={`/exercises/equipments/${equipment}`}
+                className={cn(
+                  buttonVariants({ variant: 'outline' }),
+                  'capitalize',
+                  'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
+                )}
+              >
+                {equipment.replaceAll('-', ' ')}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-      {/* Exercises by Equipment */}
-      <div className='my-4 '>
-        <h2 className='mb-3 text-4xl font-semibold'>Exercises by Equipment</h2>
-        {/* <div className='flex flex-wrap gap-2'> */}
-        <div className='flex flex-wrap gap-2'>
-          {equipmentListData.map((equipment) => (
-            <Link
-              key={`target-${equipment}`}
-              // variant='outline'
-              href={`/exercises/equipments/${equipment}`}
-              className={cn(
-                buttonVariants({ variant: 'outline' }),
-                'capitalize',
-                'max-sm:h-10 max-sm:rounded-md max-sm:px-8',
-              )}
-            >
-              {equipment.replaceAll('-', ' ')}
-            </Link>
-          ))}
-        </div>
-      </div>
-      <Separator className='my-4' />
+      <Separator className='my-4 hidden lg:flex ' />
       <ExercisesGroup exercises={data} />
     </section>
   );
 };
 
 export default ExercisesPage;
+
