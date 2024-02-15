@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/accordion';
 import { buttonVariants } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import ExercisesPageLoading from '@/app/exercises/loading';
 import { useFetchAllExercises, useFetchEquipmentList, useFetchTargetList } from '@/hooks';
 import { cn } from '@/lib/utils';
 
@@ -133,7 +134,6 @@ const ExercisesAccordion = ({
   </Accordion>
 );
 
-
 // --------------------------------------------------------------------------------------------- //
 
 const ExercisesPage = () => {
@@ -149,7 +149,7 @@ const ExercisesPage = () => {
     !targetListData ||
     !equipmentListData
   ) {
-    return <h1>Loading</h1>;
+    return <ExercisesPageLoading />;
   }
 
   return (
