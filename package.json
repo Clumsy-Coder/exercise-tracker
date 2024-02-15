@@ -44,7 +44,8 @@
     "react-dom": "^18",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.0"
+    "vaul": "^0.9.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
