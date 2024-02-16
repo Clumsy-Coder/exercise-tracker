@@ -30,3 +30,11 @@ export const fetchTargetListUrl = () => `https://exercisedb.p.rapidapi.com/exerc
  */
 export const fetchEquipmentListUrl = () =>
   `https://exercisedb.p.rapidapi.com/exercises/equipmentList`;
+
+/**
+ * URL for fetching a single exercise
+ *
+ * @param exerciseId - exercise ID
+ */
+export const fetchExerciseUrl = (exerciseId: string | number) =>
+  `https://exercisedb.p.rapidapi.com/exercises/exercise/${exerciseId}`;
