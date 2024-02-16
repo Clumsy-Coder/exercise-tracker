@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import ExerciseIdPageLoading from '@/app/exercises/[exerciseId]/loading';
 import { badgeVariants } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -19,7 +20,7 @@ const ExerciseIdPage = ({ params }: Props) => {
   const { isLoading, data } = useFetchExercise(params.exerciseId);
 
   if (isLoading || !data) {
-    return <div>Loading exercise {params.exerciseId}</div>;
+    return <ExerciseIdPageLoading />;
   }
 
   // used for rendering exercise properties and providing their links
