@@ -12,6 +12,15 @@ export const fetchAllExercises = () => {
 };
 
 /**
+ * Server action for fetching a single exercise using `exercise ID`
+ *
+ * Fetches from URL `/api/exercises/[exerciseId]`
+ */
+export const fetchExercise = (exerciseId: string | number) => {
+  return axios.get<Exercise>(`/api/exercises/${exerciseId}`).then((res) => res.data);
+};
+
+/**
  * Server action for fetching target list
  *
  * Fetches from URL `/api/exercises/target`
