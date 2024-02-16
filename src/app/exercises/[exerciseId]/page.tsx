@@ -1,9 +1,11 @@
 'use client';
 
+import { AxiosError } from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import ExerciseIdPageLoading from '@/app/exercises/[exerciseId]/loading';
+import Error from '@/components/error';
 import { badgeVariants } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -17,10 +19,26 @@ type Props = {
 };
 
 const ExerciseIdPage = ({ params }: Props) => {
-  const { isLoading, data } = useFetchExercise(params.exerciseId);
+  const { isPending, data, isError, error } = useFetchExercise(params.exerciseId);
 
-  if (isLoading || !data) {
+  if (isPending) {
     return <ExerciseIdPageLoading />;
+  }
+
+  if (isError) {
+    type ErrorMessage = {
+      message: string;
+    };
+
+    const status = (error as AxiosError<ErrorMessage>).response?.status;
+    const message = (error as AxiosError<ErrorMessage>).response?.data.message;
+
+    return (
+      <Error
+        status={status as number}
+        message={message}
+      />
+    );
   }
 
   // used for rendering exercise properties and providing their links
