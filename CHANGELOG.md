@@ -1,3 +1,37 @@
+## [1.0.0-development.6](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.5...v1.0.0-development.6) (2024-2-17)
+
+
+### :sparkles: Features
+
+* **actions:** add server action for fetching a single exercise using `exerciseId` ([247208b](https://github.com/Clumsy-Coder/exercise-tracker/commit/247208b5d6d5d92733e5c847fe5acfda40459bef))
+* **api:** add endpoint for fetching a single exercise using `exerciseId` ([937e9db](https://github.com/Clumsy-Coder/exercise-tracker/commit/937e9db285a222f885150fad17771fdd35b2d217)), closes [#56](https://github.com/Clumsy-Coder/exercise-tracker/issues/56)
+* **page:exerciseId:** add error handling for invalid `exerciseId` ([5be8bee](https://github.com/Clumsy-Coder/exercise-tracker/commit/5be8bee886a18d957ea68372bec205aacf717e27)), closes [#56](https://github.com/Clumsy-Coder/exercise-tracker/issues/56)
+* **page:exerciseId:** add page for `/exercises/[exerciseId]` ([ba47dbe](https://github.com/Clumsy-Coder/exercise-tracker/commit/ba47dbe39ed1cfe1ea2c7545da84427948d4e2de)), closes [#56](https://github.com/Clumsy-Coder/exercise-tracker/issues/56)
+* **page:exerciseId:** display gif in a model when clicking on gif ([2e311cc](https://github.com/Clumsy-Coder/exercise-tracker/commit/2e311ccfa5a00283affcce57821d4bc2023dd9cc)), closes [#56](https://github.com/Clumsy-Coder/exercise-tracker/issues/56)
+
+
+### :books: Documentation
+
+* **docs:images:** add screenshots for `Exercise ID` page ([40be6d1](https://github.com/Clumsy-Coder/exercise-tracker/commit/40be6d17d70c088aa49ab1df26a4779d3d6de762))
+* **readme:** display screenshots of `Exercise Id` page ([5beb283](https://github.com/Clumsy-Coder/exercise-tracker/commit/5beb2830628af27c2c200eee6179039b74c70bd5))
+
+
+### :octopus: Miscellaneous Chores
+
+* **api:url:** add function to get `single exercise` url ([5a7b6d3](https://github.com/Clumsy-Coder/exercise-tracker/commit/5a7b6d3167e92a622e5f4ec2d2fcbda045f25975))
+* **components:error:** add Error component ([17c8900](https://github.com/Clumsy-Coder/exercise-tracker/commit/17c89002db9fea6f209b8f7766ddae8f866194ac))
+* **hooks:** add react-query hook to fetch a single exercise using `exerciseId` ([952b15c](https://github.com/Clumsy-Coder/exercise-tracker/commit/952b15c8213667b3b900eaa6f87b2af3e242b915))
+* **layout:exerciseId:** add layout for `/exercises/[exerciseId]` page ([951d60f](https://github.com/Clumsy-Coder/exercise-tracker/commit/951d60fee35d5534e07347a9bcc55b6230d7a5d2))
+* **page:exerciseId:** add `Loading` component for `/exercises/[exerciseId]` page ([eb10031](https://github.com/Clumsy-Coder/exercise-tracker/commit/eb1003184ae88d520063bfd01945722a87c832e9))
+* **page:exerciseId:** display `Loading` component when fetching data ([b040a5e](https://github.com/Clumsy-Coder/exercise-tracker/commit/b040a5e0de54b8aca21539606b581b5f6802ece8))
+* **schema:** add schema for `/api/exercises/[exerciseId]` ([d307312](https://github.com/Clumsy-Coder/exercise-tracker/commit/d307312419c2b130264f62a259a18f5a98b4df14))
+
+
+### :package: Build System
+
+* **npm:** add package `zod` ([8dd74e1](https://github.com/Clumsy-Coder/exercise-tracker/commit/8dd74e1e00bf4589e416b00063c2f099bb640338))
+* **shadcn:** add component `Dialog` ([f182a5b](https://github.com/Clumsy-Coder/exercise-tracker/commit/f182a5b25a23dee7e5e2ae0b7cae7afff2fa7ee2))
+
 ## [1.0.0-development.5](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.4...v1.0.0-development.5) (2024-2-15)
 
 
