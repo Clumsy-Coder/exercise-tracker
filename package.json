@@ -1,6 +1,6 @@
 {
   "name": "exercise-tracker",
-  "version": "1.0.0-development.6",
+  "version": "1.0.0-development.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
