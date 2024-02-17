@@ -8,6 +8,14 @@ import ExerciseIdPageLoading from '@/app/exercises/[exerciseId]/loading';
 import Error from '@/components/error';
 import { badgeVariants } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 import { useFetchExercise } from '@/hooks';
 import { cn } from '@/lib/utils';
@@ -56,14 +64,33 @@ const ExerciseIdPage = ({ params }: Props) => {
         <div>
           <Card>
             <CardContent className='relative my-3 h-96 w-full md:h-[40rem]'>
-              <Image
-                src={data.gifUrl}
-                alt={`${data.name}-gif`}
-                fill
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                loading='lazy'
-                className='object-contain'
-              />
+              <Dialog>
+                <DialogTrigger>
+                  <Image
+                    src={data.gifUrl}
+                    alt={`${data.name}-gif`}
+                    fill
+                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                    loading='lazy'
+                    className='object-contain'
+                  />
+                </DialogTrigger>
+                <DialogContent className='h-[50vh] rounded-xl md:h-[90vh]'>
+                  <DialogHeader>
+                    {/* <DialogTitle>Are you absolutely sure?</DialogTitle> */}
+                    <DialogDescription>
+                      <Image
+                        src={data.gifUrl}
+                        alt={`${data.name}-gif`}
+                        fill
+                        sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                        loading='lazy'
+                        className='object-contain'
+                      />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </CardContent>
           </Card>
         </div>
