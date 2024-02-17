@@ -1,3 +1,29 @@
+## [1.0.0-development.7](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.6...v1.0.0-development.7) (2024-2-17)
+
+
+### :sparkles: Features
+
+* **components:** add `Footer` component ([46e3942](https://github.com/Clumsy-Coder/exercise-tracker/commit/46e39425720ee90c92d32ecb5a3a286c9f5d5a10))
+
+
+### :lipstick: Styles
+
+* **layout:** reorder imports ([a1a70c6](https://github.com/Clumsy-Coder/exercise-tracker/commit/a1a70c6b1877afd615bb16684e2418e292b6e71b))
+
+
+### :octopus: Miscellaneous Chores
+
+* **layout:** display `Footer` component ([a70ac5b](https://github.com/Clumsy-Coder/exercise-tracker/commit/a70ac5b3d09eb642bbc342f75a227b89f72366f7))
+
+
+### :package: Build System
+
+* **deps:** bump @tanstack/react-query-devtools from 5.17.21 to 5.21.3 ([5c84c95](https://github.com/Clumsy-Coder/exercise-tracker/commit/5c84c958d63496139af2811ae6a218286714adcb))
+* **deps:** bump @vercel/analytics from 1.1.3 to 1.2.0 ([32ff403](https://github.com/Clumsy-Coder/exercise-tracker/commit/32ff40352c1b5ef119f4a86a0982799216455df7))
+* **deps:** bump lucide-react from 0.330.0 to 0.331.0 ([486e555](https://github.com/Clumsy-Coder/exercise-tracker/commit/486e555be6a45f83e1c836cd267f896038692770))
+* **devDep:** bump @types/node from 20.11.17 to 20.11.19 ([70bc247](https://github.com/Clumsy-Coder/exercise-tracker/commit/70bc247ee1ae498e755a9255d4bc24063defba4c))
+* **npm:** add package `moment` ([2358e40](https://github.com/Clumsy-Coder/exercise-tracker/commit/2358e4099746e08a0e4f86744d2ddc6e9d0367df))
+
 ## [1.0.0-development.6](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.5...v1.0.0-development.6) (2024-2-17)
 
 
