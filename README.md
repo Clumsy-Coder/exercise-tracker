@@ -40,7 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 <details>
 <summary>Show screenshots</summary>
 
-### Exercises page
+### Exercises page `/exercises`
 
 #### Desktop
 
@@ -55,5 +55,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ##### Accordion Opened
 
 ![Exercises page mobile Accordion opened](docs/images/page-exercises-mobile-accordion-opened.png)
+
+### Exercise ID page `/exercises/[exerciseId]`
+
+#### Desktop
+
+![Exercises ID page desktop](docs/images/page-exerciseId-desktop.png)
+
+#### Mobile
+
+![Exercises Id  page mobile](docs/images/page-exerciseId-mobile.png)
 
 </details>
