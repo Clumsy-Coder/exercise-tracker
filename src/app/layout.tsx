@@ -1,13 +1,14 @@
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
-import './globals.css';
-import { cn } from '@/lib/utils';
+
+import { ModeToggle } from '@/components/darkmode-toggle';
+import Footer from '@/components/footer';
+import { ReactQueryClientProvider } from '@/components/reactQueryClientProvider';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
-import { ModeToggle } from '@/components/darkmode-toggle';
-import { ReactQueryClientProvider } from '@/components/reactQueryClientProvider';
-import Footer from '@/components/footer';
+import { cn } from '@/lib/utils';
+import './globals.css';
 
 const fontSans = FontSans({
   subsets: ['latin'],
