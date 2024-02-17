@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import { ModeToggle } from '@/components/darkmode-toggle';
 import { ReactQueryClientProvider } from '@/components/reactQueryClientProvider';
+import Footer from '@/components/footer';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -51,6 +52,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <main className='flex w-full flex-1 flex-col overflow-hidden'>{children}</main>
               {/* </div> */}
             </div>
+            <Footer />
             <Analytics />
           </ThemeProvider>
         </ReactQueryClientProvider>
