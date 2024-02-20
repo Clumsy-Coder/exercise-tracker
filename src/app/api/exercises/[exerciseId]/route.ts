@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 
 import { exerciseIdSchema as schema } from '@/schema';
 import { Exercise } from '@/types/raw';
-import { exerciseOptions, fetchExerciseUrl } from '@/utils/fetchData';
-import { z } from 'zod';
+import data from '@/utils/data/exercises.json';
+// import { exerciseOptions, fetchExerciseUrl } from '@/utils/fetchData';
 
 type GetParamsType = {
   params: z.infer<typeof schema>;
@@ -32,13 +33,26 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   // fetch exercise ID
   const { exerciseId } = params;
 
-  const url = fetchExerciseUrl(exerciseId);
-  const response = await fetch(url, exerciseOptions);
-  // if the response is NULL, then exercise ID is not found
-  const responseText = await response.text();
+  // const url = fetchExerciseUrl(exerciseId);
+  // const response = await fetch(url, exerciseOptions);
+  // // if the response is NULL, then exercise ID is not found
+  // const responseText = await response.text();
+  //
+  // // exercise ID not found
+  // if (!responseText.length) {
+  //   const message = {
+  //     message: `Exercise ID ${exerciseId} not found`,
+  //   };
+  //   return NextResponse.json(message, {
+  //     status: 404,
+  //   });
+  // }
+  //
+  // const data: Exercise = JSON.parse(responseText);
 
-  // exercise ID not found
-  if (!responseText.length) {
+  const filtered = (data as Exercise[]).filter((item) => item.id === `${exerciseId}`);
+
+  if (!filtered.length) {
     const message = {
       message: `Exercise ID ${exerciseId} not found`,
     };
@@ -47,7 +61,5 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
     });
   }
 
-  const data: Exercise = JSON.parse(responseText);
-
-  return Response.json(data);
+  return Response.json(filtered[0]);
 };
