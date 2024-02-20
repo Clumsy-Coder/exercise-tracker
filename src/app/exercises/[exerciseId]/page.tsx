@@ -67,7 +67,7 @@ const ExerciseIdPage = ({ params }: Props) => {
               <Dialog>
                 <DialogTrigger>
                   <Image
-                    src={data.gifUrl}
+                    src={`/exercise-gif/${data.id}.gif`}
                     alt={`${data.name}-gif`}
                     fill
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -80,7 +80,7 @@ const ExerciseIdPage = ({ params }: Props) => {
                     {/* <DialogTitle>Are you absolutely sure?</DialogTitle> */}
                     <DialogDescription>
                       <Image
-                        src={data.gifUrl}
+                        src={`/exercise-gif/${data.id}.gif`}
                         alt={`${data.name}-gif`}
                         fill
                         sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
