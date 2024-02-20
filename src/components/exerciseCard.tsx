@@ -61,7 +61,7 @@ const ExerciseCard = ({ data }: Props) => {
       </CardHeader>
       <CardContent className='relative my-3 h-72 w-full'>
         <Image
-          src={gifUrl}
+          src={`/exercise-gif/${id}.gif`}
           alt={`${name}-gif`}
           fill
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
