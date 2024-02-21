@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import {
   fetchAllExercises,
+  fetchEquipmentExercises,
   fetchEquipmentList,
   fetchExercise,
   fetchTargetList,
@@ -14,9 +15,20 @@ export enum QueryKey {
   allExercises = 'all-exercises',
 
   /**
-   * Query key for fetching a single exercise using `exercise Id`
+   * Query key for fetching a single exercise using `exercise Id` or any of the exercise subsets
+   *
+   * Ex:
+   * - exerciseId
+   * - exercise by equipment
+   * - exercise by target
+   * - exercise by body part
    */
   exercise = 'exercise',
+
+  /**
+   * Query key for fetching a single equipment exercise
+   */
+  equipment = 'equipment',
 
   /**
    * Query key for fetching target list
@@ -55,6 +67,22 @@ export const useFetchExercise = (exerciseId: string | number) => {
   return useQuery({
     queryKey: [QueryKey.exercise, exerciseId],
     queryFn: () => fetchExercise(exerciseId),
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+    retry: false,
+  });
+};
+
+/**
+ * React query hook for fetching equipment exercises using `equipment`
+ *
+ * Uses server action `fetchEquipmentExercises`
+ */
+export const useFetchEquipmentExercises = (equipment: string) => {
+  return useQuery({
+    queryKey: [QueryKey.exercise, QueryKey.equipment, equipment],
+    queryFn: () => fetchEquipmentExercises(equipment),
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     staleTime: Infinity,
