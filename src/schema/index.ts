@@ -19,3 +19,12 @@ export const exerciseIdSchema = z.object({
 export const exerciseEquipment = z.object({
   equipment: z.coerce.string().min(1, 'Exercise equipment must be at least 1 character long'),
 });
+
+/**
+ * Schema validation for endpoint `/api/exercises/targets/[target]`
+ *
+ * Also used in `./src/app/exercises/targets/[target]/page.tsx`
+ */
+export const exerciseTarget = z.object({
+  target: z.coerce.string().min(1, 'Exercise target must be at least 1 character long'),
+});
