@@ -51,7 +51,7 @@ const ExerciseCard = ({ data }: Props) => {
         </div>
         <CardDescription className='py-1 capitalize '>
           <Link
-            href={`/exercises/equipment/${equipment}`}
+            href={`/exercises/equipments/${equipment.replaceAll(' ', '-')}`}
             className='hover:underline hover:underline-offset-4'
             // className='underline underline-offset-4 hover:text-primary'
           >
@@ -72,7 +72,7 @@ const ExerciseCard = ({ data }: Props) => {
       <CardFooter className='flex gap-1.5 overflow-auto pt-1'>
         {/* <Badge className='capitalize'>{target}</Badge> */}
         <Link
-          href={`/exercises/target/${target}`}
+          href={`/exercises/targets/${target.replaceAll(' ', '-')}`}
           className={cn(badgeVariants(), 'capitalize', 'whitespace-nowrap')}
         >
           {target}
