@@ -5,6 +5,7 @@ import {
   fetchEquipmentExercises,
   fetchEquipmentList,
   fetchExercise,
+  fetchTargetExercises,
   fetchTargetList,
 } from '@/server/actions';
 
@@ -29,6 +30,11 @@ export enum QueryKey {
    * Query key for fetching a single equipment exercise
    */
   equipment = 'equipment',
+
+  /**
+   * Query key for fetching a target exercises
+   */
+  target = 'target',
 
   /**
    * Query key for fetching target list
@@ -74,6 +80,8 @@ export const useFetchExercise = (exerciseId: string | number) => {
   });
 };
 
+// --------------------------------------------------------------------------------------------- //
+
 /**
  * React query hook for fetching equipment exercises using `equipment`
  *
@@ -89,6 +97,24 @@ export const useFetchEquipmentExercises = (equipment: string) => {
     retry: false,
   });
 };
+
+/**
+ * React query hook for fetching target exercises using `target`
+ *
+ * Uses server action `fetchTargetExercises`
+ */
+export const useFetchTargetExercises = (target: string) => {
+  return useQuery({
+    queryKey: [QueryKey.exercise, QueryKey.target, target],
+    queryFn: () => fetchTargetExercises(target),
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+    retry: false,
+  });
+};
+
+// --------------------------------------------------------------------------------------------- //
 
 /**
  * React query hook for fetching target list
@@ -119,3 +145,5 @@ export const useFetchEquipmentList = () => {
     staleTime: Infinity,
   });
 };
+
+// --------------------------------------------------------------------------------------------- //
