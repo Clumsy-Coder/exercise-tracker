@@ -1,3 +1,37 @@
+## [1.0.0-development.9](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.8...v1.0.0-development.9) (2024-2-22)
+
+
+### :sparkles: Features
+
+* **actions:** add server action for fetching exercises by target ([552ca8c](https://github.com/Clumsy-Coder/exercise-tracker/commit/552ca8cca9220a4664549494be91582b3b928c1f)), closes [#68](https://github.com/Clumsy-Coder/exercise-tracker/issues/68)
+* **api:exercises:targets:** add endpoint for fetching exercises by target ([5660dab](https://github.com/Clumsy-Coder/exercise-tracker/commit/5660dab073429b0da3194dbe4ae1a7fecd855ce9)), closes [#68](https://github.com/Clumsy-Coder/exercise-tracker/issues/68)
+* **page:exercises:targets:** add page for `/exercises/targets/[target]` ([52d9cbf](https://github.com/Clumsy-Coder/exercise-tracker/commit/52d9cbf8803e3c9ae36529bc76054f83bb409d77)), closes [#68](https://github.com/Clumsy-Coder/exercise-tracker/issues/68)
+
+
+### :lipstick: Styles
+
+* **components:exerciseCard:** add a gap between exercise name and navigate button ([0a99e5a](https://github.com/Clumsy-Coder/exercise-tracker/commit/0a99e5a2d1c7299503546490bd37e690af74e511))
+
+
+### :octopus: Miscellaneous Chores
+
+* **hooks:** add react-query hook to fetch exercises by target ([f4ba292](https://github.com/Clumsy-Coder/exercise-tracker/commit/f4ba2929414e4683c2d702b7173ef358046d3aa3))
+* **layout:exercises:targets:** add layout for `/exercises/targets/[target]` page ([305a822](https://github.com/Clumsy-Coder/exercise-tracker/commit/305a822f6a28b44ef5d75274324415d84460b09f))
+* **loading:exercises:targets:** add `Loading` component for `/exercises/targets/[target]` page ([63eecc8](https://github.com/Clumsy-Coder/exercise-tracker/commit/63eecc8a0bcbdd143b2a5a37ecc02ee92a12e4dd))
+* **schema:** add schema for `/exercises/targets/[target]` ([cef95f2](https://github.com/Clumsy-Coder/exercise-tracker/commit/cef95f2d86399cd99d7173f5a620f453c73cba90))
+
+
+### :recycle: Code Refactoring
+
+* **components:exerciseCard:** fix url to target and equipment page ([68ed5b8](https://github.com/Clumsy-Coder/exercise-tracker/commit/68ed5b89baa3967e1768e61ca4c6a99d32cd1dbf))
+
+
+### :package: Build System
+
+* **deps:** bump lucide-react from 0.335.0 to 0.336.0 ([3bbfd7e](https://github.com/Clumsy-Coder/exercise-tracker/commit/3bbfd7e81fefa117dea4cb69d3c120be57495750))
+* **devDep:** bump tailwindcss from 3.4.0 to 3.4.1 ([89d6282](https://github.com/Clumsy-Coder/exercise-tracker/commit/89d6282e12b225000ffe099fef564fe47a0fdd54))
+* **npm:** upgrade package `tailwindcss` to `v3.4.0` ([3797af8](https://github.com/Clumsy-Coder/exercise-tracker/commit/3797af8329f31040c4fbbcaf99764fc9a6383b75))
+
 ## [1.0.0-development.8](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.7...v1.0.0-development.8) (2024-2-21)
 
 
