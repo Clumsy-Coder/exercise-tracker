@@ -30,6 +30,15 @@ export const fetchEquipmentExercises = (equipment: string) => {
 };
 
 /**
+ * Server action for fetching target exercises using `target`
+ *
+ * Fetches from URL `/api/exercises/targets/[target]`
+ */
+export const fetchTargetExercises = (target: string) => {
+  return axios.get<Exercise[]>(`/api/exercises/targets/${target}`).then((res) => res.data);
+};
+
+/**
  * Server action for fetching target list
  *
  * Fetches from URL `/api/exercises/target`
