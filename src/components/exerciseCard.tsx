@@ -35,7 +35,7 @@ const ExerciseCard = ({ data }: Props) => {
   return (
     <Card className='transition ease-in-out hover:ring hover:ring-neutral-300'>
       <CardHeader>
-        <div className='flex items-center justify-between'>
+        <div className='flex items-center justify-between gap-3'>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger asChild>
