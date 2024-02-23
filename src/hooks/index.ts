@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import {
   fetchAllExercises,
+  fetchBodyPartList,
   fetchEquipmentExercises,
   fetchEquipmentList,
   fetchExercise,
@@ -45,6 +46,11 @@ export enum QueryKey {
    * Query key for fetching equipment list
    */
   equipmentList = 'equipment-list',
+
+  /**
+   * Query key for fetching equipment list
+   */
+  bodyPartList = 'body-part-list',
 }
 
 // --------------------------------------------------------------------------------------------- //
@@ -146,4 +152,18 @@ export const useFetchEquipmentList = () => {
   });
 };
 
+/**
+ * React query hook for fetching body part list
+ *
+ * Uses server action `fetchBodyPartList`
+ */
+export const useFetchBodyPartList = () => {
+  return useQuery({
+    queryKey: [QueryKey.bodyPartList],
+    queryFn: fetchBodyPartList,
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+  });
+};
 // --------------------------------------------------------------------------------------------- //
