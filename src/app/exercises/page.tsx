@@ -12,7 +12,12 @@ import {
 import { buttonVariants } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import ExercisesPageLoading from '@/app/exercises/loading';
-import { useFetchAllExercises, useFetchEquipmentList, useFetchTargetList } from '@/hooks';
+import {
+  useFetchAllExercises,
+  useFetchBodyPartList,
+  useFetchEquipmentList,
+  useFetchTargetList,
+} from '@/hooks';
 import { cn } from '@/lib/utils';
 
 type ExercisesByTargetType = {
@@ -75,6 +80,10 @@ type ExercisesAccordionType = {
    * Data returned when fetching from `/api/exercises/equipments`
    */
   exercisesByEquipment: string[];
+  /**
+   * Data returned when fetching from `/api/exercises/body-parts`
+   */
+  exercisesByBodyPart: string[];
 };
 /**
  * Render exercises by target and equipment using an Accordion
@@ -90,6 +99,7 @@ type ExercisesAccordionType = {
 const ExercisesAccordion = ({
   exercisesByTarget,
   exercisesByEquipment,
+  exercisesByBodyPart,
 }: ExercisesAccordionType) => (
   <Accordion
     type='multiple'
@@ -131,6 +141,24 @@ const ExercisesAccordion = ({
         </div>
       </AccordionContent>
     </AccordionItem>
+    {/* Exercises by Body part */}
+    <AccordionItem value='exercises-by-body-part'>
+      <AccordionTrigger>
+        <h2 className='mb-3 text-4xl font-semibold'>Exercises by Body part</h2>
+      </AccordionTrigger>
+      <AccordionContent>
+        <div className=''>
+          {/* <h2 className='mb-3 text-4xl font-semibold'>Exercises by Equipment</h2> */}
+          {/* <div className='flex flex-wrap gap-2'> */}
+          <div className='flex flex-wrap gap-2'>
+            <ExercisesBy
+              data={exercisesByBodyPart}
+              exerciseLinkFn={(bodyPart) => `/exercises/body-parts/${bodyPart}`}
+            />
+          </div>
+        </div>
+      </AccordionContent>
+    </AccordionItem>
   </Accordion>
 );
 
@@ -140,11 +168,13 @@ const ExercisesPage = () => {
   const { isLoading, data } = useFetchAllExercises();
   const { isLoading: targetListIsLoading, data: targetListData } = useFetchTargetList();
   const { isLoading: equipmentListIsLoading, data: equipmentListData } = useFetchEquipmentList();
+  const { isPending: bodyPartListIsLoading, data: bodyPartListData } = useFetchBodyPartList();
 
   if (
     isLoading ||
     targetListIsLoading ||
     equipmentListIsLoading ||
+    bodyPartListIsLoading ||
     !data ||
     !targetListData ||
     !equipmentListData
@@ -160,6 +190,7 @@ const ExercisesPage = () => {
         <ExercisesAccordion
           exercisesByTarget={targetListData}
           exercisesByEquipment={equipmentListData}
+          exercisesByBodyPart={bodyPartListData as string[]}
         />
       </div>
       {/* Display Exercises by target and equipment in larger screens */}
@@ -183,6 +214,17 @@ const ExercisesPage = () => {
             <ExercisesBy
               data={equipmentListData}
               exerciseLinkFn={(equipment) => `/exercises/equipments/${equipment}`}
+            />
+          </div>
+        </div>
+        {/* Exercises by Body part */}
+        <div className='my-4 '>
+          <h2 className='mb-3 text-4xl font-semibold'>Exercises by Body part</h2>
+          {/* <div className='flex flex-wrap gap-2'> */}
+          <div className='flex flex-wrap gap-2'>
+            <ExercisesBy
+              data={bodyPartListData as string[]}
+              exerciseLinkFn={(bodyPart) => `/exercises/body-parts/${bodyPart}`}
             />
           </div>
         </div>
