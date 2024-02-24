@@ -52,7 +52,7 @@ const ExerciseIdPage = ({ params }: Props) => {
   // used for rendering exercise properties and providing their links
   // alternative to manually writing code to display the exercise properties
   const exerciseProperties = [
-    ['Body part: ', data.bodyPart, `/exercises/body-part/${data.bodyPart.replaceAll(' ', '-')}`],
+    ['Body part: ', data.bodyPart, `/exercises/body-parts/${data.bodyPart.replaceAll(' ', '-')}`],
     ['Equipment: ', data.equipment, `/exercises/equipments/${data.equipment.replaceAll(' ', '-')}`],
     ['Target: ', data.target, `/exercises/targets/${data.target.replaceAll(' ', '-')}`],
   ];
