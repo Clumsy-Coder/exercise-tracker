@@ -39,6 +39,17 @@ export const fetchTargetExercises = (target: string) => {
 };
 
 /**
+ * Server action for fetching `body part` exercises using `bodyPart`
+ *
+ * Fetches from URL `/api/exercises/body-parts/[bodyPart]`
+ */
+export const fetchBodyPartExercises = (bodyPart: string) => {
+  return axios.get<Exercise[]>(`/api/exercises/body-parts/${bodyPart}`).then((res) => res.data);
+};
+
+// --------------------------------------------------------------------------------------------- //
+
+/**
  * Server action for fetching target list
  *
  * Fetches from URL `/api/exercises/target`
