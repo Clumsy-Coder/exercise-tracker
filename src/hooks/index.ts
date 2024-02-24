@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import {
   fetchAllExercises,
+  fetchBodyPartExercises,
   fetchBodyPartList,
   fetchEquipmentExercises,
   fetchEquipmentList,
@@ -36,6 +37,11 @@ export enum QueryKey {
    * Query key for fetching a target exercises
    */
   target = 'target',
+
+  /**
+   * Query key for fetching bodyPart exercises
+   */
+  bodyPart = 'bodyPart',
 
   /**
    * Query key for fetching target list
@@ -113,6 +119,22 @@ export const useFetchTargetExercises = (target: string) => {
   return useQuery({
     queryKey: [QueryKey.exercise, QueryKey.target, target],
     queryFn: () => fetchTargetExercises(target),
+    refetchOnMount: false,
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+    retry: false,
+  });
+};
+
+/**
+ * React query hook for fetching `body part` exercises using `bodyPart`
+ *
+ * Uses server action `fetchBodyPartExercises`
+ */
+export const useFetchBodyPartExercises = (bodyPart: string) => {
+  return useQuery({
+    queryKey: [QueryKey.exercise, QueryKey.bodyPart, bodyPart],
+    queryFn: () => fetchBodyPartExercises(bodyPart),
     refetchOnMount: false,
     refetchOnWindowFocus: false,
     staleTime: Infinity,
