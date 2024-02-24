@@ -1,3 +1,34 @@
+## [1.0.0-development.10](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.9...v1.0.0-development.10) (2024-2-24)
+
+
+### :sparkles: Features
+
+* **actions:** add server action for fetching exercise `body part` list ([544c9d5](https://github.com/Clumsy-Coder/exercise-tracker/commit/544c9d5b41dbaaf1ec96ca15e93839f68aa36ac1)), closes [#67](https://github.com/Clumsy-Coder/exercise-tracker/issues/67)
+* **actions:** add server action for fetching exercises by body part ([04780c9](https://github.com/Clumsy-Coder/exercise-tracker/commit/04780c9d8d1c1d9a48f5e815dc96dfe87b219a41)), closes [#67](https://github.com/Clumsy-Coder/exercise-tracker/issues/67)
+* **api:exercises:bodyParts:** add endpoint for fetching `body part list` ([8580768](https://github.com/Clumsy-Coder/exercise-tracker/commit/8580768f93eb4097b289651b26be37703619fb81)), closes [#67](https://github.com/Clumsy-Coder/exercise-tracker/issues/67)
+* **api:exercises:bodyParts:** add endpoint for fetching exercises by bodyPart ([cd9a964](https://github.com/Clumsy-Coder/exercise-tracker/commit/cd9a964b342a3d8e4014bfe12e7b86099e783b18)), closes [#67](https://github.com/Clumsy-Coder/exercise-tracker/issues/67)
+* **page:exercises:bodyParts:** add page for `/exercises/body-parts/[bodyPart]` ([7cad028](https://github.com/Clumsy-Coder/exercise-tracker/commit/7cad028ca75ad0454e6ae4d2b54875cfac23460f)), closes [#67](https://github.com/Clumsy-Coder/exercise-tracker/issues/67)
+* **page:exercises:** display exercise `body part` list ([0d50e59](https://github.com/Clumsy-Coder/exercise-tracker/commit/0d50e594794be9c6b4336765047ffa8863fc6c0c)), closes [#67](https://github.com/Clumsy-Coder/exercise-tracker/issues/67)
+
+
+### :octopus: Miscellaneous Chores
+
+* **hooks:** add react-query hook to fetch exercise body part list ([6e77f7a](https://github.com/Clumsy-Coder/exercise-tracker/commit/6e77f7a20d484d7937d0c0bde2def66c9d00145d)), closes [#67](https://github.com/Clumsy-Coder/exercise-tracker/issues/67)
+* **hooks:** add react-query hook to fetch exercises by body part ([abc40ab](https://github.com/Clumsy-Coder/exercise-tracker/commit/abc40abdbfe3573a82f496d97690061306720a7e))
+* **layout:exercises:bodyParts:** add layout for `/exercises/body-parts/[bodyPart]` page ([0e277f0](https://github.com/Clumsy-Coder/exercise-tracker/commit/0e277f053d0e801fcf6277008b63e9948dde8acb))
+* **loading:exercises:bodyParts:** add `Loading` component for `/exercises/body-parts/[bodyPart]` page ([18c9cd6](https://github.com/Clumsy-Coder/exercise-tracker/commit/18c9cd647a61c50dfd4a04caf5caf699df82903e))
+* **schema:** add schema for `/exercises/body-parts/[bodyPart]` ([847fe03](https://github.com/Clumsy-Coder/exercise-tracker/commit/847fe03f966c52795230b2d52970f99adf955954))
+
+
+### :recycle: Code Refactoring
+
+* **page:exercises:exercised:** fix url for `bodyPart` ([3d4bce9](https://github.com/Clumsy-Coder/exercise-tracker/commit/3d4bce98a47b72abf5276de03b4aaafef4c76646))
+
+
+### :package: Build System
+
+* **devDep:** bump @types/node from 20.11.19 to 20.11.20 ([981986d](https://github.com/Clumsy-Coder/exercise-tracker/commit/981986d69fe240f7533982f91e68a6cc1f31caaf))
+
 ## [1.0.0-development.9](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.8...v1.0.0-development.9) (2024-2-22)
 
 
