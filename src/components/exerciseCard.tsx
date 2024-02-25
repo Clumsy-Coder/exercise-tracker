@@ -17,6 +17,7 @@ import { Exercise } from '@/types/raw';
 
 type Props = {
   data: Exercise;
+  className?: string;
 };
 
 /**
@@ -29,11 +30,11 @@ type Props = {
  * - Exercise target
  * - Secondary muscles
  */
-const ExerciseCard = ({ data }: Props) => {
+const ExerciseCard = ({ data, className }: Props) => {
   const { id, name, gifUrl, target, equipment } = data;
 
   return (
-    <Card className='transition ease-in-out hover:ring hover:ring-neutral-300'>
+    <Card className={cn('transition ease-in-out hover:ring hover:ring-neutral-300', className)}>
       <CardHeader>
         <div className='flex items-center justify-between gap-3'>
           <TooltipProvider>
