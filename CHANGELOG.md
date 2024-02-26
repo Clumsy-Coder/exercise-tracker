@@ -1,3 +1,45 @@
+## [1.0.0-development.11](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.10...v1.0.0-development.11) (2024-2-26)
+
+
+### :sparkles: Features
+
+* **page:home:** add content for home page ([8f4be29](https://github.com/Clumsy-Coder/exercise-tracker/commit/8f4be29d7f65551334f948bb93c27ad3d435f7d9)), closes [#90](https://github.com/Clumsy-Coder/exercise-tracker/issues/90)
+
+
+### :books: Documentation
+
+* **docs:images:** add screenshots for `Home` page ([be6b8ef](https://github.com/Clumsy-Coder/exercise-tracker/commit/be6b8ef834240f2b84892c413eaf7ec8cb10c020))
+* **readme:** display screenshots of `Home` page ([300fdc9](https://github.com/Clumsy-Coder/exercise-tracker/commit/300fdc9c6d96ed0de805512d18141f8ab64efdb0))
+
+
+### :lipstick: Styles
+
+* **components:exerciseCard:** add ability to extend `ExerciseCard` component ([2d004ef](https://github.com/Clumsy-Coder/exercise-tracker/commit/2d004ef83ff60b77864cdce05a30afdee0ade665))
+* **components:exerciseCard:** remove `ring` tailwindcss class on hover ([395adc6](https://github.com/Clumsy-Coder/exercise-tracker/commit/395adc6c0b3e7f8adf5108ba4ee75412aa06ea29))
+* **components:navbar:** format code ([07ebdca](https://github.com/Clumsy-Coder/exercise-tracker/commit/07ebdca09db5d4fb0a1bdf793a3799da47d4f0dd))
+
+
+### :octopus: Miscellaneous Chores
+
+* **components:exerciseCard:** remove unused code ([2f338db](https://github.com/Clumsy-Coder/exercise-tracker/commit/2f338db663449f1915f61de8ff49f5d665f98de1))
+* **loading:home:** add `Loading` component for `/` page ([916630a](https://github.com/Clumsy-Coder/exercise-tracker/commit/916630a4987e8633be2a2ff0626bc2dcb36d7d87))
+* **page:exercises:exerciseId:** remove unused code ([43a33b6](https://github.com/Clumsy-Coder/exercise-tracker/commit/43a33b6663d9ab8e2a29141440a024e42fa5f477))
+* **utils:** add a list of popular exercises ([107e150](https://github.com/Clumsy-Coder/exercise-tracker/commit/107e15099f6b07358f5c2428f98d39d8ce3c9e78))
+
+
+### :recycle: Code Refactoring
+
+* **layout:home:** update metadata ([3eeb26e](https://github.com/Clumsy-Coder/exercise-tracker/commit/3eeb26efc2d048a3064ba701c37bf87f0a7f15f0))
+
+
+### :package: Build System
+
+* **deps:** bump @tanstack/react-query from 5.22.2 to 5.24.1 ([b0bce13](https://github.com/Clumsy-Coder/exercise-tracker/commit/b0bce13aa2009fb479c625300d6515a8cd5e0aeb))
+* **deps:** bump @tanstack/react-query-devtools from 5.24.0 to 5.24.1 ([e027890](https://github.com/Clumsy-Coder/exercise-tracker/commit/e02789038e455d1510e77b08bfc050d170e231de))
+* **deps:** bump lucide-react from 0.336.0 to 0.340.0 ([2ce426f](https://github.com/Clumsy-Coder/exercise-tracker/commit/2ce426fb7628026f84a480f7bf47058ffeb2e76f))
+* **devDep:** bump @types/react from 18.2.57 to 18.2.58 ([2448fbf](https://github.com/Clumsy-Coder/exercise-tracker/commit/2448fbf067b9c60a4bc98c75a433df31a97c9c7d))
+* **devDep:** bump eslint from 8.56.0 to 8.57.0 ([4fb0ef3](https://github.com/Clumsy-Coder/exercise-tracker/commit/4fb0ef361d752a2e401e32bd724758cf989854ea))
+
 ## [1.0.0-development.10](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0-development.9...v1.0.0-development.10) (2024-2-24)
 
 
