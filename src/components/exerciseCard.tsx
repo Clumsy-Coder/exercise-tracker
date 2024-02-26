@@ -31,7 +31,7 @@ type Props = {
  * - Secondary muscles
  */
 const ExerciseCard = ({ data, className }: Props) => {
-  const { id, name, gifUrl, target, equipment } = data;
+  const { id, name, target, equipment } = data;
 
   return (
     <Card className={cn(className)}>
