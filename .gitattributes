@@ -1,0 +1,5 @@
+# run
+# git config filter.ignoreExerciseDBApi.clean "sed '/EXERCISE_DB_API/d'"
+# obtained from
+# https://stackoverflow.com/a/40800400/3053548
+generateEnvs.sh filter=ignoreExerciseDBApi
