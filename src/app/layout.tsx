@@ -18,6 +18,12 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: 'Home - Exercise-tracker',
   description: 'Exercise tracker home page',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.png',
+    // favicon: '/favicon.ico',
+    shortcut: '/favicon.png',
+  },
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
