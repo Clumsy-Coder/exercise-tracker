@@ -40,6 +40,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 <details>
 <summary>Show screenshots</summary>
 
+### Home page
+
+#### Desktop
+
+![Home page desktop](docs/images/page-home-desktop.png)
+
+#### Mobile
+
+![Home page mobile](docs/images/page-home-mobile.png)
+
 ### Exercises page `/exercises`
 
 #### Desktop
