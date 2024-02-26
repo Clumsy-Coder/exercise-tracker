@@ -213,6 +213,16 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-
 
+      - name: print API rate limits
+        run: |
+          curl -L \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer $SECRET_TOKEN" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          https://api.github.com/rate_limit
+        env:
+          SECRET_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+
       - run: npm install --production=false
 
       - name: semantic-release
