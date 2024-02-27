@@ -30,41 +30,37 @@ https://shields.io/badges/git-hub-actions-workflow-status
 | Branch | Build status |
 |--------|--------------|
 | [`development`](https://github.com/Clumsy-Coder/exercise-tracker/tree/development) | [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/clumsy-coder/exercise-tracker/.github%2Fworkflows%2Fbuild.yaml?branch=development&style=for-the-badge&label='development'%20branch%20build)](https://github.com/Clumsy-Coder/exercise-tracker/actions/workflows/build.yaml?query=branch%3Adevelopment) |
+| [`main`](https://github.com/Clumsy-Coder/exercise-tracker/tree/main) | [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/clumsy-coder/exercise-tracker/.github%2Fworkflows%2Fbuild.yaml?branch=main&style=for-the-badge&label='main'%20branch%20build)](https://github.com/Clumsy-Coder/exercise-tracker/actions/workflows/build.yaml?query=branch%3Amain) |
+
+---
 
 ## Getting Started
 
-First, run the development server:
+1. Clone repo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Clumsy-Coder/exercise-tracker.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+git clone git@github.com:Clumsy-Coder/exercise-tracker.git
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. install npm packages
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm install
+```
 
-## Learn More
+3. add ENVs. check `ENVs` section
 
-To learn more about Next.js, take a look at the following resources:
+4. build NextJS and run
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run generateEnv && npm run build && npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Screenshots
 
