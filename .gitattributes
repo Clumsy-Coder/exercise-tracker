@@ -1,5 +1,11 @@
-# run
-# git config filter.ignoreExerciseDBApi.clean "sed '/EXERCISE_DB_API/d'"
+# ignoring sensitive secrets in a file.
+# uses `sed` to find and remove line
+# NOTE: only one filter can be attached to a file, because of this, a regex needs to be used to capture all secrets to be ignored by git
+#
+# run command to activate the filter
+# git config filter.ignoreSecrets.clean "sed '/\(GOOGLE_CLIENT_ID\|GOOGLE_CLIENT_SECRET\|AUTH_SECRET\)/d'"
+#
 # obtained from
 # https://stackoverflow.com/a/40800400/3053548
-generateEnvs.sh filter=ignoreExerciseDBApi
+# https://unix.stackexchange.com/a/363942
+generateEnvs.sh filter=ignoreSecrets
