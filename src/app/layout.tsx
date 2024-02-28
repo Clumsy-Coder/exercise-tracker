@@ -8,6 +8,7 @@ import Footer from '@/components/footer';
 import { ReactQueryClientProvider } from '@/components/reactQueryClientProvider';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
+import UserAuthDropdown from '@/components/userAuthDropdown';
 import SessionProvider from '@/components/providers/userAuthSessionProvider';
 import { cn } from '@/lib/utils';
 import './globals.css';
@@ -54,7 +55,10 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
                 <header className='sticky top-0 z-40 border-b bg-background'>
                   <div className='container flex h-16 items-center justify-between py-4'>
                     <Navbar />
-                    <ModeToggle />
+                    <div className='flex items-center justify-between gap-5'>
+                      <ModeToggle />
+                      <UserAuthDropdown />
+                    </div>
                   </div>
                 </header>
                 {/* <div className='container grid flex-1 gap-12 md:grid-cols-[200px_1fr]'> */}
