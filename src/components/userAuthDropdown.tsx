@@ -8,6 +8,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
@@ -40,13 +42,17 @@ const UserAuthDropdown = () => {
         )}
         {/* If user is logged in */}
         {session && (
-          <DropdownMenuItem
-            className='flex cursor-pointer gap-2'
-            onClick={() => signOut()}
-          >
-            <LogOut />
-            Logout
-          </DropdownMenuItem>
+          <>
+            <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              className='flex cursor-pointer gap-2'
+              onClick={() => signOut()}
+            >
+              <LogOut />
+              Logout
+            </DropdownMenuItem>
+          </>
         )}
       </DropdownMenuContent>
     </DropdownMenu>
