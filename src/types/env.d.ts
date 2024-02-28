@@ -39,5 +39,38 @@ declare namespace NodeJS {
      * @see {@link https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb/}
      */
     EXERCISE_DB_API: string;
+
+    // ------------------------------------------------------------------------------------------ //
+
+    /**
+     * Google client ID
+     *
+     * Used in `NextAuth`o
+     *
+     * Check Google provider {@link https://next-auth.js.org/providers/google}
+     * To create Google OAuth credentials see {@link https://youtu.be/XmmMQfpQh40?si=rDtmCFsGD3f79BC_&t=276}
+     */
+    GOOGLE_CLIENT_ID: string;
+
+    /**
+     * Google client secret.
+     *
+     * Used in `NextAuth`
+     *
+     * Check Google provider {@link https://next-auth.js.org/providers/google}
+     * To create Google OAuth credentials see {@link https://youtu.be/XmmMQfpQh40?si=rDtmCFsGD3f79BC_&t=276}
+     */
+    GOOGLE_CLIENT_SECRET: string;
+
+    /**
+     * NextAuth secret
+     *
+     * To generate random password, use command
+     * @example
+     * ```
+     * openssl rand -base64 32
+     * ```
+     */
+    NEXTAUTH_SECRET: string;
   }
 }
