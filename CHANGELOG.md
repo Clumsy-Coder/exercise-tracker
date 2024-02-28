@@ -1,3 +1,43 @@
+## [1.1.0-development.1](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.0.0...v1.1.0-development.1) (2024-2-28)
+
+
+### :sparkles: Features
+
+* **api:auth:** add api endpoint to authenticate a user using `Google` ([3788593](https://github.com/Clumsy-Coder/exercise-tracker/commit/3788593f598a3816fe3699f2c4b9b338befee0c9)), closes [#99](https://github.com/Clumsy-Coder/exercise-tracker/issues/99)
+* **components:userAuth:** add `UserAuthDropdown` component ([82894d1](https://github.com/Clumsy-Coder/exercise-tracker/commit/82894d175634547b099ddade0951481de3764bb7)), closes [#99](https://github.com/Clumsy-Coder/exercise-tracker/issues/99)
+* **components:userAuth:** display `user's name` after logging in ([3267b3c](https://github.com/Clumsy-Coder/exercise-tracker/commit/3267b3c94591317845a699d418e7a6da44eecba6))
+* **layout:home:** render `UserAuthDropdown` component on the navbar ([d2ba105](https://github.com/Clumsy-Coder/exercise-tracker/commit/d2ba105312233c97f99606903e91555bb8def9dc)), closes [#99](https://github.com/Clumsy-Coder/exercise-tracker/issues/99)
+
+
+### :books: Documentation
+
+* **readme:** add build instructions ([c483f89](https://github.com/Clumsy-Coder/exercise-tracker/commit/c483f89d0d9320a35095ef65a8ed31f6a6fa0eb1))
+* **readme:** add markdown badges ([41e416d](https://github.com/Clumsy-Coder/exercise-tracker/commit/41e416d4acbb6112a6a00fa778eac604e84db93a))
+* **types:** add NextAuth types for ENV ([db174e0](https://github.com/Clumsy-Coder/exercise-tracker/commit/db174e00abb094f7ba70549d4293e64b51609e2b))
+
+
+### :octopus: Miscellaneous Chores
+
+* **components:** export next-auth `SessionProvider` as a client component ([679c12b](https://github.com/Clumsy-Coder/exercise-tracker/commit/679c12b636d6dfd2512a243977f00ce1396d1307))
+* **git:** add regex to handle multiple keywords to ignore in `generateEnvs.sh` ([8ab3921](https://github.com/Clumsy-Coder/exercise-tracker/commit/8ab3921f8c06fa7fc4859a1aff4443b88500e98c))
+* **layout:home:** use `SessionProvider` from `next-auth` ([3905358](https://github.com/Clumsy-Coder/exercise-tracker/commit/3905358c67f509ccd953aa1c117012c8b98799ef))
+* **markdownlint:** add `markdownlint` config ([40affc7](https://github.com/Clumsy-Coder/exercise-tracker/commit/40affc7b31110ec9d5158182422f5d2641bc15f0))
+
+
+### :package: Build System
+
+* **deps-dev:** bump undici from 5.28.2 to 5.28.3 ([5d489ab](https://github.com/Clumsy-Coder/exercise-tracker/commit/5d489ab13cf993ae0b243ce9cd6f3cfefd97599d))
+* **deps:** bump lucide-react from 0.340.0 to 0.341.0 ([21eee27](https://github.com/Clumsy-Coder/exercise-tracker/commit/21eee27d9ca1b514fc772f58d1e7cc1853c56264))
+* **devDep:** bump @types/node from 20.11.20 to 20.11.21 ([dfbea1c](https://github.com/Clumsy-Coder/exercise-tracker/commit/dfbea1c8d552bfadfcc5861fcc3b869cd92e9ebb))
+* **devDep:** bump @types/react from 18.2.58 to 18.2.59 ([db8ee3d](https://github.com/Clumsy-Coder/exercise-tracker/commit/db8ee3d57c8f0885f71cc7f952ed41d09cbd04dd))
+* **devDep:** bump @types/react from 18.2.59 to 18.2.60 ([63bf1b6](https://github.com/Clumsy-Coder/exercise-tracker/commit/63bf1b6f9a42207229b7fd6292bd22c08c4c1ec5))
+* **npm:** add package `next-auth` ([7f535c9](https://github.com/Clumsy-Coder/exercise-tracker/commit/7f535c9f32d7d792b5c823bc4ee033e30e235c5e))
+
+
+### :construction_worker: Continuous Integration
+
+* **workflows:** add workflow `addDeploymentAlias` ([b2e7198](https://github.com/Clumsy-Coder/exercise-tracker/commit/b2e71989ff2caf826fd580013c3edeae20c0a957)), closes [/github.com/orgs/vercel/discussions/132#discussioncomment-4270119](https://github.com/Clumsy-Coder//github.com/orgs/vercel/discussions/132/issues/discussioncomment-4270119)
+
 ## 1.0.0 (2024-2-26)
 
 
