@@ -1,0 +1,31 @@
+---
+
+# add an alias to a successful deployment
+#
+# this is used for dealing Google OAuth2.0 redirect URI
+# Google doesn't support wildcard url.
+# The alternative is to manually add URI to google cloud console.
+# Another option is to use a single alias to a deployment and adding it to google cloud console
+# NOTE: this will run on any successful deployment, meaning different branches can collude with adding an alias
+#
+# obtained from
+# - https://github.com/orgs/vercel/discussions/132#discussioncomment-4270119
+
+name: Add deployment alias
+
+on:
+  deployment_status:
+
+env:
+  FORCE_COLOR: true
+  ALIAS_URL: exercise-tracker-preview-clumsy-coder.vercel.app
+
+jobs:
+  addDeploymentAlias:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: ${{ secrets.ADD_ALIAS_DEPLOYMENT }}
+    steps:
+      - name: Update Vercel Preview
+        run: vercel alias set ${{ github.event.deployment_status.target_url }} ${{ env.ALIAS_URL }} -t "$VERCEL_TOKEN" --scope clumsy-coder
