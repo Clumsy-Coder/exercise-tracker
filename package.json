@@ -21,7 +21,8 @@
     "docker:build": "npm run generateEnv && docker build -t $(npm run -s docker:imagename):$(npm run -s docker:tagname) -f ./dockerfile .",
     "docker:start": "docker run --rm -e 'PORT=3000' -p 3000:3000 -d --name $(npm run -s docker:imagename) $(npm run -s docker:imagename):$(npm run -s docker:tagname) && echo '\nGo to http://localhost:3000'",
     "docker:stop": "docker container stop $(npm run -s docker:imagename)",
-    "docker:logs": "docker logs -f $(npm run -s docker:imagename)"
+    "docker:logs": "docker logs -f $(npm run -s docker:imagename)",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
