@@ -10,8 +10,8 @@
 
 # tldr
 # - Stage: dev
-#   - copy package.json and package-lock.json to docker image
-#   - install npm packages using package.json and package-lock.json
+#   - copy package.json and pnpm-lock.yaml to docker image
+#   - install npm packages using package.json and pnpm-lock.yaml
 # - Stage: builder
 #   - copy node_modules from stage `dev`
 #   - copy source files to docker image
@@ -41,11 +41,16 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json before other files
 # Utilize Docker cache to save re-installing dependencies if unchanged
-COPY package*.json ./
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 
 # Install dependencies
 # check npm help ci
-RUN npm clean-install
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
 
 #--------------------------------------------------------------------------------------------------#
 
@@ -60,7 +65,12 @@ COPY ./ ./
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry.
 # ENV NEXT_TELEMETRY_DISABLED 1
-RUN npm run build
+RUN \
+  if [ -f yarn.lock ]; then yarn run build; \
+  elif [ -f package-lock.json ]; then npm run build; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm run build; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
 
 #--------------------------------------------------------------------------------------------------#
 
