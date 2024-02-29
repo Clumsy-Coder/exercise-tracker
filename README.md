@@ -49,7 +49,7 @@ git clone git@github.com:Clumsy-Coder/exercise-tracker.git
 2. install npm packages
 
 ```bash
-npm install
+pnpm install
 ```
 
 3. add ENVs. check `ENVs` section
@@ -57,7 +57,7 @@ npm install
 4. build NextJS and run
 
 ```bash
-npm run generateEnv && npm run build && npm run start
+pnpm run generateEnv && pnpm run build && pnpm run start
 ```
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
