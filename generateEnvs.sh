@@ -20,5 +20,13 @@ fi
   echo "NEXT_PUBLIC_BUILD_VERSION=$BUILD_VERSION"
   echo "NEXT_PUBLIC_BUILD_ID=$(npm run -s generateBuildId)"
   echo "NEXT_PUBLIC_BUILD_TIME=$(date +%s)"                       # build date & time in unix time
+  # ----------------------------------------------------------------------------------------------#
+  # base url for fetching exercise data
+  # for more info, check file `./src/types/env.d.ts`
+  #
+  # default: https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/
+  #
+  # echo "NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL="
+  # ----------------------------------------------------------------------------------------------#
 } > .env
 
