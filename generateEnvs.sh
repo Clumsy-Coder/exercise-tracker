@@ -36,5 +36,12 @@ fi
   # echo "NEXTAUTH_SECRET="  # for encrypting JWT. generate using command     openssl rand -base64 100
   # echo "NEXTAUTH_URL="     # for handling url redirect after logging in
   # ----------------------------------------------------------------------------------------------#
+  # base url for fetching exercise data
+  # for more info, check file `./src/types/env.d.ts`
+  #
+  # default: https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/
+  #
+  # echo "NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL="
+  # ----------------------------------------------------------------------------------------------#
 } > .env
 
