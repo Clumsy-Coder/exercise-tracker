@@ -38,3 +38,21 @@ export const fetchEquipmentListUrl = () =>
  */
 export const fetchExerciseUrl = (exerciseId: string | number) =>
   `https://exercisedb.p.rapidapi.com/exercises/exercise/${exerciseId}`;
+
+// --------------------------------------------------------------------------------------------- //
+
+/**
+ * Default URL for fetching exercise data.
+ *
+ * The url directory must contain the following
+ * - data/
+ *   - bodyPart.json
+ *   - equipment.json
+ *   - exercises.json
+ *   - target.json
+ * - exercise-gif/
+ *   - 0001.gif
+ *     ...
+ */
+export const DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL =
+  'https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database';
