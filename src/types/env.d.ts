@@ -40,6 +40,25 @@ declare namespace NodeJS {
      */
     EXERCISE_DB_API: string;
 
+    /**
+     * Base url for fetching the exercise data.
+     * This is for fetching the data without using the RapidAPI ExerciseDB.
+     *
+     * The url directory should contain
+     * - data/
+     *   - bodyPart.json
+     *   - equipment.json
+     *   - exercises.json
+     *   - target.json
+     * - exercise-gif/
+     *   - 0001.gif
+     *   ...
+     *
+     * @example https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/
+     * @default  https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/
+     */
+    NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL: string;
+
     // ------------------------------------------------------------------------------------------ //
 
     /**
