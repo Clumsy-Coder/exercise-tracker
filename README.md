@@ -75,6 +75,38 @@ This nextjs app uses some ENVs for it to work.
 | GOOGLE_CLIENT_SECRET | yes | | Google OAuth2.0 client secret |
 | NEXTAUTH_SECRET | yes | | Next-auth secret for encrypting JWT |
 | NEXTAUTH_URL | yes (**no** if deploying on vercel, it will provided for you) | | URL redirect callback |
+
+### Adding ENVs
+
+The ENVs are set in the file `generateEnvs.sh`. After setting them run the script `./generateEnvs.sh`
+
+To add ENVs:
+
+1. add the value of an ENV in `generateEnv.sh` file
+2. uncomment line containing the ENV
+3. run command
+
+```bash
+./generateEnvs.sh
+```
+
+Example:
+<details>
+<summary>Show example images</summary>
+
+1. add the value of an ENV in `generateEnv.sh` file
+![Adding env step 1](docs/images/adding-env-step-1.png)
+2. uncomment line containing the ENV
+![Adding env step 2](docs/images/adding-env-step-2.png)
+3. run command
+
+```bash
+./generateEnvs.sh
+```
+
+</details>
+
+---
 ## Screenshots
 
 <details>
