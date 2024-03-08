@@ -107,6 +107,21 @@ Example:
 </details>
 
 ---
+
+### ENVs in vercel
+
+If you're deploying the app on vercel, then there's no need to add the envs in `./generateEnvs.sh` file.
+
+You can add the ENVs in vercel to manage
+
+Go to
+
+- Your Vercel project
+- Go to `settings`
+- Go to `Environment variables`
+- Add the ENVs and make sure they're available in `preview` and `production` deployments
+
+---
 ## Screenshots
 
 <details>
