@@ -34,6 +34,51 @@ https://shields.io/badges/git-hub-actions-workflow-status
 
 ---
 
+## Screenshots
+
+<details>
+<summary>Show screenshots</summary>
+
+### Home page
+
+#### Desktop
+
+![Home page desktop](docs/images/page-home-desktop.png)
+
+#### Mobile
+
+![Home page mobile](docs/images/page-home-mobile.png)
+
+### Exercises page `/exercises`
+
+#### Desktop
+
+![Exercises page desktop](docs/images/page-exercises-desktop.png)
+
+#### Mobile
+
+##### Accordion Closed
+
+![Exercises page mobile Accordion closed](docs/images/page-exercises-mobile-accordion-closed.png)
+
+##### Accordion Opened
+
+![Exercises page mobile Accordion opened](docs/images/page-exercises-mobile-accordion-opened.png)
+
+### Exercise ID page `/exercises/[exerciseId]`
+
+#### Desktop
+
+![Exercises ID page desktop](docs/images/page-exerciseId-desktop.png)
+
+#### Mobile
+
+![Exercises Id  page mobile](docs/images/page-exerciseId-mobile.png)
+
+</details>
+
+---
+
 ## Getting Started
 
 1. Clone repo
@@ -207,45 +252,3 @@ NOTE: not required if deploying on vercel (vercel provides this ENV automaticall
 
 ---
 
-## Screenshots
-
-<details>
-<summary>Show screenshots</summary>
-
-### Home page
-
-#### Desktop
-
-![Home page desktop](docs/images/page-home-desktop.png)
-
-#### Mobile
-
-![Home page mobile](docs/images/page-home-mobile.png)
-
-### Exercises page `/exercises`
-
-#### Desktop
-
-![Exercises page desktop](docs/images/page-exercises-desktop.png)
-
-#### Mobile
-
-##### Accordion Closed
-
-![Exercises page mobile Accordion closed](docs/images/page-exercises-mobile-accordion-closed.png)
-
-##### Accordion Opened
-
-![Exercises page mobile Accordion opened](docs/images/page-exercises-mobile-accordion-opened.png)
-
-### Exercise ID page `/exercises/[exerciseId]`
-
-#### Desktop
-
-![Exercises ID page desktop](docs/images/page-exerciseId-desktop.png)
-
-#### Mobile
-
-![Exercises Id  page mobile](docs/images/page-exerciseId-mobile.png)
-
-</details>
