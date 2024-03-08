@@ -71,8 +71,8 @@ This nextjs app uses some ENVs for it to work.
 | NEXT_PUBLIC_BUILD_VERSION | yes | 1.0.0 | App version |
 | NEXT_PUBLIC_BUILD_ID | yes | d4ce960 | latest git commit ID |
 | NEXT_PUBLIC_BUILD_TIME | yes | 1709761645 | date and time on when it was built. Uses unix time. run command `date +%s`|
-| GOOGLE_CLIENT_ID | yes | | Google OAuth2.0 client ID |
-| GOOGLE_CLIENT_SECRET | yes | | Google OAuth2.0 client secret |
+| GOOGLE_CLIENT_ID | yes | | Google OAuth2.0 client ID. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s) |
+| GOOGLE_CLIENT_SECRET | yes | | Google OAuth2.0 client secret. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s) |
 | NEXTAUTH_SECRET | yes | | Next-auth secret for encrypting JWT |
 | NEXTAUTH_URL | yes (**no** if deploying on vercel, it will provided for you) | | URL redirect callback |
 
