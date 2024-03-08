@@ -62,6 +62,19 @@ pnpm run generateEnv && pnpm run build && pnpm run start
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## ENVs
+
+This nextjs app uses some ENVs for it to work.
+
+| ENV | required | example | description |
+|-----|----------|---------|-------------|
+| NEXT_PUBLIC_BUILD_VERSION | yes | 1.0.0 | App version |
+| NEXT_PUBLIC_BUILD_ID | yes | d4ce960 | latest git commit ID |
+| NEXT_PUBLIC_BUILD_TIME | yes | 1709761645 | date and time on when it was built. Uses unix time. run command `date +%s`|
+| GOOGLE_CLIENT_ID | yes | | Google OAuth2.0 client ID |
+| GOOGLE_CLIENT_SECRET | yes | | Google OAuth2.0 client secret |
+| NEXTAUTH_SECRET | yes | | Next-auth secret for encrypting JWT |
+| NEXTAUTH_URL | yes (**no** if deploying on vercel, it will provided for you) | | URL redirect callback |
 ## Screenshots
 
 <details>
