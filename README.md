@@ -9,6 +9,7 @@ https://shields.io/badges/git-hub-release
 https://forthebadge.com/#/search
 
 -->
+
 [![GitHub Release](https://img.shields.io/github/v/release/clumsy-coder/exercise-tracker?include_prereleases&style=for-the-badge)](https://github.com/Clumsy-Coder/exercise-tracker/releases)
 [![forthebadge](https://forthebadge.com/images/badges/made-with-next-13.svg)](https://forthebadge.com)
 
@@ -17,20 +18,22 @@ obtained from
 
 https://shields.io/badges/git-hub-deployments
 -->
-| Branch | Deployment status |
-|---|---|
+
+| Branch                                                                             | Deployment status                                                                                                                                                                                                                            |
+| ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`development`](https://github.com/Clumsy-Coder/exercise-tracker/tree/development) | [![GitHub deployments](https://img.shields.io/github/deployments/clumsy-coder/exercise-tracker/Preview?style=for-the-badge&label='Preview'%20deployment)](https://vercel.live/link/exercise-tracker-git-development-clumsy-coder.vercel.app) |
-| [`main`](https://github.com/Clumsy-Coder/exercise-tracker/tree/main) | [![GitHub deployments](https://img.shields.io/github/deployments/clumsy-coder/exercise-tracker/Production?style=for-the-badge&label='Production'%20deployment)](https://exercise-tracker-one.vercel.app/) |
+| [`main`](https://github.com/Clumsy-Coder/exercise-tracker/tree/main)               | [![GitHub deployments](https://img.shields.io/github/deployments/clumsy-coder/exercise-tracker/Production?style=for-the-badge&label='Production'%20deployment)](https://exercise-tracker-one.vercel.app/)                                    |
 
 <!--
 obtained from
 
 https://shields.io/badges/git-hub-actions-workflow-status
 -->
-| Branch | Build status |
-|--------|--------------|
+
+| Branch                                                                             | Build status                                                                                                                                                                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`development`](https://github.com/Clumsy-Coder/exercise-tracker/tree/development) | [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/clumsy-coder/exercise-tracker/.github%2Fworkflows%2Fbuild.yaml?branch=development&style=for-the-badge&label='development'%20branch%20build)](https://github.com/Clumsy-Coder/exercise-tracker/actions/workflows/build.yaml?query=branch%3Adevelopment) |
-| [`main`](https://github.com/Clumsy-Coder/exercise-tracker/tree/main) | [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/clumsy-coder/exercise-tracker/.github%2Fworkflows%2Fbuild.yaml?branch=main&style=for-the-badge&label='main'%20branch%20build)](https://github.com/Clumsy-Coder/exercise-tracker/actions/workflows/build.yaml?query=branch%3Amain) |
+| [`main`](https://github.com/Clumsy-Coder/exercise-tracker/tree/main)               | [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/clumsy-coder/exercise-tracker/.github%2Fworkflows%2Fbuild.yaml?branch=main&style=for-the-badge&label='main'%20branch%20build)](https://github.com/Clumsy-Coder/exercise-tracker/actions/workflows/build.yaml?query=branch%3Amain)                      |
 
 ---
 
@@ -111,15 +114,15 @@ pnpm run generateEnv && pnpm run build && pnpm run start
 
 This nextjs app uses some ENVs for it to work.
 
-| ENV | required | example | description |
-|-----|----------|---------|-------------|
-| [NEXT_PUBLIC_BUILD_VERSION](#next_public_build_version) | yes | 1.0.0 | App version |
-| [NEXT_PUBLIC_BUILD_ID](#next_public_build_id) | yes | d4ce960 | latest git commit ID |
-| [NEXT_PUBLIC_BUILD_TIME](#next_public_build_time) | yes | 1709761645 | date and time on when it was built. Uses unix time. run command `date +%s`|
-| [GOOGLE_CLIENT_ID](#google_client_id) | yes | | Google OAuth2.0 client ID. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s) |
-| [GOOGLE_CLIENT_SECRET](#google_client_secret) | yes | | Google OAuth2.0 client secret. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s) |
-| [NEXTAUTH_SECRET](#nextauth_secret) | yes | | Next-auth secret for encrypting JWT |
-| [NEXTAUTH_URL](#nextauth_url) | yes (**no** if deploying on vercel, it will provided for you) | | URL redirect callback |
+| ENV                                                     | required                                                      | example    | description                                                                                                      |
+| ------------------------------------------------------- | ------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------- |
+| [NEXT_PUBLIC_BUILD_VERSION](#next_public_build_version) | yes                                                           | 1.0.0      | App version                                                                                                      |
+| [NEXT_PUBLIC_BUILD_ID](#next_public_build_id)           | yes                                                           | d4ce960    | latest git commit ID                                                                                             |
+| [NEXT_PUBLIC_BUILD_TIME](#next_public_build_time)       | yes                                                           | 1709761645 | date and time on when it was built. Uses unix time. run command `date +%s`                                       |
+| [GOOGLE_CLIENT_ID](#google_client_id)                   | yes                                                           |            | Google OAuth2.0 client ID. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)     |
+| [GOOGLE_CLIENT_SECRET](#google_client_secret)           | yes                                                           |            | Google OAuth2.0 client secret. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s) |
+| [NEXTAUTH_SECRET](#nextauth_secret)                     | yes                                                           |            | Next-auth secret for encrypting JWT                                                                              |
+| [NEXTAUTH_URL](#nextauth_url)                           | yes (**no** if deploying on vercel, it will provided for you) |            | URL redirect callback                                                                                            |
 
 ### Adding ENVs
 
@@ -136,13 +139,14 @@ To add ENVs:
 ```
 
 Example:
+
 <details>
 <summary>Show example images</summary>
 
 1. add the value of an ENV in `generateEnv.sh` file
-![Adding env step 1](docs/images/adding-env-step-1.png)
+   ![Adding env step 1](docs/images/adding-env-step-1.png)
 2. uncomment line containing the ENV
-![Adding env step 2](docs/images/adding-env-step-2.png)
+   ![Adding env step 2](docs/images/adding-env-step-2.png)
 3. run command
 
 ```bash
@@ -206,8 +210,8 @@ Google OAuth2.0 client ID credentials
 
 check
 
-- https://next-auth.js.org/providers/google
-- https://support.google.com/cloud/answer/6158849?hl=en
+- <https://next-auth.js.org/providers/google>
+- <https://support.google.com/cloud/answer/6158849?hl=en>
 - [creating Google OAuth2.0 credentials](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)
 
 ##### adding authorized URIs for redirect
@@ -215,7 +219,7 @@ check
 NOTE: make sure to set the `Authorized redirect URIs` to
 `base-url/api/auth/callback/google`
 
-Ex: ` http://localhost:3000/api/auth/callback/google `
+Ex: `http://localhost:3000/api/auth/callback/google`
 
 1. Google cloud console
 2. `APIs & Services`
@@ -230,8 +234,8 @@ Google OAuth2.0 client secret
 
 check
 
-- https://next-auth.js.org/providers/google
-- https://support.google.com/cloud/answer/6158849?hl=en
+- <https://next-auth.js.org/providers/google>
+- <https://support.google.com/cloud/answer/6158849?hl=en>
 - [creating Google OAuth2.0 credentials](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)
 
 #### NEXTAUTH_SECRET
@@ -251,4 +255,3 @@ Next auth callback base URL
 NOTE: not required if deploying on vercel (vercel provides this ENV automatically)
 
 ---
-
