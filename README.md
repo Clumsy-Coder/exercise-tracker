@@ -122,6 +122,91 @@ Go to
 - Add the ENVs and make sure they're available in `preview` and `production` deployments
 
 ---
+
+### ENV details
+
+#### NEXT_PUBLIC_BUILD_VERSION
+
+The version of the app.
+
+Derived from running command
+
+```bash
+npm run -s generateVersion
+```
+
+#### NEXT_PUBLIC_BUILD_ID
+
+The latest git commit ID of the app build
+
+Derived from running command
+
+```bash
+npm run -s generateBuildId
+```
+
+#### NEXT_PUBLIC_BUILD_TIME
+
+Build time of the app
+
+Derived from command
+
+```bash
+date +%s
+```
+
+#### GOOGLE_CLIENT_ID
+
+Google OAuth2.0 client ID credentials
+
+check
+
+- https://next-auth.js.org/providers/google
+- https://support.google.com/cloud/answer/6158849?hl=en
+- [creating Google OAuth2.0 credentials](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)
+
+##### adding authorized URIs for redirect
+
+NOTE: make sure to set the `Authorized redirect URIs` to
+`base-url/api/auth/callback/google`
+
+Ex: ` http://localhost:3000/api/auth/callback/google `
+
+1. Google cloud console
+2. `APIs & Services`
+3. `Credentials`
+4. Select the credential you want to use
+5. Go to section `Authorized redirect URIs`
+6. Add entry for next auth callback url
+
+#### GOOGLE_CLIENT_SECRET
+
+Google OAuth2.0 client secret
+
+check
+
+- https://next-auth.js.org/providers/google
+- https://support.google.com/cloud/answer/6158849?hl=en
+- [creating Google OAuth2.0 credentials](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)
+
+#### NEXTAUTH_SECRET
+
+Next auth secret for encrypting JWT
+
+Use command to generate random encryption key
+
+```bash
+openssl rand -base64 100
+```
+
+#### NEXTAUTH_URL
+
+Next auth callback base URL
+
+NOTE: not required if deploying on vercel (vercel provides this ENV automatically)
+
+---
+
 ## Screenshots
 
 <details>
