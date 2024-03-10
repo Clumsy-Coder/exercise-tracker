@@ -72,5 +72,16 @@ declare namespace NodeJS {
      * ```
      */
     NEXTAUTH_SECRET: string;
+
+    // ------------------------------------------------------------------------------------------ //
+    /**
+     * PostgreSQL database connection string
+     *
+     * @example
+     * ```
+     * postgresql://username:password@localhost:5432/exerciseDb?schema=public
+     * ```
+     */
+    DATABASE_URL: string;
   }
 }
