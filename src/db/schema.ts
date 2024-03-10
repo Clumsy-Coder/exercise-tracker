@@ -12,6 +12,7 @@
 import {
   bigserial,
   doublePrecision,
+  index,
   integer,
   interval,
   pgEnum,
@@ -96,6 +97,12 @@ export const activities = pgTable('activities', {
   date: timestamp('date', { mode: 'date', precision: 0, withTimezone: true })
     .notNull()
     .defaultNow(),
-});
+  },
+  (table) => ({
+    userIdIndex: index('userId_idx').on(table.userId).asc(),
+    exerciseIdIndex: index('exerciseId_idx').on(table.exerciseId).asc(),
+    dateIndex: index('index_idx').on(table.date).desc(),
+  }),
+);
 
 // --------------------------------------------------------------------------------------------- //
