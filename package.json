@@ -24,7 +24,8 @@
     "docker:logs": "docker logs -f $(pnpm -s docker:imagename)",
     "preinstall": "npx only-allow pnpm",
     "db:generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
-    "db:push": "drizzle-kit push:pg --config=drizzle.config.ts"
+    "db:push": "drizzle-kit push:pg --config=drizzle.config.ts",
+    "db:studio": "drizzle-kit studio --config=drizzle.config.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
