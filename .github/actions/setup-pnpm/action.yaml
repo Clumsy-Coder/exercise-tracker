@@ -1,0 +1,52 @@
+---
+
+# install npm packages
+# store them in cache
+
+# obtained from
+# - https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+# - https://github.com/actions/cache#example-cache-workflow
+# - https://github.com/actions/cache/blob/main/examples.md#node---npm
+
+name: "setup-npm"
+description: "Install pnpm packages"
+
+runs:
+  using: "composite"
+  steps:
+    - name: setup pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        version: latest
+
+    - name: setup nodejs
+      uses: actions/setup-node@v4
+      with:
+        node-version: latest
+        cache: 'pnpm'
+
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - name: Cache pnpm node modules
+      id: cache-primes
+      uses: actions/cache@v4
+      with:
+        path: |
+          node_modules
+          ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+          ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/package.json') }}
+
+    # skip npm ci if `package.json` didn't change
+    # https://github.com/actions/cache#outputs
+    # https://github.com/actions/cache#restoring-and-saving-cache-using-a-single-action
+    - name: Install pnpm dependencies
+      shell: bash
+      # if: steps.cache-primes.outputs.cache-hit != 'true'
+      run: pnpm install --frozen-lockfile --prod=false
