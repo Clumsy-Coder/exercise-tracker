@@ -114,15 +114,16 @@ pnpm run generateEnv && pnpm run build && pnpm run start
 
 This nextjs app uses some ENVs for it to work.
 
-| ENV                                                     | required                                                      | example    | description                                                                                                      |
-| ------------------------------------------------------- | ------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------------------------------- |
-| [NEXT_PUBLIC_BUILD_VERSION](#next_public_build_version) | yes                                                           | 1.0.0      | App version                                                                                                      |
-| [NEXT_PUBLIC_BUILD_ID](#next_public_build_id)           | yes                                                           | d4ce960    | latest git commit ID                                                                                             |
-| [NEXT_PUBLIC_BUILD_TIME](#next_public_build_time)       | yes                                                           | 1709761645 | date and time on when it was built. Uses unix time. run command `date +%s`                                       |
-| [GOOGLE_CLIENT_ID](#google_client_id)                   | yes                                                           |            | Google OAuth2.0 client ID. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)     |
-| [GOOGLE_CLIENT_SECRET](#google_client_secret)           | yes                                                           |            | Google OAuth2.0 client secret. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s) |
-| [NEXTAUTH_SECRET](#nextauth_secret)                     | yes                                                           |            | Next-auth secret for encrypting JWT                                                                              |
-| [NEXTAUTH_URL](#nextauth_url)                           | yes (**no** if deploying on vercel, it will provided for you) |            | URL redirect callback                                                                                            |
+| ENV                                                     | required                                                      | example                                                                  | description                                                                                                      |
+| ------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| [NEXT_PUBLIC_BUILD_VERSION](#next_public_build_version) | yes                                                           | 1.0.0                                                                    | App version                                                                                                      |
+| [NEXT_PUBLIC_BUILD_ID](#next_public_build_id)           | yes                                                           | d4ce960                                                                  | latest git commit ID                                                                                             |
+| [NEXT_PUBLIC_BUILD_TIME](#next_public_build_time)       | yes                                                           | 1709761645                                                               | date and time on when it was built. Uses unix time. run command `date +%s`                                       |
+| [GOOGLE_CLIENT_ID](#google_client_id)                   | yes                                                           |                                                                          | Google OAuth2.0 client ID. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)     |
+| [GOOGLE_CLIENT_SECRET](#google_client_secret)           | yes                                                           |                                                                          | Google OAuth2.0 client secret. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s) |
+| [NEXTAUTH_SECRET](#nextauth_secret)                     | yes                                                           |                                                                          | Next-auth secret for encrypting JWT                                                                              |
+| [NEXTAUTH_URL](#nextauth_url)                           | yes (**no** if deploying on vercel, it will provided for you) |                                                                          | URL redirect callback                                                                                            |
+| [DATABASE_URL](#database_url)                           | yes                                                           | `postgresql://username:password@localhost:5432/exerciseDb?schema=public` | PostgreSQL database connection string                                                                            |
 
 ### Adding ENVs
 
@@ -253,5 +254,15 @@ openssl rand -base64 100
 Next auth callback base URL
 
 NOTE: not required if deploying on vercel (vercel provides this ENV automatically)
+
+#### DATABASE_URL
+
+PostgreSQL database connection string
+
+Ex:
+
+```
+postgresql://username:password@localhost:5432/exerciseDb?schema=public
+```
 
 ---
