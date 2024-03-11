@@ -39,7 +39,7 @@ jobs:
       # https://github.com/actions/cache#restoring-and-saving-cache-using-a-single-action
       - name: Install npm dependencies
         # if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prod=false
 
   ################################################################################################
   # lint source code using ESlint and Typescript
