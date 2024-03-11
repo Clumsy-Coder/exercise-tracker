@@ -18,28 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with:
-          version: latest
-      - uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          cache: 'pnpm'
 
-      - name: Cache node modules
-        id: cache-primes
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
-
-      # skip npm ci if `package.json` didn't change
-      # https://github.com/actions/cache#outputs
-      # https://github.com/actions/cache#restoring-and-saving-cache-using-a-single-action
-      - name: Install npm dependencies
-        # if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: pnpm install --frozen-lockfile --prod=false
+      - name: Install npm packages via pnpm
+        uses: ./.github/actions/setup-pnpm
 
   ################################################################################################
   # lint source code using ESlint and Typescript
@@ -49,24 +30,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with:
-          version: latest
-      - uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          cache: 'pnpm'
 
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
-
-      - name: Install npm dependencies
-        # if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: pnpm install --frozen-lockfile --prod=false
+      - name: Install npm packages via pnpm
+        uses: ./.github/actions/setup-pnpm
 
       - name: Lint project
         run: pnpm run lint
@@ -89,20 +55,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: pnpm/action-setup@v3
-        with:
-          version: latest
-      - uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          cache: 'pnpm'
 
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
+      - name: Install npm packages via pnpm
+        uses: ./.github/actions/setup-pnpm
 
       - name: Extract next semantic-release version
         # run: npx semantic-release --dry-run --branches="*"
@@ -218,20 +173,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: pnpm/action-setup@v3
-        with:
-          version: latest
-      - uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          cache: 'pnpm'
-
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
+      - name: Install npm packages via pnpm
+        uses: ./.github/actions/setup-pnpm
 
       - name: print API rate limits
         run: |
