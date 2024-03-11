@@ -52,51 +52,53 @@ export const distanceEnum = pgEnum('distanceUnit', ['km', 'mile']);
  * - duration: duration of an exercise. Ex: 30 seconds on plank exercise
  * - date: date and time of the exercise set completed
  */
-export const activities = pgTable('activities', {
-  /**
-   * ID of the table row
-   */
-  id: bigserial('id', { mode: 'number' }).primaryKey(),
-  /**
-   * Google userId
-   */
-  userId: text('userId').notNull(),
-  /**
-   * Exercise ID
-   */
-  exerciseId: varchar('exerciseId').notNull(),
-  /**
-   * Reps used on an exercises
-   */
-  reps: integer('reps'),
-  /**
-   * Weight used on an exercise set
-   */
-  weight: doublePrecision('weight'),
-  /**
-   * Weight unit for the exercise set
-   */
-  weightUnit: weightEnum('weightUnit'),
-  /**
-   * Weight used on an exercise set
-   */
-  distance: doublePrecision('distance'),
-  /**
-   * Weight unit for the exercise set
-   */
-  distanceUnit: distanceEnum('distanceUnit'),
-  /**
-   * Exercise duration.
-   *
-   * Ex: 30 seconds on exercise `plank`
-   */
-  duration: interval('duration', { fields: 'minute to second' }),
-  /**
-   * Date and time when completing an exercise set
-   */
-  date: timestamp('date', { mode: 'date', precision: 0, withTimezone: true })
-    .notNull()
-    .defaultNow(),
+export const activities = pgTable(
+  'activities',
+  {
+    /**
+     * ID of the table row
+     */
+    id: bigserial('id', { mode: 'number' }).primaryKey(),
+    /**
+     * Google userId
+     */
+    userId: text('userId').notNull(),
+    /**
+     * Exercise ID
+     */
+    exerciseId: varchar('exerciseId').notNull(),
+    /**
+     * Reps used on an exercises
+     */
+    reps: integer('reps'),
+    /**
+     * Weight used on an exercise set
+     */
+    weight: doublePrecision('weight'),
+    /**
+     * Weight unit for the exercise set
+     */
+    weightUnit: weightEnum('weightUnit'),
+    /**
+     * Weight used on an exercise set
+     */
+    distance: doublePrecision('distance'),
+    /**
+     * Weight unit for the exercise set
+     */
+    distanceUnit: distanceEnum('distanceUnit'),
+    /**
+     * Exercise duration.
+     *
+     * Ex: 30 seconds on exercise `plank`
+     */
+    duration: interval('duration', { fields: 'minute to second' }),
+    /**
+     * Date and time when completing an exercise set
+     */
+    date: timestamp('date', { mode: 'date', precision: 0, withTimezone: true })
+      .notNull()
+      .defaultNow(),
   },
   (table) => ({
     userIdIndex: index('userId_idx').on(table.userId).asc(),
