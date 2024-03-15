@@ -30,8 +30,8 @@ dependencies:
     specifier: ^5.28.0
     version: 5.28.0(react@18.2.0)
   '@tanstack/react-query-devtools':
-    specifier: ^5.27.8
-    version: 5.27.8(@tanstack/react-query@5.28.0)(react@18.2.0)
+    specifier: ^5.28.0
+    version: 5.28.0(@tanstack/react-query@5.28.0)(react@18.2.0)
   '@vercel/analytics':
     specifier: ^1.2.2
     version: 1.2.2(next@14.1.3)(react@18.2.0)
@@ -1845,10 +1845,10 @@ packages:
     resolution: {integrity: sha512-K94gnqvEe6TsDvi8eZYP2JrnQJOIymhVXRR+Xa0xcsryNqG+PeMIDmQQqjwIqbDq36qyUlPAyT6LxXVvVv1Nyw==}
     dev: false
 
-  /@tanstack/react-query-devtools@5.27.8(@tanstack/react-query@5.28.0)(react@18.2.0):
-    resolution: {integrity: sha512-nWttSF5qhRxyIYh0D9ybZHgAWCOdsBNZf2s0EskYpAxDDrF3lgf/xTzPPzxoX7Z14bxKruVUEpwjQWZg3f/Z7g==}
+  /@tanstack/react-query-devtools@5.28.0(@tanstack/react-query@5.28.0)(react@18.2.0):
+    resolution: {integrity: sha512-uGuMgG9hqexr6FidePWZvhYMptGzuoSQjSc8LCIoYxi0Hn+quOe5Ey0SleGNyIdMzZHgsv5B6r/2iT9cw3iQvA==}
     peerDependencies:
-      '@tanstack/react-query': ^5.27.5
+      '@tanstack/react-query': ^5.28.0
       react: ^18.0.0
     dependencies:
       '@tanstack/query-devtools': 5.27.8
