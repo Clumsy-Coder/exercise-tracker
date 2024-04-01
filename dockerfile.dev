@@ -1,0 +1,55 @@
+# obtained from
+# https://github.com/adrianhajdin/docker-course/blob/main/next-docker/Dockerfile
+# https://youtu.be/GFgJkfScVNU?si=l6TjRzNFIbcbHLzN&t=4402
+#
+# docker best practice
+# https://snyk.io/blog/10-docker-image-security-best-practices/
+
+# Building image
+# docker build -t exercise-tracker:dev -f ./dockerfile.dev .
+
+# tldr
+# - copy package.json and pnpm-lock.yaml to docker image
+# - install npm packages using package.json and pnpm-lock.yaml
+# - Expose port (default to 3000)
+# - Run dev server
+
+####################################################################################################
+
+# Base on official Node.js Alpine image
+FROM node:alpine
+
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json before other files
+# Utilize Docker cache to save re-installing dependencies if unchanged
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+
+# Install dependencies
+# check npm help ci
+RUN \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f package-lock.json ]; then npm ci; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+  else echo "Lockfile not found." && exit 1; \
+  fi
+
+# Copy the rest of the source files into the image.
+COPY . .
+
+# Uncomment the following line in case you want to disable telemetry during runtime.
+# ENV NEXT_TELEMETRY_DISABLED 1
+
+EXPOSE 3000
+
+ENV PORT 3000
+# set hostname to localhost
+ENV HOSTNAME "0.0.0.0"
+
+# server.js is created by next build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/next-config-js/output
+CMD ["pnpm", "dev"]
