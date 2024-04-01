@@ -1,0 +1,107 @@
+---
+version: '3.8'
+
+# using docker compose to run nextjs and postgresql
+#
+# obtained from
+# - https://youtu.be/GFgJkfScVNU?si=YnOn77S0QbQHxP1G&t=4402
+# - https://github.com/adrianhajdin/docker-course/blob/main/next-docker/compose.yaml
+#
+# usage:
+# create docker network, run command
+# docker network create exercise-tracker-network
+#
+# to start docker containers, run command
+# docker-compose -f docker-compose.dev.yaml up
+#
+# to stop and remove docker containers, run command
+# docker-compose -f docker-compose.dev.yaml down
+#
+# to watch for changes, run command
+# docker-compose -f docker-compose.dev.yaml watch
+
+services:
+  # access on `host-ip:3000`
+  # ex: localhost:3000
+  nextjs:
+    depends_on:
+      - postgres
+    build:
+      context: .
+      dockerfile: dockerfile.dev
+    container_name: nextjs
+    volumes:
+      - .next/:/app/.next # connect host machine `.next/` to container `/app/.next/`. for storing cache
+    ports:
+      - 3000:3000
+    networks:
+      - exercise-tracker-network
+    environment:
+      # using postgreSQL
+      # connection string example
+      # postgresql://user:password@url:port/dbName
+      DATABASE_URL: postgresql://postgres:password@postgres:5432/exerciseDb?schema=public
+    restart: unless-stopped
+
+    # use docker compose to watch for changes and rebuild the container
+    # to use, run command `docker-compose -f docker-compose-dev.yaml watch`
+    develop:
+      watch:
+        - path: ./package.json
+          action: rebuild
+        - path: ./next.config.js
+          action: rebuild
+        - path: ./pnpm-lock.yaml
+          action: rebuild
+        - path: .
+          target: /app
+          action: sync
+
+  # --------------------------------------------------------------------------------------------- #
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_DB: ${POSTGRES_DB:-exerciseDb}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - exercise-tracker-network
+    restart: unless-stopped
+
+  # --------------------------------------------------------------------------------------------- #
+
+  # access on `host-ip:5050`
+  # ex: localhost:5050
+  # pgadmin:
+  #   container_name: pgadmin_container
+  #   image: dpage/pgadmin4
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+  #     PGADMIN_CONFIG_SERVER_MODE: 'False'
+  #   volumes:
+  #     - pgadmin:/var/lib/pgadmin
+  #   ports:
+  #     - "${PGADMIN_PORT:-5050}:80"
+  #   networks:
+  #     - exercise-tracker-network
+  #   restart: unless-stopped
+
+# ----------------------------------------------------------------------------------------------- #
+
+networks:
+  exercise-tracker-network:
+    external: true
+
+volumes:
+  postgres:
+  # pgadmin:
