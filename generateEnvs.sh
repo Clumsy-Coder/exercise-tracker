@@ -43,5 +43,8 @@ fi
   #
   # echo "NEXT_PUBLIC_EXERCISE_DB_BASE_URL="
   # ----------------------------------------------------------------------------------------------#
+  # postgreSQL
+  #
+  # echo "DATABASE_URL="     # postgresql database url
 } > .env
 
