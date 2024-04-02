@@ -36,5 +36,8 @@ fi
   # echo "NEXTAUTH_SECRET="  # for encrypting JWT. generate using command     openssl rand -base64 100
   # echo "NEXTAUTH_URL="     # for handling url redirect after logging in
   # ----------------------------------------------------------------------------------------------#
+  # postgreSQL
+  #
+  # echo "DATABASE_URL="     # postgresql database url
 } > .env
 
