@@ -49,7 +49,7 @@ dependencies:
     version: 16.4.5
   drizzle-orm:
     specifier: ^0.30.6
-    version: 0.30.6(@types/pg@8.11.4)(@types/react@18.2.74)(pg@8.11.4)(react@18.2.0)
+    version: 0.30.6(@types/pg@8.11.4)(@types/react@18.2.74)(pg@8.11.5)(react@18.2.0)
   lucide-react:
     specifier: ^0.364.0
     version: 0.364.0(react@18.2.0)
@@ -66,8 +66,8 @@ dependencies:
     specifier: ^0.3.0
     version: 0.3.0(react-dom@18.2.0)(react@18.2.0)
   pg:
-    specifier: ^8.11.4
-    version: 8.11.4
+    specifier: ^8.11.5
+    version: 8.11.5
   react:
     specifier: ^18
     version: 18.2.0
@@ -3011,7 +3011,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.30.6(@types/pg@8.11.4)(@types/react@18.2.74)(pg@8.11.4)(react@18.2.0):
+  /drizzle-orm@0.30.6(@types/pg@8.11.4)(@types/react@18.2.74)(pg@8.11.5)(react@18.2.0):
     resolution: {integrity: sha512-8RgNUmY7J03GRuRgBV5SaJNbYgLVPjdSWNS/bRkIMIHt2TFCA439lJsNpqYX8asyKMqkw8ceBiamUnCIXZIt9w==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -3093,7 +3093,7 @@ packages:
     dependencies:
       '@types/pg': 8.11.4
       '@types/react': 18.2.74
-      pg: 8.11.4
+      pg: 8.11.5
       react: 18.2.0
     dev: false
 
@@ -5611,8 +5611,8 @@ packages:
     dev: false
     optional: true
 
-  /pg-connection-string@2.6.3:
-    resolution: {integrity: sha512-77FxhhKJQH+xJx6tDqkhhMa0nZvv3U1HYLDQgwZxZafVD583++O5LXn5oo5HaQZ0vXwYcZA1koYAJM3JvD6Gtw==}
+  /pg-connection-string@2.6.4:
+    resolution: {integrity: sha512-v+Z7W/0EO707aNMaAEfiGnGL9sxxumwLl2fJvCQtMn9Fxsg+lPpPkdcyBSv/KFgpGdYkMfn+EI1Or2EHjpgLCA==}
     dev: false
 
   /pg-int8@1.0.1:
@@ -5623,12 +5623,12 @@ packages:
     resolution: {integrity: sha512-BM/Thnrw5jm2kKLE5uJkXqqExRUY/toLHda65XgFTBTFYZyopbKjBe29Ii3RbkvlsMoFwD+tHeGaCjjv0gHlyw==}
     engines: {node: '>=4'}
 
-  /pg-pool@3.6.2(pg@8.11.4):
+  /pg-pool@3.6.2(pg@8.11.5):
     resolution: {integrity: sha512-Htjbg8BlwXqSBQ9V8Vjtc+vzf/6fVUuak/3/XXKA9oxZprwW3IMDQTGHP+KDmVL7rtd+R1QjbnCFPuTHm3G4hg==}
     peerDependencies:
       pg: '>=8.0'
     dependencies:
-      pg: 8.11.4
+      pg: 8.11.5
     dev: false
 
   /pg-protocol@1.6.0:
@@ -5661,8 +5661,8 @@ packages:
       postgres-interval: 3.0.0
       postgres-range: 1.1.4
 
-  /pg@8.11.4:
-    resolution: {integrity: sha512-pWb7JKPxGk1UFbtq7jQ0m3IfPpb7LLACCEyN8/u9DYEom+Q/BSKy+4TRl4+Hh003AOYhppB/z+QK87/hx/bk0w==}
+  /pg@8.11.5:
+    resolution: {integrity: sha512-jqgNHSKL5cbDjFlHyYsCXmQDrfIX/3RsNwYqpd4N0Kt8niLuNoRNH+aazv6cOd43gPh9Y4DjQCtb+X0MH0Hvnw==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -5670,8 +5670,8 @@ packages:
       pg-native:
         optional: true
     dependencies:
-      pg-connection-string: 2.6.3
-      pg-pool: 3.6.2(pg@8.11.4)
+      pg-connection-string: 2.6.4
+      pg-pool: 3.6.2(pg@8.11.5)
       pg-protocol: 1.6.1
       pg-types: 2.2.0
       pgpass: 1.0.5
