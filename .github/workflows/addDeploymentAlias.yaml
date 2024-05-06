@@ -18,7 +18,7 @@ on:
 
 env:
   FORCE_COLOR: true
-  ALIAS_URL: exercise-tracker-preview-clumsy-coder.vercel.app
+  ALIAS_URL: exercise-tracker-preview-umars-projects.vercel.app
 
 jobs:
   addDeploymentAlias:
