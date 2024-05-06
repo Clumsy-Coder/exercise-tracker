@@ -28,4 +28,4 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.ADD_ALIAS_DEPLOYMENT }}
     steps:
       - name: Update Vercel Preview
-        run: vercel alias set ${{ github.event.deployment_status.target_url }} ${{ env.ALIAS_URL }} -t "$VERCEL_TOKEN" --scope clumsy-coder
+        run: vercel alias set ${{ github.event.deployment_status.target_url }} ${{ env.ALIAS_URL }} -t "$VERCEL_TOKEN" --scope umars-projects-a3be7097
