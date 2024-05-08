@@ -84,8 +84,8 @@ dependencies:
     specifier: ^0.9.0
     version: 0.9.0(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1)(react@18.3.1)
   zod:
-    specifier: ^3.23.6
-    version: 3.23.6
+    specifier: ^3.23.7
+    version: 3.23.7
 
 devDependencies:
   '@semantic-release/changelog':
@@ -744,14 +744,14 @@ packages:
     engines: {node: '>=18.14.1'}
     dev: true
 
-  /@hono/zod-validator@0.2.1(hono@4.2.6)(zod@3.23.6):
+  /@hono/zod-validator@0.2.1(hono@4.2.6)(zod@3.23.7):
     resolution: {integrity: sha512-HFoxln7Q6JsE64qz2WBS28SD33UB2alp3aRKmcWnNLDzEL1BLsWfbdX6e1HIiUprHYTIXf5y7ax8eYidKUwyaA==}
     peerDependencies:
       hono: '>=3.9.0'
       zod: ^3.19.1
     dependencies:
       hono: 4.2.6
-      zod: 3.23.6
+      zod: 3.23.7
     dev: true
 
   /@humanwhocodes/config-array@0.11.14:
@@ -3016,7 +3016,7 @@ packages:
     dependencies:
       '@esbuild-kit/esm-loader': 2.6.5
       '@hono/node-server': 1.11.0
-      '@hono/zod-validator': 0.2.1(hono@4.2.6)(zod@3.23.6)
+      '@hono/zod-validator': 0.2.1(hono@4.2.6)(zod@3.23.7)
       camelcase: 7.0.1
       chalk: 5.3.0
       commander: 9.5.0
@@ -3030,7 +3030,7 @@ packages:
       minimatch: 7.4.6
       semver: 7.6.0
       superjson: 2.2.1
-      zod: 3.23.6
+      zod: 3.23.7
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7177,5 +7177,5 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /zod@3.23.6:
-    resolution: {integrity: sha512-RTHJlZhsRbuA8Hmp/iNL7jnfc4nZishjsanDAfEY1QpDQZCahUp3xDzl+zfweE9BklxMUcgBgS1b7Lvie/ZVwA==}
+  /zod@3.23.7:
+    resolution: {integrity: sha512-NBeIoqbtOiUMomACV/y+V3Qfs9+Okr18vR5c/5pHClPpufWOrsx8TENboDPe265lFdfewX2yBtNTLPvnmCxwog==}
