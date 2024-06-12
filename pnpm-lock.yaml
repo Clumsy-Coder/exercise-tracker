@@ -167,8 +167,8 @@ devDependencies:
     specifier: ^23.1.1
     version: 23.1.1(typescript@5.4.5)
   semantic-release-export-data:
-    specifier: ^1.0.1
-    version: 1.0.1(semantic-release@23.1.1)
+    specifier: ^1.1.0
+    version: 1.1.0(semantic-release@23.1.1)
   tailwindcss:
     specifier: ^3.4.4
     version: 3.4.4
@@ -6485,8 +6485,8 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
-  /semantic-release-export-data@1.0.1(semantic-release@23.1.1):
-    resolution: {integrity: sha512-6vlgrrzzcMi/REhQd65Bh4dfSKmgwXOJ/Q2RVlT9WsU4Ya1T2qGpkSrMfG/n6oFRrqBdbDlyZgxNd94ziW+vSg==}
+  /semantic-release-export-data@1.1.0(semantic-release@23.1.1):
+    resolution: {integrity: sha512-OgN0PkrJDrgdaHtjxO+CjsO+gfTuKOCilIuIvy8P2KwjAnGM1FS/loK4buGC8+Der8IT1DmmmpcOqLTHlKlTMw==}
     peerDependencies:
       semantic-release: '>=18'
     dependencies:
