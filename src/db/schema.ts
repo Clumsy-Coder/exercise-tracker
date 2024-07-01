@@ -101,9 +101,9 @@ export const activities = pgTable(
       .defaultNow(),
   },
   (table) => ({
-    userIdIndex: index('userId_idx').on(table.userId).asc(),
-    exerciseIdIndex: index('exerciseId_idx').on(table.exerciseId).asc(),
-    dateIndex: index('index_idx').on(table.date).desc(),
+    userIdIndex: index('userId_idx').on(table.userId.asc()),
+    exerciseIdIndex: index('exerciseId_idx').on(table.exerciseId.asc()),
+    dateIndex: index('index_idx').on(table.date.desc()),
   }),
 );
 
