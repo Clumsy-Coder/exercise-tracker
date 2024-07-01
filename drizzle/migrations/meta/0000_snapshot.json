@@ -1,10 +1,8 @@
 {
-  "id": "c564be5b-1b7d-4580-a773-4a24a00dab17",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "activities": {
+    "public.activities": {
       "name": "activities",
       "schema": "",
       "columns": {
@@ -77,25 +75,29 @@
     }
   },
   "enums": {
-    "distanceUnit": {
+    "public.distanceUnit": {
       "name": "distanceUnit",
-      "values": {
-        "km": "km",
-        "mile": "mile"
-      }
+      "schema": "public",
+      "values": [
+        "km",
+        "mile"
+      ]
     },
-    "weightUnit": {
+    "public.weightUnit": {
       "name": "weightUnit",
-      "values": {
-        "kg": "kg",
-        "lbs": "lbs"
-      }
+      "schema": "public",
+      "values": [
+        "kg",
+        "lbs"
+      ]
     }
   },
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "c564be5b-1b7d-4580-a773-4a24a00dab17",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

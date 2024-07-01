@@ -1,10 +1,8 @@
 {
-  "id": "e998df83-05f9-4d8a-a3e8-6694da9133b1",
-  "prevId": "c564be5b-1b7d-4580-a773-4a24a00dab17",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "activities": {
+    "public.activities": {
       "name": "activities",
       "schema": "",
       "columns": {
@@ -72,25 +70,49 @@
       },
       "indexes": {
         "userId_idx": {
-          "name": "userId_idx",
           "columns": [
-            "userId"
+            {
+              "expression": "userId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": false
+          "with": {},
+          "name": "userId_idx",
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         },
         "exerciseId_idx": {
-          "name": "exerciseId_idx",
           "columns": [
-            "exerciseId"
+            {
+              "expression": "exerciseId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": false
+          "with": {},
+          "name": "exerciseId_idx",
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         },
         "index_idx": {
-          "name": "index_idx",
           "columns": [
-            "date"
+            {
+              "expression": "date",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": false
+          "with": {},
+          "name": "index_idx",
+          "isUnique": false,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
@@ -99,25 +121,29 @@
     }
   },
   "enums": {
-    "distanceUnit": {
+    "public.distanceUnit": {
       "name": "distanceUnit",
-      "values": {
-        "km": "km",
-        "mile": "mile"
-      }
+      "schema": "public",
+      "values": [
+        "km",
+        "mile"
+      ]
     },
-    "weightUnit": {
+    "public.weightUnit": {
       "name": "weightUnit",
-      "values": {
-        "kg": "kg",
-        "lbs": "lbs"
-      }
+      "schema": "public",
+      "values": [
+        "kg",
+        "lbs"
+      ]
     }
   },
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "e998df83-05f9-4d8a-a3e8-6694da9133b1",
+  "prevId": "c564be5b-1b7d-4580-a773-4a24a00dab17"
 }
