@@ -1,13 +1,16 @@
 import 'dotenv/config';
-import type { Config } from 'drizzle-kit';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { defineConfig } from 'drizzle-kit';
 
-export default {
+// check
+// - https://orm.drizzle.team/kit-docs/upgrade-21#how-to-migrate-to-0210)
+export default defineConfig({
   schema: './src/db/schema.ts',
   out: './drizzle/migrations',
-  driver: 'pg',
+  dialect: 'postgresql',
   dbCredentials: {
-    connectionString: process.env.DATABASE_URL!,
+    url: process.env.DATABASE_URL!,
   },
   verbose: true,
   strict: true,
-} satisfies Config;
+});
