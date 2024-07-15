@@ -33,8 +33,8 @@ importers:
         specifier: ^5.51.1
         version: 5.51.1(react@18.3.1)
       '@tanstack/react-query-devtools':
-        specifier: ^5.50.1
-        version: 5.50.1(@tanstack/react-query@5.51.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.51.1
+        version: 5.51.1(@tanstack/react-query@5.51.1(react@18.3.1))(react@18.3.1)
       '@vercel/analytics':
         specifier: ^1.3.1
         version: 1.3.1(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
@@ -1126,13 +1126,13 @@ packages:
   '@tanstack/query-core@5.51.1':
     resolution: {integrity: sha512-fJBMQMpo8/KSsWW5ratJR5+IFr7YNJ3K2kfP9l5XObYHsgfVy1w3FJUWU4FT2fj7+JMaEg33zOcNDBo0LMwHnw==}
 
-  '@tanstack/query-devtools@5.50.1':
-    resolution: {integrity: sha512-MQ5JK3yRwBP1SRuwoJVPGZP4cMLXCQ0t+6blDbcAVGEoqrEuvbgTdwlN729AKBR0hidOWPFR9n5YpI2Y8bBZOQ==}
+  '@tanstack/query-devtools@5.51.1':
+    resolution: {integrity: sha512-rehG0WmL3EXER6MAI2uHQia/n0b5c3ZROohpYm7u3G7yg4q+HsfQy6nuAo6uy40NzHUe3FmnfWCZQ0Vb/3lE6g==}
 
-  '@tanstack/react-query-devtools@5.50.1':
-    resolution: {integrity: sha512-zgPmEFv9GhLAx6eaf9r0ACbcxit1ZSuv/uPpOXBTTSPLijlWcfpQTOdZx0jYQ14t2cUfWjrAW41cUmcCvT4X/g==}
+  '@tanstack/react-query-devtools@5.51.1':
+    resolution: {integrity: sha512-bRShIVKGpUOHpwziGKT8Aq1Ty0lIlGmNI7E0KbGYtmyOaImErpdElTdxfES1bRaI7i/j+mf2hLy+E6q7SrCwPg==}
     peerDependencies:
-      '@tanstack/react-query': ^5.50.1
+      '@tanstack/react-query': ^5.51.1
       react: ^18 || ^19
 
   '@tanstack/react-query@5.51.1':
@@ -4918,11 +4918,11 @@ snapshots:
 
   '@tanstack/query-core@5.51.1': {}
 
-  '@tanstack/query-devtools@5.50.1': {}
+  '@tanstack/query-devtools@5.51.1': {}
 
-  '@tanstack/react-query-devtools@5.50.1(@tanstack/react-query@5.51.1(react@18.3.1))(react@18.3.1)':
+  '@tanstack/react-query-devtools@5.51.1(@tanstack/react-query@5.51.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@tanstack/query-devtools': 5.50.1
+      '@tanstack/query-devtools': 5.51.1
       '@tanstack/react-query': 5.51.1(react@18.3.1)
       react: 18.3.1
 
