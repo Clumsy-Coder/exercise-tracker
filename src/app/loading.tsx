@@ -26,7 +26,7 @@ const HomePageLoading = () => {
           <Skeleton
             // eslint-disable-next-line react/no-array-index-key
             key={`home-page-loading-exercise-card-${i}`}
-            className='h-[482px] w-[384px]'
+            className='h-[482px] min-w-[308px]'
           />
         ))}
       </div>
