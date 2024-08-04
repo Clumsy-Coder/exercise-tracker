@@ -69,6 +69,7 @@ const ExerciseCard = ({ data, className }: Props) => {
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           loading='lazy'
           className='object-contain'
+          unoptimized
         />
       </CardContent>
       <CardFooter className='flex gap-1.5 overflow-auto pt-1'>
