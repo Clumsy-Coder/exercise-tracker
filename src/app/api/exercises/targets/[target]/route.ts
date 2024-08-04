@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { exerciseTarget as schema } from '@/schema';
 import { Exercise } from '@/types/raw';
-import allExercisesData from '@/utils/data/exercises.json';
+import { DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL } from '@/utils/fetchData';
 
 type GetParamsType = {
   params: z.infer<typeof schema>;
@@ -28,14 +28,22 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   }
 
   // --------------------------------------------------------------------------------------------//
+  // fetch the exercises data from remote source
+  const baseUrl =
+    process.env.NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL ||
+    DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL;
+  const url = `${baseUrl}/data/exercises.json`;
+  // console.debug('target [target] url: ', url);
+  const response = await fetch(url);
+  const data: Exercise[] = await response.json();
+
+  // --------------------------------------------------------------------------------------------//
 
   // get query param
   const { target } = params;
 
   // filter exercises by target
-  const filtered = (allExercisesData as Exercise[]).filter(
-    (item) => item.target === `${target.replaceAll('-', ' ')}`,
-  );
+  const filtered = data.filter((item) => item.target === `${target.replaceAll('-', ' ')}`);
 
   if (!filtered.length) {
     const message = {
