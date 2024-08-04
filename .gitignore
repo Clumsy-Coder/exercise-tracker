@@ -36,3 +36,4 @@ vercel.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+!.database
