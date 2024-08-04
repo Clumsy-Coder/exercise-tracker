@@ -13,6 +13,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
@@ -76,7 +77,7 @@ const ExerciseIdPage = ({ params }: Props) => {
                 </DialogTrigger>
                 <DialogContent className='h-[50vh] rounded-xl md:h-[90vh]'>
                   <DialogHeader>
-                    {/* <DialogTitle>Are you absolutely sure?</DialogTitle> */}
+                    <DialogTitle className='capitalize'>{data.name}</DialogTitle>
                     <DialogDescription>
                       <Image
                         src={`/exercise-gif/${data.id}.gif`}
