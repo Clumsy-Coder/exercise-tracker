@@ -56,3 +56,19 @@ export const fetchExerciseUrl = (exerciseId: string | number) =>
  */
 export const DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL =
   'https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database';
+
+/**
+ * Get the base url for fetching exercise data and exercise gifs.
+ *
+ * returns value from ENV `NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL` if available.
+ * or returns value from `DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL` as default
+ *
+ * @see {@link DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL}
+ * @see {@link process.env.NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL}
+ *
+ * @defaultValue {@link DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL}
+ *
+ */
+export const baseUrl = () =>
+  process.env.NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL ||
+  DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL;
