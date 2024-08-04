@@ -106,7 +106,7 @@ const ExerciseIdPage = ({ params }: Props) => {
               {exerciseProperties.map(([name, value, href]) => (
                 <div
                   key={`exercise-properties-${name}`}
-                  className='flex items-center justify-between px-2 py-1 '
+                  className='flex items-center justify-between px-2 py-1'
                 >
                   <div className='text-xl font-semibold'>{name}</div>
                   {/* <div>{value}</div> */}
@@ -119,7 +119,7 @@ const ExerciseIdPage = ({ params }: Props) => {
                 </div>
               ))}
               {/* secondary muscles  */}
-              <div className=' flex justify-between px-2 md:items-center '>
+              <div className='flex justify-between px-2 md:items-center'>
                 <div className='whitespace-nowrap text-xl font-semibold'>Secondary muscles</div>
                 <div className='mt-0.5 flex flex-wrap justify-end gap-2 divide-x divide-neutral-300 whitespace-nowrap dark:divide-neutral-700'>
                   {data.secondaryMuscles.map((item) => (
