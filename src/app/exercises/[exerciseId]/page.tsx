@@ -79,7 +79,7 @@ const ExerciseIdPage = ({ params }: Props) => {
                     unoptimized
                   />
                 </DialogTrigger>
-                <DialogContent className='h-[50vh] rounded-xl md:h-[90vh]'>
+                <DialogContent className='h-[50vh] rounded-xl'>
                   <DialogHeader>
                     <DialogTitle className='capitalize'>{data.name}</DialogTitle>
                     <DialogDescription>
