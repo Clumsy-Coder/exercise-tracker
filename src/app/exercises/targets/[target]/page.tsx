@@ -40,10 +40,10 @@ const ExercisesPage = ({ params }: Props) => {
   return (
     <section className='flex flex-col gap-5'>
       <div className='flex flex-wrap gap-5 whitespace-nowrap text-5xl capitalize'>
-        <p className='font-bold '>{params.target}</p>
+        <p className='font-bold'>{params.target}</p>
         <p className='font-thin'>Exercises</p>
       </div>
-      <Separator className='my-4 hidden lg:flex ' />
+      <Separator className='my-4 hidden lg:flex' />
       <ExercisesGroup exercises={data} />
     </section>
   );

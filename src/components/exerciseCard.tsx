@@ -51,7 +51,7 @@ const ExerciseCard = ({ data, className }: Props) => {
             <Link href={`/exercises/${id}`}>View more</Link>
           </Button>
         </div>
-        <CardDescription className='py-1 capitalize '>
+        <CardDescription className='py-1 capitalize'>
           <Link
             href={`/exercises/equipments/${equipment.replaceAll(' ', '-')}`}
             className='hover:underline hover:underline-offset-4'
