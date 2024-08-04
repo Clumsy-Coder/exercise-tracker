@@ -76,6 +76,7 @@ const ExerciseIdPage = ({ params }: Props) => {
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                     className='object-contain'
                     priority
+                    unoptimized
                   />
                 </DialogTrigger>
                 <DialogContent className='h-[50vh] rounded-xl md:h-[90vh]'>
@@ -89,6 +90,7 @@ const ExerciseIdPage = ({ params }: Props) => {
                         sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                         className='object-contain'
                         priority
+                        unoptimized
                       />
                     </DialogDescription>
                   </DialogHeader>
