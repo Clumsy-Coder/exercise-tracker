@@ -21,6 +21,7 @@ import { useFetchExercise } from '@/hooks';
 import { cn } from '@/lib/utils';
 import { exerciseIdSchema as schema } from '@/schema';
 import { z } from 'zod';
+import { baseUrl } from '@/utils/fetchData';
 
 type Props = {
   params: z.infer<typeof schema>;
@@ -57,6 +58,8 @@ const ExerciseIdPage = ({ params }: Props) => {
     ['Target: ', data.target, `/exercises/targets/${data.target.replaceAll(' ', '-')}`],
   ];
 
+  const imageUrl = `${baseUrl()}/exercise-gif/${data.id}.gif`;
+
   return (
     <section className='mb-5 flex flex-col gap-5'>
       <h1 className='text-5xl font-bold capitalize'>{data.name}</h1>
@@ -67,7 +70,7 @@ const ExerciseIdPage = ({ params }: Props) => {
               <Dialog>
                 <DialogTrigger>
                   <Image
-                    src={`/exercise-gif/${data.id}.gif`}
+                    src={imageUrl}
                     alt={`${data.name}-gif`}
                     fill
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -80,7 +83,7 @@ const ExerciseIdPage = ({ params }: Props) => {
                     <DialogTitle className='capitalize'>{data.name}</DialogTitle>
                     <DialogDescription>
                       <Image
-                        src={`/exercise-gif/${data.id}.gif`}
+                        src={imageUrl}
                         alt={`${data.name}-gif`}
                         fill
                         sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
