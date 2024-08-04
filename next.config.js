@@ -11,6 +11,9 @@ const nextConfig = {
       fullUrl: true,
     },
   },
+  // hide `x-powered-by` header
+  // https://nextjs.org/docs/app/api-reference/next-config-js/poweredByHeader
+  poweredByHeader: false,
   images: {
     remotePatterns: [
       {
