@@ -10,11 +10,11 @@ const ExercisesPageLoading = () => {
         <div className='my-4'>
           <Skeleton className='h-11 w-96' />
         </div>
-        <Separator className='my-3 ' />
+        <Separator className='my-3' />
         <div className='my-4'>
           <Skeleton className='h-11 w-96' />
         </div>
-        <Separator className='my-3 ' />
+        <Separator className='my-3' />
       </div>
       {/* Exercise target and equipment */}
       <div className='mt-6 hidden gap-4 lg:flex lg:flex-col'>
@@ -30,7 +30,7 @@ const ExercisesPageLoading = () => {
           <Skeleton className='h-9 w-full' />
         </div>
       </div>
-      <Separator className='my-4 hidden lg:flex ' />
+      <Separator className='my-4 hidden lg:flex' />
       {/* Exercise card */}
       <div className='flex flex-col items-center justify-between gap-1'>
         <Skeleton className='h-10 w-[40rem]' />

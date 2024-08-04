@@ -5,7 +5,7 @@ const TargetExercisesPageLoading = () => {
   return (
     <div className='flex flex-col gap-5'>
       <Skeleton className='h-12 w-80' />
-      <Separator className='my-4 hidden lg:flex ' />
+      <Separator className='my-4 hidden lg:flex' />
       {/* Exercise card */}
       <div className='mt-3 flex flex-col items-center justify-between gap-1'>
         <Skeleton className='h-10 w-[40rem]' />

@@ -7,7 +7,7 @@ const Footer = () => {
     ['Build time: ', moment.unix(process.env.NEXT_PUBLIC_BUILD_TIME).format('YYYY-MM-DD')],
   ];
   return (
-    <footer className='flex flex-col items-center justify-center gap-8 bg-black py-5 text-white dark:border-t md:h-16 md:flex-row '>
+    <footer className='flex flex-col items-center justify-center gap-8 bg-black py-5 text-white dark:border-t md:h-16 md:flex-row'>
       {appData.map(([label, value]) => (
         <div
           key={`footer-${label}`}

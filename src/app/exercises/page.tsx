@@ -196,7 +196,7 @@ const ExercisesPage = () => {
       {/* Display Exercises by target and equipment in larger screens */}
       <div className='hidden lg:flex lg:flex-col'>
         {/* Exercises by target */}
-        <div className='my-4 '>
+        <div className='my-4'>
           <h2 className='mb-3 text-4xl font-semibold'>Exercises by Target</h2>
           {/* <div className='flex flex-wrap gap-2'> */}
           <div className='flex flex-wrap gap-2'>
@@ -207,7 +207,7 @@ const ExercisesPage = () => {
           </div>
         </div>
         {/* Exercises by Equipment */}
-        <div className='my-4 '>
+        <div className='my-4'>
           <h2 className='mb-3 text-4xl font-semibold'>Exercises by Equipment</h2>
           {/* <div className='flex flex-wrap gap-2'> */}
           <div className='flex flex-wrap gap-2'>
@@ -218,7 +218,7 @@ const ExercisesPage = () => {
           </div>
         </div>
         {/* Exercises by Body part */}
-        <div className='my-4 '>
+        <div className='my-4'>
           <h2 className='mb-3 text-4xl font-semibold'>Exercises by Body part</h2>
           {/* <div className='flex flex-wrap gap-2'> */}
           <div className='flex flex-wrap gap-2'>
@@ -229,7 +229,7 @@ const ExercisesPage = () => {
           </div>
         </div>
       </div>
-      <Separator className='my-4 hidden lg:flex ' />
+      <Separator className='my-4 hidden lg:flex' />
       <ExercisesGroup exercises={data} />
     </section>
   );
