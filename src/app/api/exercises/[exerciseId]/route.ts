@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { exerciseIdSchema as schema } from '@/schema';
 import { Exercise } from '@/types/raw';
-import { DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL } from '@/utils/fetchData';
+import { baseUrl } from '@/utils/fetchData';
 
 type GetParamsType = {
   params: z.infer<typeof schema>;
@@ -32,10 +32,7 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   // fetch exercise ID
   const { exerciseId } = params;
 
-  const baseUrl =
-    process.env.NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL ||
-    DEFAULT_EXERCISE_DB_LOCAL_FETCH_BASE_URL;
-  const url = `${baseUrl}/data/exercises.json`;
+  const url = `${baseUrl()}/data/exercises.json`;
   // console.debug('target [target] url: ', url);
   const response = await fetch(url);
   const data: Exercise[] = await response.json();
