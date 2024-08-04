@@ -14,6 +14,7 @@ import {
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { Exercise } from '@/types/raw';
+import { baseUrl } from '@/utils/fetchData';
 
 type Props = {
   data: Exercise;
@@ -62,7 +63,7 @@ const ExerciseCard = ({ data, className }: Props) => {
       </CardHeader>
       <CardContent className='relative my-3 h-72 w-full'>
         <Image
-          src={`/exercise-gif/${id}.gif`}
+          src={`${baseUrl()}/exercise-gif/${id}.gif`}
           alt={`${name}-gif`}
           fill
           sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
