@@ -6,13 +6,21 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 import { QueryKey } from '@/hooks';
 import { fetchExercise } from '@/server/actions';
 import { exerciseIdSchema as schema } from '@/schema';
-import data from '@/utils/data/exercises.json';
+import { Exercise } from '@/types/raw';
+import { baseUrl } from '@/utils/fetchData';
 
 type Props = {
   params: z.infer<typeof schema>;
 } & PropsWithChildren;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const url = `${baseUrl()}/data/exercises.json`;
+  // console.debug('exercise [exerciseId] url: ', url);
+  const response = await fetch(url);
+  const data: Exercise[] = await response.json();
+
+  // --------------------------------------------------------------------------------------------//
+
   const { exerciseId } = params;
 
   const exercise = data.find((item) => item.id === `${exerciseId}`);
