@@ -21,6 +21,13 @@ const nextConfig = {
         hostname: '*.exercisedb.io',
         pathname: '/image/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        //        /username/repository/branch/data-folder/exercise-gif/**
+        pathname: '/**/**/**/**/exercise-gif/**',
+        // pathname: '/Clumsy-Coder/exercise-tracker/**/.database/exercise-gif/**',
+      },
     ],
   },
 };
