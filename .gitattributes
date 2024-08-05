@@ -9,3 +9,5 @@
 # https://stackoverflow.com/a/40800400/3053548
 # https://unix.stackexchange.com/a/363942
 generateEnvs.sh filter=ignoreSecrets
+
+*.gif diff=exif
