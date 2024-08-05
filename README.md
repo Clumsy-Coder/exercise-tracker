@@ -114,16 +114,17 @@ pnpm run generateEnv && pnpm run build && pnpm run start
 
 This nextjs app uses some ENVs for it to work.
 
-| ENV                                                     | required                                                      | example                                                                  | description                                                                                                      |
-| ------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
-| [NEXT_PUBLIC_BUILD_VERSION](#next_public_build_version) | yes                                                           | 1.0.0                                                                    | App version                                                                                                      |
-| [NEXT_PUBLIC_BUILD_ID](#next_public_build_id)           | yes                                                           | d4ce960                                                                  | latest git commit ID                                                                                             |
-| [NEXT_PUBLIC_BUILD_TIME](#next_public_build_time)       | yes                                                           | 1709761645                                                               | date and time on when it was built. Uses unix time. run command `date +%s`                                       |
-| [GOOGLE_CLIENT_ID](#google_client_id)                   | yes                                                           |                                                                          | Google OAuth2.0 client ID. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)     |
-| [GOOGLE_CLIENT_SECRET](#google_client_secret)           | yes                                                           |                                                                          | Google OAuth2.0 client secret. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s) |
-| [NEXTAUTH_SECRET](#nextauth_secret)                     | yes                                                           |                                                                          | Next-auth secret for encrypting JWT                                                                              |
-| [NEXTAUTH_URL](#nextauth_url)                           | yes (**no** if deploying on vercel, it will provided for you) |                                                                          | URL redirect callback                                                                                            |
-| [DATABASE_URL](#database_url)                           | yes                                                           | `postgresql://username:password@localhost:5432/exerciseDb?schema=public` | PostgreSQL database connection string                                                                            |
+| ENV                                                                   | required                                                      | example                                                                                  | description                                                                                                               |
+| --------------------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| [NEXT_PUBLIC_BUILD_VERSION](#next_public_build_version)               | yes                                                           | 1.0.0                                                                                    | App version                                                                                                               |
+| [NEXT_PUBLIC_BUILD_ID](#next_public_build_id)                         | yes                                                           | d4ce960                                                                                  | latest git commit ID                                                                                                      |
+| [NEXT_PUBLIC_BUILD_TIME](#next_public_build_time)                     | yes                                                           | 1709761645                                                                               | date and time on when it was built. Uses unix time. run command `date +%s`                                                |
+| [GOOGLE_CLIENT_ID](#google_client_id)                                 | yes                                                           |                                                                                          | Google OAuth2.0 client ID. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)              |
+| [GOOGLE_CLIENT_SECRET](#google_client_secret)                         | yes                                                           |                                                                                          | Google OAuth2.0 client secret. [creating Google OAuth token](https://www.youtube.com/watch?v=XmmMQfpQh40&t=279s)          |
+| [NEXTAUTH_SECRET](#nextauth_secret)                                   | yes                                                           |                                                                                          | Next-auth secret for encrypting JWT                                                                                       |
+| [NEXTAUTH_URL](#nextauth_url)                                         | yes (**no** if deploying on vercel, it will provided for you) |                                                                                          | URL redirect callback                                                                                                     |
+| [DATABASE_URL](#database_url)                                         | yes                                                           | `postgresql://username:password@localhost:5432/exerciseDb?schema=public`                 | PostgreSQL database connection string                                                                                     |
+| [NEXT_PUBLIC_EXERCISE_DB_BASE_URL](#next_public_exercise_db_base_url) | no                                                            | `https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/` | Exercise DB url path. default is `https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/` |
 
 ### Adding ENVs
 
@@ -264,5 +265,36 @@ Ex:
 ```
 postgresql://username:password@localhost:5432/exerciseDb?schema=public
 ```
+
+#### NEXT_PUBLIC_EXERCISE_DB_BASE_URL
+
+Exercise DB fetch url.
+
+Defaults to `https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/`
+
+NOTE: all the exercise json data and gifs are stored on github repo. Since the repo will remain
+public, the exercise data can also be queried as well. Which reduces NextJS build size
+
+The folder structure expected will be
+
+```bash
+.database
+├── data
+│   ├── bodyPart.json
+│   ├── equipment.json
+│   ├── exercises.json
+│   └── target.json
+└── exercise-gif
+    ├── 0001.gif
+    ├── 0002.gif
+    ├── 0003.gif
+    └── ...
+
+2 directories
+```
+
+check
+
+- [https://youtu.be/mi9IDtgS6hc?si=teE7OD6GQU0YxzNK&t=426](https://youtu.be/mi9IDtgS6hc?si=teE7OD6GQU0YxzNK&t=426)
 
 ---
