@@ -67,6 +67,7 @@ jobs:
             printf "NEXT_PUBLIC_BUILD_ID=%s\n"           "$(echo ${{ github.sha }} | cut -c -7)"
             printf "NEXT_PUBLIC_BUILD_TIME=%s\n"         "$(date +%s)"
             printf "EXERCISE_DB_API=%s\n"                "${{ secrets.EXERCISE_DB_API }}"
+            printf "NEXT_PUBLIC_EXERCISE_DB_BASE_URL=%s\n" "${{ secrets.NEXT_PUBLIC_EXERCISE_DB_BASE_URL }}"
           } >> .env
 
       - name: View .env
