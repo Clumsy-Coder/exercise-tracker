@@ -41,7 +41,7 @@ fi
   #
   # default: https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/
   #
-  # echo "NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL="
+  # echo "NEXT_PUBLIC_EXERCISE_DB_BASE_URL="
   # ----------------------------------------------------------------------------------------------#
 } > .env
 
