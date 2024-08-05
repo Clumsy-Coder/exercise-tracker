@@ -57,7 +57,7 @@ declare namespace NodeJS {
      * @example https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/
      * @defaultValue  https://raw.githubusercontent.com/Clumsy-Coder/exercise-tracker/development/.database/
      */
-    NEXT_PUBLIC_EXERCISE_DB_LOCAL_FETCH_BASE_URL: string;
+    NEXT_PUBLIC_EXERCISE_DB_BASE_URL: string;
 
     // ------------------------------------------------------------------------------------------ //
 
