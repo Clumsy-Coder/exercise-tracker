@@ -32,14 +32,17 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   // fetch exercise ID
   const { exerciseId } = params;
 
-  const url = `${baseUrl()}/data/exercises.json`;
+  const url = `${baseUrl()}/data/exerciseIdData/${exerciseId}.json`;
   // console.debug('target [target] url: ', url);
-  const response = await fetch(url);
-  const data: Exercise[] = await response.json();
 
-  const filtered = data.filter((item) => item.id === `${exerciseId}`);
+  // fetch the data. if theirs an error, it's likely either github is down or the exercise id doesn't exist
+  try {
+    const response = await fetch(url);
 
-  if (!filtered.length) {
+    const data: Exercise = await response.json();
+
+    return Response.json(data);
+  } catch (error) {
     const message = {
       message: `Exercise ID ${exerciseId} not found`,
     };
@@ -47,6 +50,4 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
       status: 404,
     });
   }
-
-  return Response.json(filtered[0]);
 };
