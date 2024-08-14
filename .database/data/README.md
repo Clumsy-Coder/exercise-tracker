@@ -11,7 +11,7 @@ obtained from
 -->
 
 ```bash
-npx tsx processExercisesData.ts
+npx tsx index.ts
 ```
 
 the split exercises data will placed in `./exerciseIdData/` directory
