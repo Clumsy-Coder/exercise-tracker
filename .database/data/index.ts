@@ -72,14 +72,20 @@ const processExercisesIdData = (inputFile = EXERCISE_DATA_FILEPATH, targetDir = 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Run a function to process exercises data
- *
- * Available processes
- * - Process exercise ID data into their own file. Ex: move object with id 0001 to file 0001.json
- */
-const main = () => {
-  processExercisesIdData()
-};
+import { Command } from 'commander'
 
-main();
+const program = new Command();
+
+// add option for processing exercises by ID
+program
+  .command('processExerciseId [options]')
+  .description('Read `exercises.json` and split them by exercise ID')
+  .option('-i --inputFile <filename.json>', "JSON file containing exercises", EXERCISE_DATA_FILEPATH)
+  .option('-d --targetDir <folder path>', "Directory to place the split json files", EXERCISE_ID_TARGET_DIR)
+  .action((_, options ) => {
+    const {inputFile, targetDir} = options
+
+    processExercisesIdData(inputFile, targetDir)
+  })
+
+program.parse(process.argv)
