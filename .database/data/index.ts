@@ -20,6 +20,8 @@ const readJsonFile = (filePath: string) => {
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+const EXERCISE_DATA_FILEPATH = 'exercises.json';
+const EXERCISE_ID_TARGET_DIR = 'exerciseIdData';
 
 /**
  * Split the exercises array objects into their own files
@@ -31,10 +33,14 @@ const readJsonFile = (filePath: string) => {
  *
  * @param objects JS objects
  */
-const processExercisesIdData = () => {
-  const EXERCISE_DATA_FILEPATH = 'exercises.json';
-  const TARGET_DIR = 'exerciseIdData';
-  const fullTargetDirPath = `${__dirname}/${TARGET_DIR}`;
+const processExercisesIdData = (inputFile = EXERCISE_DATA_FILEPATH, targetDir = EXERCISE_ID_TARGET_DIR) => {
+  const fullTargetDirPath = `${__dirname}/${targetDir}`;
+
+  if (!fs.existsSync(inputFile)) {
+    console.error(`File ${inputFile} doesn't exist`)
+    console.log('Exiting program')
+    process.exit(1)
+  }
 
   // create directory ./exerciseIdData/ if it doesn't exist
   if (!fs.existsSync(fullTargetDirPath)) {
@@ -42,11 +48,11 @@ const processExercisesIdData = () => {
     fs.mkdirSync(fullTargetDirPath, { recursive: true });
   }
 
-  const jsonFilePath = path.join(__dirname, EXERCISE_DATA_FILEPATH);
+  const jsonFilePath = path.join(__dirname, inputFile);
   const objects: Exercise[] = readJsonFile(jsonFilePath);
 
   if (!objects.length) {
-    console.error(`NO data to process for file ${EXERCISE_DATA_FILEPATH}`)
+    console.error(`NO data to process for file ${inputFile}`)
     console.log('Exiting program')
 
     process.exit(1)
@@ -55,7 +61,7 @@ const processExercisesIdData = () => {
   objects
     .forEach((obj) => {
       const fileName = `${obj.id}.json`;
-      const filePath = path.join(__dirname, `${TARGET_DIR}/${fileName}`);
+      const filePath = path.join(__dirname, `${targetDir}/${fileName}`);
       const data = JSON.stringify(obj, null, 2);
 
       writeFile(filePath, data)
