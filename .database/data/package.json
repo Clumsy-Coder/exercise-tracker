@@ -1,0 +1,12 @@
+{
+  "name": "data",
+  "description": "process exercises data",
+  "main": "index.ts",
+  "private": true,
+  "scripts": {
+    "processExerciseId": "npx tsx index.ts processExerciseId"
+  },
+  "dependencies": {
+    "commander": "^12.1.0"
+  }
+}
