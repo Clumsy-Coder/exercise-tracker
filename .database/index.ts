@@ -2,7 +2,7 @@ import fs from 'fs';
 import { writeFile } from 'node:fs/promises';
 import path from 'path';
 
-import { Exercise } from '../../src/types/raw';
+import { Exercise } from '../src/types/raw';
 
 /**
  * Read the data in the provided json file
@@ -20,8 +20,8 @@ const readJsonFile = (filePath: string) => {
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-const EXERCISE_DATA_FILEPATH = 'exercises.json';
-const EXERCISE_ID_TARGET_DIR = 'exerciseIdData';
+const EXERCISE_DATA_FILEPATH = 'data/exercises.json';
+const EXERCISE_ID_TARGET_DIR = 'data/exerciseIdData';
 
 /**
  * Split the exercises array objects into their own files
@@ -62,7 +62,7 @@ const processExercisesIdData = (inputFile = EXERCISE_DATA_FILEPATH, targetDir = 
     .forEach((obj) => {
       const fileName = `${obj.id}.json`;
       const filePath = path.join(__dirname, `${targetDir}/${fileName}`);
-      const data = JSON.stringify(obj, null, 2);
+      const data = JSON.stringify(obj);
 
       writeFile(filePath, data)
         .then(() => console.log(`Successfully wrote ${fileName}`))
@@ -82,8 +82,8 @@ program
   .description('Read `exercises.json` and split them by exercise ID')
   .option('-i --inputFile <filename.json>', "JSON file containing exercises", EXERCISE_DATA_FILEPATH)
   .option('-d --targetDir <folder path>', "Directory to place the split json files", EXERCISE_ID_TARGET_DIR)
-  .action((_, options ) => {
-    const {inputFile, targetDir} = options
+  .action((_, options) => {
+    const { inputFile, targetDir } = options
 
     processExercisesIdData(inputFile, targetDir)
   })
