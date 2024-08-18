@@ -21,7 +21,11 @@ const readJsonFile = (filePath: string) => {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 const EXERCISE_DATA_FILEPATH = 'data/exercises.json';
+
 const EXERCISE_ID_TARGET_DIR = 'data/exerciseIdData';
+const EXERCISE_BY_TARGET_DIRPATH = "data/targetExercises"
+const EXERCISE_BY_EQUIPMENT_DIRPATH = "data/equipmentExercises"
+const EXERCISE_BY_BODY_PART_DIRPATH = "data/bodyPartExercises"
 
 /**
  * Split the exercises array objects into their own files
@@ -71,148 +75,6 @@ const processExercisesIdData = (inputFile = EXERCISE_DATA_FILEPATH, targetDir = 
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-
-// const EXERCISE_TARGET_FILEPATH = "data/target.json"
-const EXERCISE_BY_TARGET_DIRPATH = "data/targetExercises"
-
-/**
- * Consolidate exercises by target
- */
-const processTargetExercises = (inputFile = EXERCISE_DATA_FILEPATH, targetDir = EXERCISE_BY_TARGET_DIRPATH) => {
-  const fullTargetDirPath = `${__dirname}/${targetDir}`;
-  if (!fs.existsSync(inputFile)) {
-    console.error(`File ${inputFile} doesn't exist`)
-    console.log('Exiting program')
-    process.exit(1)
-  }
-
-  // create directory ./exerciseIdData/ if it doesn't exist
-  if (!fs.existsSync(fullTargetDirPath)) {
-    console.log('creating directory ', fullTargetDirPath);
-    fs.mkdirSync(fullTargetDirPath, { recursive: true });
-  }
-
-  const jsonFilePath = path.join(__dirname, inputFile);
-  const exercises: Exercise[] = readJsonFile(jsonFilePath);
-  // const targets: string[] = readJsonFile(EXERCISE_TARGET_FILEPATH)
-
-  if (!exercises.length) {
-    console.error(`NO data to process for file ${inputFile}`)
-    console.log('Exiting program')
-
-    process.exit(1)
-  }
-
-  const groupedExercises = Object.groupBy(exercises, ({ target }) => target)
-
-  for (const [target, exercises] of Object.entries(groupedExercises)) {
-    const filepath = `${targetDir}/${target.split(' ').join('-')}.json`
-    const data = JSON.stringify(exercises)
-
-    writeFile(filepath, data)
-      .then(() => console.log(`Successfully wrote ${filepath}`))
-      .catch((err: Error) => console.error(`Error writing to file ${filepath}:`, err))
-  }
-
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-// const EXERCISE_EQUIPMENT_FILEPATH = "data/equipment.json"
-const EXERCISE_BY_EQUIPMENT_DIRPATH = "data/equipmentExercises"
-
-/**
- * Consolidate exercises by equipment
- */
-const processEquipmentExercises = (inputFile = EXERCISE_DATA_FILEPATH, targetDir = EXERCISE_BY_EQUIPMENT_DIRPATH) => {
-  const fullTargetDirPath = `${__dirname}/${targetDir}`;
-  if (!fs.existsSync(inputFile)) {
-    console.error(`File ${inputFile} doesn't exist`)
-    console.log('Exiting program')
-    process.exit(1)
-  }
-
-  // create directory ./exerciseIdData/ if it doesn't exist
-  if (!fs.existsSync(fullTargetDirPath)) {
-    console.log('creating directory ', fullTargetDirPath);
-    fs.mkdirSync(fullTargetDirPath, { recursive: true });
-  }
-
-  const jsonFilePath = path.join(__dirname, inputFile);
-  const exercises: Exercise[] = readJsonFile(jsonFilePath);
-  // const targets: string[] = readJsonFile(EXERCISE_TARGET_FILEPATH)
-
-  if (!exercises.length) {
-    console.error(`NO data to process for file ${inputFile}`)
-    console.log('Exiting program')
-
-    process.exit(1)
-  }
-
-  const groupedExercises = Object.groupBy(exercises, ({ equipment }) => equipment)
-
-  for (const [target, exercises] of Object.entries(groupedExercises)) {
-    // replace space with `-`
-    const filepath = `${targetDir}/${target.split(' ').join('-')}.json`
-    const data = JSON.stringify(exercises)
-
-    writeFile(filepath, data)
-      .then(() => console.log(`Successfully wrote ${filepath}`))
-      .catch((err: Error) => console.error(`Error writing to file ${filepath}:`, err))
-  }
-
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// const EXERCISE_EQUIPMENT_FILEPATH = "data/equipment.json"
-const EXERCISE_BY_BODY_PART_DIRPATH = "data/bodyPartExercises"
-
-/**
- * Consolidate exercises by body part
- */
-const processBodyPartExercises = (inputFile = EXERCISE_DATA_FILEPATH, targetDir = EXERCISE_BY_BODY_PART_DIRPATH) => {
-  const fullTargetDirPath = `${__dirname}/${targetDir}`;
-  if (!fs.existsSync(inputFile)) {
-    console.error(`File ${inputFile} doesn't exist`)
-    console.log('Exiting program')
-    process.exit(1)
-  }
-
-  // create directory ./exerciseIdData/ if it doesn't exist
-  if (!fs.existsSync(fullTargetDirPath)) {
-    console.log('creating directory ', fullTargetDirPath);
-    fs.mkdirSync(fullTargetDirPath, { recursive: true });
-  }
-
-  const jsonFilePath = path.join(__dirname, inputFile);
-  const exercises: Exercise[] = readJsonFile(jsonFilePath);
-  // const targets: string[] = readJsonFile(EXERCISE_TARGET_FILEPATH)
-
-  if (!exercises.length) {
-    console.error(`NO data to process for file ${inputFile}`)
-    console.log('Exiting program')
-
-    process.exit(1)
-  }
-
-  const groupedExercises = Object.groupBy(exercises, ({ bodyPart }) => bodyPart)
-
-  for (const [bodyPart, exercises] of Object.entries(groupedExercises)) {
-    // replace space with `-`
-    const filepath = `${targetDir}/${bodyPart.split(' ').join('-')}.json`
-    const data = JSON.stringify(exercises)
-
-    writeFile(filepath, data)
-      .then(() => console.log(`Successfully wrote ${filepath}`))
-      .catch((err: Error) => console.error(`Error writing to file ${filepath}:`, err))
-  }
-
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 /**
  * Process exercises into a exercise group.
