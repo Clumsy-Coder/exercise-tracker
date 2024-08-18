@@ -316,7 +316,7 @@ program
   .action((_, options) => {
     const { inputFile, targetDir } = options
 
-    processTargetExercises(inputFile, targetDir)
+    processGroupedExercises(inputFile, targetDir, ({ target }) => target)
   })
 
 // add option for processing exercises by equipment
@@ -328,7 +328,7 @@ program
   .action((_, options) => {
     const { inputFile, targetDir } = options
 
-    processEquipmentExercises(inputFile, targetDir)
+    processGroupedExercises(inputFile, targetDir, ({ equipment }) => equipment)
   })
 
 // add option for processing exercises by body part
@@ -340,7 +340,7 @@ program
   .action((_, options) => {
     const { inputFile, targetDir } = options
 
-    processBodyPartExercises(inputFile, targetDir)
+    processGroupedExercises(inputFile, targetDir, ({ bodyPart }) => bodyPart)
   })
 
 program.parse(process.argv)
