@@ -28,21 +28,15 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   }
 
   // --------------------------------------------------------------------------------------------//
-  // fetch the exercises data from remote source
-  const url = `${baseUrl()}/data/exercises.json`;
-  // console.debug('equipment [equipment] url: ', url);
-  const response = await fetch(url);
-  const data: Exercise[] = await response.json();
-
-  // --------------------------------------------------------------------------------------------//
-
-  // fetch exercise ID
   const { equipment } = params;
 
-  // filter exercises by equipment
-  const filtered = data.filter((item) => item.equipment === `${equipment.replaceAll('-', ' ')}`);
+  const url = `${baseUrl()}/data/equipmentExercises/${equipment.replaceAll(' ', '-')}.json`;
+  try {
+    const response = await fetch(url);
+    const data: Exercise[] = await response.json();
 
-  if (!filtered.length) {
+    return Response.json(data);
+  } catch (error) {
     const message = {
       message: `Exercise equipment '${equipment}' not found`,
     };
@@ -50,6 +44,4 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
       status: 404,
     });
   }
-
-  return Response.json(filtered);
 };
