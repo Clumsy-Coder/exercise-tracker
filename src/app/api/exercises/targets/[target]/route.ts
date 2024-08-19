@@ -28,21 +28,17 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   }
 
   // --------------------------------------------------------------------------------------------//
-  // fetch the exercises data from remote source
-  const url = `${baseUrl()}/data/exercises.json`;
-  // console.debug('target [target] url: ', url);
-  const response = await fetch(url);
-  const data: Exercise[] = await response.json();
-
-  // --------------------------------------------------------------------------------------------//
 
   // get query param
   const { target } = params;
 
-  // filter exercises by target
-  const filtered = data.filter((item) => item.target === `${target.replaceAll('-', ' ')}`);
+  const url = `${baseUrl()}/data/targetExercises/${target.replaceAll(' ', '-')}.json`;
+  try {
+    const response = await fetch(url);
+    const data: Exercise[] = await response.json();
 
-  if (!filtered.length) {
+    return Response.json(data);
+  } catch (error) {
     const message = {
       message: `Exercise target '${target}' not found`,
     };
@@ -50,6 +46,4 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
       status: 404,
     });
   }
-
-  return Response.json(filtered);
 };
