@@ -3,34 +3,54 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 import type { Metadata } from 'next';
 import { z } from 'zod';
 
+import { baseUrl } from '@/utils/fetchData';
 import { QueryKey } from '@/hooks';
 import { exerciseEquipment as schema } from '@/schema';
-import { fetchEquipmentExercises } from '@/server/actions';
 
 type Props = {
   params: z.infer<typeof schema>;
 } & PropsWithChildren;
 
-export function generateMetadata({ params }: Props): Metadata {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { equipment } = params;
+  let layoutResponse: Metadata;
 
-  const capitalizedStr = equipment
-    .split('-')
-    .map((item) => {
-      return item.charAt(0).toUpperCase() + item.slice(1);
-    })
-    .join('-');
+  try {
+    const url = `${baseUrl()}/data/equipmentExercises/${equipment.replaceAll(' ', '-')}.json`;
+    const response = await fetch(url);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const data = await response.json();
 
-  return {
-    title: `'${capitalizedStr}' equipment exercises - Exercise-tracker`,
-  };
+    const capitalizedStr = equipment
+      .split('-')
+      .map((word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join('-');
+
+    layoutResponse = {
+      title: `'${capitalizedStr}' equipment exercises - Exercise-tracker`,
+    };
+  } catch (error) {
+    layoutResponse = {
+      title: `Exercise equipment '${equipment}' Not found - Exercise-tracker'`,
+    };
+  }
+
+  return layoutResponse;
 }
 
 const EquipmentExercisesLayout = async ({ children, params }: Props) => {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: [QueryKey.exercise, QueryKey.equipment, params.equipment],
-    queryFn: async () => fetchEquipmentExercises(params.equipment),
+    queryFn: async () => {
+      const url = `${baseUrl()}/data/equipmentExercises/${params.equipment.replaceAll(' ', '-')}.json`;
+      const response = await fetch(url);
+      const data = await response.json();
+
+      return data;
+    },
   });
 
   return (
