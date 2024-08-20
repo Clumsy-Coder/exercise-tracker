@@ -28,20 +28,17 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   }
 
   // --------------------------------------------------------------------------------------------//
-  // fetch the exercises data from remote source
-  const url = `${baseUrl()}/data/exercises.json`;
-  // console.debug('body-parts [bodyPart] url: ', url);
-  const response = await fetch(url);
-  const data: Exercise[] = await response.json();
 
-  // --------------------------------------------------------------------------------------------//
-
+  // get query param
   const { bodyPart } = params;
 
-  // filter exercises by body part
-  const filtered = data.filter((item) => item.bodyPart === `${bodyPart.replaceAll('-', ' ')}`);
+  const url = `${baseUrl()}/data/bodyPartExercises/${bodyPart.replaceAll(' ', '-')}.json`;
+  try {
+    const response = await fetch(url);
+    const data: Exercise[] = await response.json();
 
-  if (!filtered.length) {
+    return Response.json(data);
+  } catch (error) {
     const message = {
       message: `Exercise body part '${bodyPart}' not found`,
     };
@@ -49,6 +46,4 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
       status: 404,
     });
   }
-
-  return Response.json(filtered);
 };
