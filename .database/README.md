@@ -21,6 +21,16 @@ npx tsx index.ts processTargetExercises
 
 [more details](#processtargetexercises)
 
+### split exercises by exercise equipment
+
+```bash
+npx tsx index.ts processEquipmentExercises
+```
+
+[more details](#processequipmentexercises)
+
+---
+
 ## processExerciseId
 
 split the exercises by exercise ID and places them in `data/exerciseIdData/` directory
@@ -196,5 +206,104 @@ example `data/targetExercises/abductors.json`
 ]
 
 ```
+---
+
+## processEquipmentExercises
+
+split the exercise by exercise target and place them in `data/targetExercises/` directory
+
+it would have the following file structure
+
+```bash
+data/equipmentExercises
+├── assisted.json
+├── band.json
+├── barbell.json
+├── body-weight.json
+├── bosu-ball.json
+├── cable.json
+├── dumbbell.json
+├── elliptical-machine.json
+├── ez-barbell.json
+├── hammer.json
+├── kettlebell.json
+├── leverage-machine.json
+├── medicine-ball.json
+├── olympic-barbell.json
+├── resistance-band.json
+├── roller.json
+├── rope.json
+├── skierg-machine.json
+├── sled-machine.json
+├── smith-machine.json
+├── stability-ball.json
+├── stationary-bike.json
+├── stepmill-machine.json
+├── tire.json
+├── trap-bar.json
+├── upper-body-ergometer.json
+├── weighted.json
+└── wheel-roller.json
+
+0 directories, 28 files
+```
+
+### options
+
+#### --inputFile
+
+`--inputFile` defaults to `data/exercises.json`
+
+The input file contains all exercises. Formatted as array of objects
+
+example:
+```bash
+npx tsx index.ts processEquipmentExercises --inputFile test.json
+```
+
+#### --targetDir
+
+`--targetDir` defaults to `data/targetExercises`
+
+The target dir is where the processed data will be placed
+
+example:
+```bash
+npx tsx index.ts processEquipmentExercises --targetDir data/equipmentExercises
+```
+
+#### file output
+
+each file in `data/equipmentExercises` would look like
+
+example `data/equipmentExercises/assisted.json`
+
+```json
+[
+  {
+    "bodyPart": "waist",
+    "equipment": "assisted",
+    "gifUrl": "https://v2.exercisedb.io/image/MwEuckqM8AEo7B",
+    "id": "0011",
+    "name": "assisted hanging knee raise",
+    "target": "abs",
+    "secondaryMuscles": [
+      "hip flexors"
+    ],
+    "instructions": [
+      "Hang from a pull-up bar with your arms fully extended and your palms facing away from you.",
+      "Engage your core muscles and lift your knees towards your chest, bending at the hips and knees.",
+      "Pause for a moment at the top of the movement, squeezing your abs.",
+      "Slowly lower your legs back down to the starting position.",
+      "Repeat for the desired number of repetitions."
+    ]
+  },
+  { ... },
+  { ... },
+  { ... }
+]
+
+```
+
 ---
 
