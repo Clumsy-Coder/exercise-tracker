@@ -13,6 +13,14 @@ npx tsx index.ts processExerciseId
 ```
 [more details](#processexerciseid)
 
+### split exercises by exercise target
+
+```bash
+npx tsx index.ts processTargetExercises
+```
+
+[more details](#processtargetexercises)
+
 ## processExerciseId
 
 split the exercises by exercise ID and places them in `data/exerciseIdData/` directory
@@ -100,3 +108,93 @@ with the new approach, it would
 NOTE: this makes it easy when fetching an exercise id that doesn't exist
 
 ---
+
+## processTargetExercises
+
+split the exercise by exercise target and place them in `data/targetExercises/` directory
+
+it would have the following file structure
+
+```bash
+data/targetExercises
+├── abductors.json
+├── abs.json
+├── adductors.json
+├── biceps.json
+├── calves.json
+├── cardiovascular-system.json
+├── delts.json
+├── forearms.json
+├── glutes.json
+├── hamstrings.json
+├── lats.json
+├── levator-scapulae.json
+├── pectorals.json
+├── quads.json
+├── serratus-anterior.json
+├── spine.json
+├── traps.json
+├── triceps.json
+└── upper-back.json
+
+0 directories, 19 files
+```
+
+### options
+
+#### --inputFile
+
+`--inputFile` defaults to `data/exercises.json`
+
+The input file contains all exercises. Formatted as array of objects
+
+example:
+```bash
+npx tsx index.ts processTargetExercises --inputFile test.json
+```
+
+#### --targetDir
+
+`--targetDir` defaults to `data/targetExercises`
+
+The target dir is where the processed data will be placed
+
+example:
+```bash
+npx tsx index.ts processTargetExercises --targetDir data/targetExercises
+```
+#### file output
+
+each file in `data/targetExercises` would look like
+
+example `data/targetExercises/abductors.json`
+```json
+[
+  {
+    "bodyPart": "upper legs",
+    "equipment": "leverage machine",
+    "gifUrl": "https://v2.exercisedb.io/image/NusOwv13xwJlcc",
+    "id": "0597",
+    "name": "lever seated hip abduction",
+    "target": "abductors",
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "instructions": [
+      "Adjust the seat height so that your knees are at a 90-degree angle.",
+      "Sit on the machine with your back against the backrest and your feet on the footrests.",
+      "Place your hands on the side handles for stability.",
+      "Engage your abductors and slowly push your legs apart, away from the midline of your body.",
+      "Pause for a moment at the end of the movement, then slowly bring your legs back together to the starting position.",
+      "Repeat for the desired number of repetitions."
+    ]
+  },
+  { ... },
+  { ... },
+  { ... }
+]
+
+```
+---
+
