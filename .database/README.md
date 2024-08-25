@@ -29,6 +29,14 @@ npx tsx index.ts processEquipmentExercises
 
 [more details](#processequipmentexercises)
 
+### split exercises by exercise body part
+
+```bash
+npx tsx index.ts processBodyPartExercises
+```
+
+[more details](#processbodypartexercises)
+
 ---
 
 ## processExerciseId
@@ -307,3 +315,83 @@ example `data/equipmentExercises/assisted.json`
 
 ---
 
+## processBodyPartExercises
+
+split the exercise by exercise target and place them in `data/bodyPartExercises/` directory
+
+it would have the following file structure
+
+```bash
+data/bodyPartExercises
+├── back.json
+├── cardio.json
+├── chest.json
+├── lower-arms.json
+├── lower-legs.json
+├── neck.json
+├── shoulders.json
+├── upper-arms.json
+├── upper-legs.json
+└── waist.json
+
+0 directories, 10 files
+```
+
+### options
+
+#### --inputFile
+
+`--inputFile` defaults to `data/exercises.json`
+
+The input file contains all exercises. Formatted as array of objects
+
+example:
+```bash
+npx tsx index.ts processBodyPartExercises --inputFile test.json
+```
+
+#### --targetDir
+
+`--targetDir` defaults to `data/bodyPartExercises`
+
+The target dir is where the processed data will be placed
+
+example:
+```bash
+npx tsx index.ts processBodyPartExercises --targetDir data/bodyPartExercises
+```
+
+#### file output
+
+each file in `data/bodyPartExercises` would look like
+
+example `data/bodyPartExercises/back.json`
+
+```json
+[
+  {
+    "bodyPart": "back",
+    "equipment": "cable",
+    "gifUrl": "https://v2.exercisedb.io/image/TjPH0fiA30s1qp",
+    "id": "0007",
+    "name": "alternate lateral pulldown",
+    "target": "lats",
+    "secondaryMuscles": [
+      "biceps",
+      "rhomboids"
+    ],
+    "instructions": [
+      "Sit on the cable machine with your back straight and feet flat on the ground.",
+      "Grasp the handles with an overhand grip, slightly wider than shoulder-width apart.",
+      "Lean back slightly and pull the handles towards your chest, squeezing your shoulder blades together.",
+      "Pause for a moment at the peak of the movement, then slowly release the handles back to the starting position.",
+      "Repeat for the desired number of repetitions."
+    ]
+  },
+  { ... },
+  { ... },
+  { ... }
+]
+```
+
+---
