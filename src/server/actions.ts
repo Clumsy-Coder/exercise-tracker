@@ -17,7 +17,7 @@ export const fetchAllExercises = () => {
  * Fetches from URL `/api/exercises/[exerciseId]`
  */
 export const fetchExercise = (exerciseId: string | number) => {
-  return axios.get<Exercise>(`/api/exercises/${exerciseId}`).then((res) => res.data);
+  return axios.get<Exercise>(`/api/exercises/id/${exerciseId}`).then((res) => res.data);
 };
 
 /**
