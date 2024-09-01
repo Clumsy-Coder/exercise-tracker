@@ -1,11 +1,15 @@
 ---
 
 name: Dependabot automerge
-on: pull_request
+on:
+  pull_request:
+    branches-ignore:
+      - 'main'
 # description: Automerge dependabot pull requests
 #
 # auto merge Dependabot pull requests
 # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request
+# https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#running-your-pull_request-workflow-based-on-the-head-or-base-branch-of-a-pull-request
 
 jobs:
   automerge-pr:
