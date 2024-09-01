@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import ExerciseIdPageLoading from '@/app/exercises/[exerciseId]/loading';
+import ExerciseIdPageLoading from '@/app/exercises/id/[exerciseId]/loading';
 import Error from '@/components/error';
 import { badgeVariants } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
