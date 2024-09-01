@@ -48,7 +48,7 @@ const ExerciseCard = ({ data, className }: Props) => {
           </TooltipProvider>
           {/* Link to exercise */}
           <Button asChild>
-            <Link href={`/exercises/${id}`}>View more</Link>
+            <Link href={`/exercises/id/${id}`}>View more</Link>
           </Button>
         </div>
         <CardDescription className='py-1 capitalize'>
