@@ -4,7 +4,7 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 
 import { QueryKey } from '@/hooks';
 import { Exercise } from '@/types/raw';
-import { baseUrl } from '@/utils/fetchData';
+import { allExercisesUrl, baseUrl } from '@/utils/fetchData';
 
 export const metadata: Metadata = {
   title: 'All Exercises - Exercise-tracker',
@@ -19,7 +19,7 @@ const ExercisesLayout = async ({ children }: PropsWithChildren) => {
   await queryClient.prefetchQuery({
     queryKey: [QueryKey.allExercises],
     queryFn: async () => {
-      const url = `${baseUrl()}/data/exercises.json`;
+      const url = `${allExercisesUrl()}`;
       const response = await fetch(url, { cache: 'force-cache' });
       const data: Exercise[] = await response.json();
 

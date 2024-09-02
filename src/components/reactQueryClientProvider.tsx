@@ -6,7 +6,7 @@ import { PropsWithChildren, useState } from 'react';
 
 import { QueryKey } from '@/hooks';
 import { Exercise } from '@/types/raw';
-import { baseUrl } from '@/utils/fetchData';
+import { allExercisesUrl, baseUrl } from '@/utils/fetchData';
 
 export const ReactQueryClientProvider = async ({ children }: PropsWithChildren) => {
   const [queryClient] = useState(
@@ -29,7 +29,7 @@ export const ReactQueryClientProvider = async ({ children }: PropsWithChildren) 
   await queryClient.prefetchQuery({
     queryKey: [QueryKey.allExercises],
     queryFn: async () => {
-      const url = `${baseUrl()}/data/exercises.json`;
+      const url = `${allExercisesUrl()}`;
       const response = await fetch(url, { cache: 'force-cache' });
       const data: Exercise[] = await response.json();
 
