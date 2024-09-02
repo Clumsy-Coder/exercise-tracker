@@ -98,3 +98,12 @@ export const targetListUrl = () => `${baseUrl()}/data/target.json`;
  * @see {@link baseUrl}
  */
 export const equipmentListUrl = () => `${baseUrl()}/data/equipment.json`;
+
+/**
+ * Get the url for fetching body part list
+ *
+ * uses `baseUrl` to generate the url
+ *
+ * @see {@link baseUrl}
+ */
+export const bodyPartListUrl = () => `${baseUrl()}/data/bodyPart.json`;
