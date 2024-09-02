@@ -1,10 +1,10 @@
-import { baseUrl } from '@/utils/fetchData';
+import { bodyPartListUrl } from '@/utils/fetchData';
 
 /**
  * Fetch exercise body part list
  */
 export const GET = async () => {
-  const url = `${baseUrl()}/data/bodyPart.json`;
+  const url = `${bodyPartListUrl()}`;
   // console.debug('body part url: ', url);
   const response = await fetch(url);
   const data: string[] = await response.json();
