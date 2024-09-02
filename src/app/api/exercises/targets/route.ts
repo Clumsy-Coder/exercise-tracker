@@ -1,10 +1,10 @@
-import { baseUrl } from '@/utils/fetchData';
+import { targetListUrl } from '@/utils/fetchData';
 
 /**
  * Fetch target list
  */
 export const GET = async () => {
-  const url = `${baseUrl()}/data/target.json`;
+  const url = `${targetListUrl()}`;
   // console.debug('equipment url: ', url);
   const response = await fetch(url);
   const data: string[] = await response.json();
