@@ -89,3 +89,12 @@ export const allExercisesUrl = () => `${baseUrl()}/data/exercises.json`;
  * @see {@link baseUrl}
  */
 export const targetListUrl = () => `${baseUrl()}/data/target.json`;
+
+/**
+ * Get the url for fetching equipment list
+ *
+ * uses `baseUrl` to generate the url
+ *
+ * @see {@link baseUrl}
+ */
+export const equipmentListUrl = () => `${baseUrl()}/data/equipment.json`;
