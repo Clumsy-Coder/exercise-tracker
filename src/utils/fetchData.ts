@@ -71,3 +71,12 @@ export const DEFAULT_EXERCISE_DB_BASE_URL =
  */
 export const baseUrl = () =>
   process.env.NEXT_PUBLIC_EXERCISE_DB_BASE_URL || DEFAULT_EXERCISE_DB_BASE_URL;
+
+/**
+ * Get the url for fetching all exercises
+ *
+ * uses `baseUrl` to generate the url
+ *
+ * @see {@link baseUrl}
+ */
+export const allExercisesUrl = () => `${baseUrl()}/data/exercises.json`;
