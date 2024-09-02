@@ -1,10 +1,10 @@
-import { baseUrl } from '@/utils/fetchData';
+import { equipmentListUrl } from '@/utils/fetchData';
 
 /**
  * Fetch exercise equipment list
  */
 export const GET = async () => {
-  const url = `${baseUrl()}/data/equipment.json`;
+  const url = `${equipmentListUrl()}`;
   // console.debug('equipment url: ', url);
   const response = await fetch(url);
   const data: string[] = await response.json();
