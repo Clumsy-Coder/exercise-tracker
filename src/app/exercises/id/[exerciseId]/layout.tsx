@@ -6,7 +6,7 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 import { QueryKey } from '@/hooks';
 import { exerciseIdSchema as schema } from '@/schema';
 import { Exercise } from '@/types/raw';
-import { baseUrl } from '@/utils/fetchData';
+import { exerciseIdUrl } from '@/utils/fetchData';
 
 type Props = {
   params: z.infer<typeof schema>;
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { exerciseId } = params;
   let layoutResponse: Metadata;
   try {
-    const url = `${baseUrl()}/data/exerciseIdData/${exerciseId}.json`;
+    const url = exerciseIdUrl(params.exerciseId);
     const response = await fetch(url);
     const data: Exercise = await response.json();
 
@@ -42,7 +42,7 @@ const ExerciseIdLayout = async ({ children, params }: Props) => {
   await queryClient.prefetchQuery({
     queryKey: [QueryKey.exercise, params.exerciseId],
     queryFn: async () => {
-      const url = `${baseUrl()}/data/exerciseIdData/${params.exerciseId}.json`;
+      const url = exerciseIdUrl(params.exerciseId);
       // console.debug('target [target] url: ', url);
       const response = await fetch(url);
       const data: Exercise = await response.json();

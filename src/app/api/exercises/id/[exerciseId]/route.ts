@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { exerciseIdSchema as schema } from '@/schema';
 import { Exercise } from '@/types/raw';
-import { baseUrl } from '@/utils/fetchData';
+import { exerciseIdUrl } from '@/utils/fetchData';
 
 type GetParamsType = {
   params: z.infer<typeof schema>;
@@ -32,7 +32,7 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   // fetch exercise ID
   const { exerciseId } = params;
 
-  const url = `${baseUrl()}/data/exerciseIdData/${exerciseId}.json`;
+  const url = exerciseIdUrl(`${exerciseId}`);
   // console.debug('target [target] url: ', url);
 
   // fetch the data. if theirs an error, it's likely either github is down or the exercise id doesn't exist
