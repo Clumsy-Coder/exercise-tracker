@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 import { exerciseBodyPart as schema } from '@/schema';
 import { Exercise } from '@/types/raw';
-import { baseUrl } from '@/utils/fetchData';
+import { bodyPartUrl } from '@/utils/fetchData';
 
 type GetParamsType = {
   params: z.infer<typeof schema>;
@@ -32,7 +32,7 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
   // get query param
   const { bodyPart } = params;
 
-  const url = `${baseUrl()}/data/bodyPartExercises/${bodyPart.replaceAll(' ', '-')}.json`;
+  const url = bodyPartUrl(bodyPart.replaceAll(' ', '-'));
   try {
     const response = await fetch(url);
     const data: Exercise[] = await response.json();
