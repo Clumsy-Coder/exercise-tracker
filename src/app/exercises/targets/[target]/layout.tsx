@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 import { QueryKey } from '@/hooks';
 import { exerciseTarget as schema } from '@/schema';
-import { baseUrl } from '@/utils/fetchData';
+import { targetUrl } from '@/utils/fetchData';
 
 type Props = {
   params: z.infer<typeof schema>;
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let layoutResponse: Metadata;
 
   try {
-    const url = `${baseUrl()}/data/targetExercises/${target.replaceAll(' ', '-')}.json`;
+    const url = targetUrl(target.replaceAll(' ', '-'));
     const response = await fetch(url);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const data = await response.json();
@@ -46,7 +46,7 @@ const TargetExercisesLayout = async ({ children, params }: Props) => {
     queryKey: [QueryKey.exercise, QueryKey.target, params.target],
     // queryFn: async () => fetchTargetExercises(params.target),
     queryFn: async () => {
-      const url = `${baseUrl()}/data/targetExercises/${params.target.replaceAll(' ', '-')}.json`;
+      const url = targetUrl(params.target.replaceAll(' ', '-'));
       const response = await fetch(url);
       const data = await response.json();
 
