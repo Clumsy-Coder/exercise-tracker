@@ -3,7 +3,7 @@ import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query
 import type { Metadata } from 'next';
 import { z } from 'zod';
 
-import { baseUrl } from '@/utils/fetchData';
+import { equipmentUrl } from '@/utils/fetchData';
 import { QueryKey } from '@/hooks';
 import { exerciseEquipment as schema } from '@/schema';
 
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let layoutResponse: Metadata;
 
   try {
-    const url = `${baseUrl()}/data/equipmentExercises/${equipment.replaceAll(' ', '-')}.json`;
+    const url = equipmentUrl(equipment.replaceAll(' ', '-'));
     const response = await fetch(url);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const data = await response.json();
@@ -45,7 +45,7 @@ const EquipmentExercisesLayout = async ({ children, params }: Props) => {
   await queryClient.prefetchQuery({
     queryKey: [QueryKey.exercise, QueryKey.equipment, params.equipment],
     queryFn: async () => {
-      const url = `${baseUrl()}/data/equipmentExercises/${params.equipment.replaceAll(' ', '-')}.json`;
+      const url = equipmentUrl(params.equipment.replaceAll(' ', '-'));
       const response = await fetch(url);
       const data = await response.json();
 
