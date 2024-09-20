@@ -117,7 +117,8 @@ export const bodyPartListUrl = () => `${baseUrl()}/data/bodyPart.json`;
  *
  * @param exerciseId - exercise id
  */
-export const exerciseIdUrl = (exerciseId: string | number) => `${baseUrl()}/data/exerciseIdData/${exerciseId}.json`;
+export const exerciseIdUrl = (exerciseId: string | number) =>
+  `${baseUrl()}/data/exerciseIdData/${exerciseId}.json`;
 
 /**
  * Get the url for fetching body part [bodyPart] data
