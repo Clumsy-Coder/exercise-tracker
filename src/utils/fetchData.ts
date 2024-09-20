@@ -141,3 +141,15 @@ export const bodyPartUrl = (bodyPart: string) =>
  * @param target - target. example: abs
  */
 export const targetUrl = (target: string) => `${baseUrl()}/data/targetExercises/${target}.json`;
+
+/**
+ * Get the url for fetching equipments [equipment] data
+ *
+ * uses `baseUrl` to generate the url
+ *
+ * @see {@link baseUrl}
+ *
+ * @param equipment - equipment. example: barbell
+ */
+export const equipmentUrl = (equipment: string) =>
+  `${baseUrl()}/data/equipmentExercises/${equipment}.json`;
