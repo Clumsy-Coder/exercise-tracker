@@ -130,3 +130,14 @@ export const exerciseIdUrl = (exerciseId: string | number) => `${baseUrl()}/data
  */
 export const bodyPartUrl = (bodyPart: string) =>
   `${baseUrl()}/data/bodyPartExercises/${bodyPart}.json`;
+
+/**
+ * Get the url for fetching target [target] data
+ *
+ * uses `baseUrl` to generate the url
+ *
+ * @see {@link baseUrl}
+ *
+ * @param target - target. example: abs
+ */
+export const targetUrl = (target: string) => `${baseUrl()}/data/targetExercises/${target}.json`;
