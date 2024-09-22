@@ -1,5 +1,7 @@
 /**
  * Fetch header for Exercise DB
+ *
+ * @deprecated no longer using exercise-db API. Now using local data
  */
 export const exerciseOptions = {
   method: 'GET',
@@ -14,6 +16,8 @@ export const exerciseOptions = {
 /**
  * URL for fetching all Exercises
  *
+ * @deprecated no longer using exercise-db API. Now using local data
+ *
  * @param limit - max number exercises to fetch
  * @defaultValue `limit` - `10`
  */
@@ -22,17 +26,23 @@ export const fetchAllExercisesUrl = (limit = 10) =>
 
 /**
  * URL for fetching target list
+ *
+ * @deprecated no longer using exercise-db API. Now using local data
  */
 export const fetchTargetListUrl = () => `https://exercisedb.p.rapidapi.com/exercises/targetList`;
 
 /**
  * URL for fetching exercise equipment list
+ *
+ * @deprecated no longer using exercise-db API. Now using local data
  */
 export const fetchEquipmentListUrl = () =>
   `https://exercisedb.p.rapidapi.com/exercises/equipmentList`;
 
 /**
  * URL for fetching a single exercise
+ *
+ * @deprecated no longer using exercise-db API. Now using local data
  *
  * @param exerciseId - exercise ID
  */
