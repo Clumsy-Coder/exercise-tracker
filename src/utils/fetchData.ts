@@ -121,6 +121,18 @@ export const exerciseIdUrl = (exerciseId: string | number) =>
   `${baseUrl()}/data/exerciseIdData/${exerciseId}.json`;
 
 /**
+ * Get the url for fetching exercise id gif
+ *
+ * uses `baseUrl` to generate the url
+ *
+ * @see {@link baseUrl}
+ *
+ * @param exerciseId - exercise id
+ */
+export const exerciseIdGifUrl = (exerciseId: string | number) =>
+  `${baseUrl()}/exercise-gif/${exerciseId}.gif`;
+
+/**
  * Get the url for fetching body part [bodyPart] data
  *
  * uses `baseUrl` to generate the url
