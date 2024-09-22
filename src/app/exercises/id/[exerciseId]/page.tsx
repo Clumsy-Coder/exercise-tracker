@@ -21,7 +21,7 @@ import { useFetchExercise } from '@/hooks';
 import { cn } from '@/lib/utils';
 import { exerciseIdSchema as schema } from '@/schema';
 import { z } from 'zod';
-import { baseUrl } from '@/utils/fetchData';
+import { exerciseIdGifUrl } from '@/utils/fetchData';
 
 type Props = {
   params: z.infer<typeof schema>;
@@ -58,7 +58,7 @@ const ExerciseIdPage = ({ params }: Props) => {
     ['Target: ', data.target, `/exercises/targets/${data.target.replaceAll(' ', '-')}`],
   ];
 
-  const imageUrl = `${baseUrl()}/exercise-gif/${data.id}.gif`;
+  const imageUrl = exerciseIdGifUrl(data.id);
 
   return (
     <section className='mb-5 flex flex-col gap-5'>
