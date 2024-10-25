@@ -46,7 +46,7 @@
     "lucide-react": "^0.453.0",
     "moment": "^2.30.1",
     "next": "14.2.16",
-    "next-auth": "^4.24.8",
+    "next-auth": "^4.24.10",
     "next-themes": "^0.3.0",
     "pg": "^8.13.0",
     "react": "^18",
