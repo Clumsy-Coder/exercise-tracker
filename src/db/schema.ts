@@ -107,4 +107,7 @@ export const activities = pgTable(
   }),
 );
 
+export type SelectActivities = typeof activities.$inferSelect;
+export type InsertActivities = typeof activities.$inferInsert;
+
 // --------------------------------------------------------------------------------------------- //
