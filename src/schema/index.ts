@@ -89,13 +89,28 @@ export const exerciseEntry = z
     // }),
     duration: z
       .string()
-      .time({
-        message: 'Exercise duration is required. In format HH:MM:SS',
-      })
-      .refine((duration) => moment(duration, 'HH:MM:SS', true).isValid(), {
+      // match: HH:MM:SS . HH can be any positive number
+      .regex(/^(\d){1,2}:([0-5][0-9]):([0-5][0-9])$/, {
         message: 'Invalid time format. Must be HH:MM:SS',
-        path: ['duration'],
       })
+      // .time({
+      //   message: 'Exercise duration is required. In format HH:MM:SS',
+      // })
+      // .refine(
+      //   (duration) => {
+      //     // return moment(duration, 'HH:MM:SS', true).isValid();
+      //     const regex = /(\d){1,2}:([0-5][0-9]):([0-5][0-9])/;
+      //
+      //     const test = regex.test(duration);
+      //     console.log('regex test: ', test);
+      //
+      //     return test;
+      //   },
+      //   {
+      //     message: 'Invalid time format. Must be HH:MM:SS',
+      //     // path: ['duration'],
+      //   },
+      // )
       .optional(),
     // .optional(),
     // .default(() => new Date('00:00:00')),
