@@ -59,9 +59,9 @@ export const exerciseEntry = z
     reps: z.coerce
       .number({ invalid_type_error: 'Exercise reps must be a number' })
       .min(0, 'Exercise reps must be at least 0')
-      .nullish(),
+      .optional(),
     // .default(0),
-    weight: z.coerce.number().min(0).nullish(),
+    weight: z.coerce.number().min(0).optional(),
     // .default(0),
     weightUnit: z
       .enum(weightEnum.enumValues, {
@@ -71,12 +71,12 @@ export const exerciseEntry = z
         // - https://zod.dev/ERROR_HANDLING?id=customizing-errors-with-zoderrormap
         errorMap: () => ({ message: "Weight unit can be either 'lbs' or 'kg'" }),
       })
-      .nullish(),
+      .optional(),
     // .optional()
     // .default('lbs'),
     //
     // distance based
-    distance: z.coerce.number().min(0, 'Distance must be greater than 0').nullish(),
+    distance: z.coerce.number().min(0, 'Distance must be greater than 0').optional(),
     // .default(0),
     distanceUnit: z.enum(distanceEnum.enumValues).optional(),
     // .default('km'),
@@ -96,7 +96,7 @@ export const exerciseEntry = z
         message: 'Invalid time format. Must be HH:MM:SS',
         path: ['duration'],
       })
-      .nullish(),
+      .optional(),
     // .optional(),
     // .default(() => new Date('00:00:00')),
   })
