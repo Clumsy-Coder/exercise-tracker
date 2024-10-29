@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
-import { Calendar as CalendarIcon } from 'lucide-react';
+import { Calendar as CalendarIcon, Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
@@ -36,10 +36,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
 import { exerciseEntry as exerciseEntrySchema, exerciseIdSchema as schema } from '@/schema';
 import { Exercise } from '@/types/raw';
 import { cn } from '@/lib/utils';
-import { Separator } from './ui/separator';
+import { usePostExerciseEntry } from '@/hooks';
 
 type Props = {
   data: Exercise;
@@ -53,17 +54,30 @@ const AddExerciseEntry = ({ data }: Props) => {
     defaultValues: {
       exerciseId: +data.id,
       date: new Date(),
-      // reps: 0,
-      // weight: 0,
-      // weightUnit: 'lbs',
-      // distance: 0,
-      // distanceUnit: 'km',
+      //
+      // react is warning `A component is changing a controlled input to be uncontrolled`
+      // It's because there's no default value.
+      // If typecasting, the zod validation forces to enter data in fields not being used.
+      // I'm trying to leave unused properties with the value of undefined, so the database will enter them as NULL
+      // reps: '' as unknown as number,
+      // weight: '' as unknown as number,
+      // weightUnit: '' as unknown as 'lbs' | 'kg',
+      // distance: '' as unknown as number,
+      // distanceUnit: '' as unknown as 'km' | 'mile',
+      // duration: '' as unknown as string,
     },
     // mode: 'all',
   });
+  const addExerciseEntryMutation = usePostExerciseEntry();
 
   const onSubmit = (values: z.infer<typeof exerciseEntrySchema>) => {
     console.log('form values', values);
+    addExerciseEntryMutation.mutate(values, {
+      onSuccess: () => {
+        form.reset();
+        setDialogOpen(false);
+      },
+    });
   };
 
   return (
@@ -389,7 +403,18 @@ const AddExerciseEntry = ({ data }: Props) => {
               {/* ----------------------------------------------------------------------------- */}
               {/* Submit button */}
               <DialogFooter>
-                <Button type='submit'>Save changes</Button>
+                <Button
+                  type='submit'
+                  disabled={addExerciseEntryMutation.isPending}
+                >
+                  {!addExerciseEntryMutation.isPending && 'Save changes'}
+                  {addExerciseEntryMutation.isPending && (
+                    <div className='flex flex-row items-center'>
+                      <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+                      Please wait
+                    </div>
+                  )}
+                </Button>
               </DialogFooter>
             </form>
           </Form>
