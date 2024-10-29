@@ -3,6 +3,7 @@
 import { AxiosError } from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 import ExerciseIdPageLoading from '@/app/exercises/id/[exerciseId]/loading';
 import Error from '@/components/error';
@@ -22,6 +23,8 @@ import { cn } from '@/lib/utils';
 import { exerciseIdSchema as schema } from '@/schema';
 import { z } from 'zod';
 import { exerciseIdGifUrl } from '@/utils/fetchData';
+import { Button } from '@/components/ui/button';
+import AddExerciseEntry from '@/components/addExerciseEntry';
 
 type Props = {
   params: z.infer<typeof schema>;
@@ -29,6 +32,7 @@ type Props = {
 
 const ExerciseIdPage = ({ params }: Props) => {
   const { isPending, data, isError, error } = useFetchExercise(params.exerciseId);
+  const { data: session } = useSession();
 
   if (isPending) {
     return <ExerciseIdPageLoading />;
@@ -156,6 +160,15 @@ const ExerciseIdPage = ({ params }: Props) => {
       {/* Similar target muscle exercises */}
       {/* Similar equipment exercises */}
       {/* Similar body part exercises */}
+      <Separator className='my-4' />
+      {/* Exercise history and adding an exercise entry */}
+      <div className='flex flex-col flex-wrap justify-between gap-5'>
+        <div className='flex justify-between'>
+          <h1 className='text-5xl font-bold capitalize'>Exercise history</h1>
+          {/* <Separator className='my-4' /> */}
+          {session && <AddExerciseEntry data={data} />}
+        </div>
+      </div>
     </section>
   );
 };
