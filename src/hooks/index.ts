@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
 import {
   fetchAllExercises,
@@ -9,6 +9,7 @@ import {
   fetchExercise,
   fetchTargetExercises,
   fetchTargetList,
+  postExerciseEntry,
 } from '@/server/actions';
 
 export enum QueryKey {
@@ -189,3 +190,37 @@ export const useFetchBodyPartList = () => {
   });
 };
 // --------------------------------------------------------------------------------------------- //
+
+/**
+ * React query hook for adding an exercise activity entry
+ *
+ * Uses server action `postExerciseEntry`
+ *
+ * Usage
+ * @example
+ * ```ts
+ * const exerciseEntryMutation = usePostExerciseEntry()
+ * const data = {
+ *   exerciseId: 0001,
+ *   date: 2024-10-29T00:15:38.483Z, // using Date object
+ *   reps: 1,
+ *   weight: 10,
+ *   weightUnit: 'lbs',
+ *   // ...
+ * }
+ * exerciseEntryMutation.mutate(data, {
+ *   onSucess: () => {
+ *     console.log('exercise entry added to database')
+ *   }
+ * })
+ * ```
+ */
+export const usePostExerciseEntry = () => {
+  return useMutation({
+    mutationFn: postExerciseEntry,
+    onSuccess: () => {
+      // invalidate exercise activity for specific exercise id, so it will be forced to refetch
+      // queryClient.invalidateQueries({ queryKey: ['todos'] })
+    },
+  });
+};
