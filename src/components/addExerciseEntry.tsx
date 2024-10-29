@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
@@ -46,6 +47,7 @@ type Props = {
 };
 
 const AddExerciseEntry = ({ data }: Props) => {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const form = useForm<z.infer<typeof exerciseEntrySchema>>({
     resolver: zodResolver(exerciseEntrySchema),
     defaultValues: {
@@ -66,7 +68,13 @@ const AddExerciseEntry = ({ data }: Props) => {
 
   return (
     <div>
-      <Dialog>
+      <Dialog
+        open={dialogOpen}
+        onOpenChange={() => {
+          form.reset();
+          setDialogOpen(!dialogOpen);
+        }}
+      >
         <DialogTrigger asChild>
           <Button
             size='lg'
