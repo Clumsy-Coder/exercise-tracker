@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { format } from 'date-fns';
-import { Calendar as CalendarIcon, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
 import { DateTimePicker, TimePicker } from '@/components/ui/date-time-picker';
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -21,7 +18,6 @@ import {
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -29,7 +25,6 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Select,
   SelectContent,
@@ -38,9 +33,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
-import { exerciseEntry as exerciseEntrySchema, exerciseIdSchema as schema } from '@/schema';
+import { exerciseEntry as exerciseEntrySchema } from '@/schema';
 import { Exercise } from '@/types/raw';
-import { cn } from '@/lib/utils';
 import { usePostExerciseEntry } from '@/hooks';
 
 type Props = {
@@ -72,7 +66,7 @@ const AddExerciseEntry = ({ data }: Props) => {
   const addExerciseEntryMutation = usePostExerciseEntry();
 
   const onSubmit = (values: z.infer<typeof exerciseEntrySchema>) => {
-    console.log('form values', values);
+    // console.log('form values', values);
     addExerciseEntryMutation.mutate(values, {
       onSuccess: () => {
         form.reset();
