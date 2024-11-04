@@ -87,6 +87,10 @@ const AddExerciseEntry = ({ data }: Props) => {
         open={dialogOpen}
         onOpenChange={() => {
           form.reset();
+          if (!dialogOpen) {
+            // setting the date to the latest date ONLY opening the dialog
+            form.setValue('date', new Date());
+          }
           setDialogOpen(!dialogOpen);
         }}
       >
