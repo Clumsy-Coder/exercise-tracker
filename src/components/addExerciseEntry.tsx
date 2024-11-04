@@ -96,7 +96,7 @@ const AddExerciseEntry = ({ data }: Props) => {
             Add Entry
           </Button>
         </DialogTrigger>
-        <DialogContent className='sm:max-w-[500px]'>
+        <DialogContent className='sm:max-w-[540px]'>
           <DialogHeader>
             <DialogTitle>Add entry</DialogTitle>
             <DialogDescription>
@@ -265,9 +265,7 @@ const AddExerciseEntry = ({ data }: Props) => {
                         >
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue
-                              // placeholder='Weight Unit'
-                              />
+                              <SelectValue placeholder='lbs or kg' />
                               {/* <SelectValue placeholder='lbs or kg' /> */}
                             </SelectTrigger>
                           </FormControl>
@@ -349,9 +347,7 @@ const AddExerciseEntry = ({ data }: Props) => {
                         >
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue
-                              // placeholder='Weight Unit'
-                              />
+                              <SelectValue placeholder='km or mile' />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
