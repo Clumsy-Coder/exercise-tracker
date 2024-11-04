@@ -245,6 +245,7 @@ const AddExerciseEntry = ({ data }: Props) => {
                           <Input
                             // placeholder='exercise weight'
                             type='number'
+                            // min={0}
                             className='col-span-2 !mt-0 w-full'
                             {...field}
                           />
@@ -328,6 +329,7 @@ const AddExerciseEntry = ({ data }: Props) => {
                           <Input
                             // placeholder='exercise distance'
                             type='number'
+                            min={0}
                             className='col-span-2 !mt-0 w-full'
                             {...field}
                           />
