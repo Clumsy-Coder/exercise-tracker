@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
+import { DateTimePicker, TimePicker } from '@/components/ui/date-time-picker';
 import {
   Dialog,
   DialogClose,
@@ -149,45 +150,56 @@ const AddExerciseEntry = ({ data }: Props) => {
                 name='date'
                 render={({ field }) => (
                   <FormItem className='grid grid-cols-4 items-center gap-x-4'>
-                    <FormLabel className='text-right'>Date</FormLabel>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant='outline'
-                            className={cn(
-                              // 'w-[240px] pl-3 text-left font-normal',
-                              'col-span-3 pl-3 text-left font-normal',
-                              !field.value && 'text-muted-foreground',
-                            )}
-                          >
-                            {field.value ? format(field.value, 'PPP') : <span>Pick a date</span>}
-                            <CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent
-                        className='w-auto p-0'
-                        align='start'
-                      >
-                        <Calendar
-                          mode='single'
-                          selected={field.value}
-                          onSelect={field.onChange}
-                          disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
-                          //
-                          // unable to open the calender when `initialFocus` is set to true
-                          // check:
-                          // - https://github.com/shadcn-ui/ui/issues/332#issuecomment-1559767895
-                          // initialFocus
-                        />
-                      </PopoverContent>
-                    </Popover>
-                    {/* <FormDescription>Date and time of the exercise</FormDescription> */}
+                    <FormLabel
+                      htmlFor='datetime'
+                      className='text-right'
+                    >
+                      Date
+                    </FormLabel>
+                    <FormControl className='col-span-3 pl-3 text-left font-normal'>
+                      <DateTimePicker
+                        value={field.value}
+                        onChange={field.onChange}
+                        hourCycle={12}
+                        granularity='day'
+                        weekStartsOn={1}
+                        // format set using package date-fns
+                        // https://date-fns.org/v3.6.0/docs/format
+                        displayFormat={{ hour12: 'E, PPP' }} // Sat, November, 2, 2024
+                        className='justify-between'
+                      />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name='date'
+                render={({ field }) => (
+                  <FormItem className='grid grid-cols-4 items-center gap-x-4'>
+                    <FormLabel
+                      htmlFor='datetime'
+                      className='mt-1 text-right'
+                    >
+                      Time
+                    </FormLabel>
+                    <FormControl className='col-span-3 text-left font-normal'>
+                      <div className='w-72'>
+                        <TimePicker
+                          date={field.value}
+                          onChange={field.onChange}
+                          hourCycle={12}
+                          granularity='minute'
+                          hideIcon
+                        />
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <Separator />
               {/* ----------------------------------------------------------------------------- */}
               {/* Exercise reps */}
