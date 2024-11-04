@@ -1,0 +1,35 @@
+---
+name: Delete data from remote database
+on:
+  # NOTE: runs on default branch only
+  # https://stackoverflow.com/a/63437012/3053548
+  schedule:
+    - cron: "0 * * * *" # every hour
+
+# https://docs.github.com/en/actions/use-cases-and-examples/using-containerized-services/creating-postgresql-service-containers
+# https://stackoverflow.com/a/64697047/3053548  # install psql client
+# https://stackoverflow.com/a/13226257/3053548  # delete all rows from a table
+# https://stackoverflow.com/a/74905919/3053548  # reset auto increment
+
+jobs:
+  psql:
+    runs-on: ubuntu-latest
+    container: ubuntu
+    steps:
+      - name: install psql client
+        run: |
+          apt-get update
+          apt-get install --yes --no-install-recommends postgresql-client
+
+      - name: delete data from remote database
+        run: |
+          psql "$CONNECTION_STRING" -c "DELETE FROM activities;"
+        env:
+          CONNECTION_STRING: ${{secrets.REMOTE_POSTGRES_CONNECTION_STRING }}
+
+      - name: reset auto increment
+        run: |
+          psql "$CONNECTION_STRING" -c "ALTER SEQUENCE public.activities_id_seq RESTART 1;"
+        env:
+          CONNECTION_STRING: ${{secrets.REMOTE_POSTGRES_CONNECTION_STRING }}
+
