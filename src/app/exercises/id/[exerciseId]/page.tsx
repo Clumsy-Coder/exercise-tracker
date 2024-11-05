@@ -23,7 +23,6 @@ import { cn } from '@/lib/utils';
 import { exerciseIdSchema as schema } from '@/schema';
 import { z } from 'zod';
 import { exerciseIdGifUrl } from '@/utils/fetchData';
-import { Button } from '@/components/ui/button';
 import AddExerciseEntry from '@/components/addExerciseEntry';
 
 type Props = {
