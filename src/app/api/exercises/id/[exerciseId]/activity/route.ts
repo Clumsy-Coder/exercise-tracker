@@ -134,7 +134,7 @@ export const POST = async (request: Request) => {
   let formData: InsertActivities;
   try {
     formData = await request.json();
-    console.log('data', formData);
+    // console.log('data', formData);
   } catch (e) {
     return NextResponse.json({ message: 'JSON is formatted properly' }, { status: 400 });
   }
@@ -162,7 +162,7 @@ export const POST = async (request: Request) => {
     // duration: (formData.duration as string) || '00:00:00',
   };
 
-  console.log('inserting data: ', data);
+  // console.log('inserting data: ', data);
 
   const dbInsertResult = await db.insert(activities).values(data).returning({
     id: activities.id,
@@ -178,7 +178,7 @@ export const POST = async (request: Request) => {
   // .then((res) => {
   //   console.log('after db insert', res);
   // });
-  console.log('database inserted data', dbInsertResult);
+  // console.log('database inserted data', dbInsertResult);
 
   return Response.json({ message: 'success', data: dbInsertResult }, { status: 201 });
 };

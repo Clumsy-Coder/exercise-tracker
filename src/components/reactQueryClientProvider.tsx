@@ -6,7 +6,7 @@ import { PropsWithChildren, useState } from 'react';
 
 import { QueryKey } from '@/hooks';
 import { Exercise } from '@/types/raw';
-import { allExercisesUrl, baseUrl } from '@/utils/fetchData';
+import { allExercisesUrl } from '@/utils/fetchData';
 
 export const ReactQueryClientProvider = async ({ children }: PropsWithChildren) => {
   const [queryClient] = useState(

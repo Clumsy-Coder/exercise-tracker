@@ -1,7 +1,6 @@
 import { z } from 'zod';
 
 import { distanceEnum, weightEnum } from '@/db/schema';
-import moment from 'moment';
 
 /**
  * Schema validation for endpoint `/api/exercises/[exerciseId]`
