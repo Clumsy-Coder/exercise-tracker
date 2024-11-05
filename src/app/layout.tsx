@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
+import { Info } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import { getServerSession } from 'next-auth';
@@ -9,9 +10,31 @@ import { ReactQueryClientProvider } from '@/components/reactQueryClientProvider'
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import UserAuthDropdown from '@/components/userAuthDropdown';
+import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import SessionProvider from '@/components/providers/userAuthSessionProvider';
 import { cn } from '@/lib/utils';
 import './globals.css';
+
+/**
+ * Component to show a badge explaining the NextJS is a demo
+ */
+const DemoBadge = () => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Badge className='text-md flex gap-x-1'>
+            Demo mode <Info className='h-4' />
+          </Badge>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>This is a demo. Any data saved will erased</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -56,6 +79,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
                   <div className='container flex h-16 items-center justify-between py-4'>
                     <Navbar />
                     <div className='flex items-center justify-between gap-5'>
+                      {!!process.env.DEMO && <DemoBadge />}
                       <ModeToggle />
                       <UserAuthDropdown />
                     </div>
