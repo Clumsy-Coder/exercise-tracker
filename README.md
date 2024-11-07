@@ -78,6 +78,14 @@ https://shields.io/badges/git-hub-actions-workflow-status
 
 ![Exercises Id  page mobile](docs/images/page-exerciseId-mobile.png)
 
+### Add exercise entry
+
+#### Desktop
+
+![Add exercise entry desktop](docs/images/add-exercise-desktop.png)
+
+![Add exercise entry date desktop](docs/images/add-exercise-date-desktop.png)
+
 </details>
 
 ---
