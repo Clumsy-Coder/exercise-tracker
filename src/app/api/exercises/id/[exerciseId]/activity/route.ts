@@ -1,18 +1,87 @@
+import { eq, and, sql } from 'drizzle-orm';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { db } from '@/db';
 import { activities, InsertActivities } from '@/db/schema';
-import { exerciseEntry as schema } from '@/schema';
+import { exerciseEntry as schema, exerciseIdSchema } from '@/schema';
+import { exerciseIdUrl } from '@/utils/fetchData';
+import { Exercise } from '@/types/raw';
 
-// export const GET = async () => {
-//   const session = await getServerSession();
-//
-//   console.log('/api/exercises/[exerciseId]/activity:GET', session);
-//
-//   return Response.json({ message: 'auth endpoint in /api/exercises/0001/activity' });
-// };
+type GetParamsType = {
+  params: z.infer<typeof exerciseIdSchema>;
+};
+
+/**
+ * Get the exercise activity by exerciseId and userId
+ */
+export const GET = async (_request: Request, { params }: GetParamsType) => {
+  const schemaResponse = await exerciseIdSchema.safeParseAsync(params);
+  if (!schemaResponse.success) {
+    const message = {
+      message: schemaResponse.error.issues[0].message,
+    };
+
+    return NextResponse.json(message, {
+      status: 400,
+    });
+  }
+
+  // --------------------------------------------------------------------------------------------//
+  // check exercise ID exists
+  const { exerciseId } = params;
+
+  try {
+    const url = exerciseIdUrl(`${exerciseId}`);
+    const response = await fetch(url);
+
+    await response.json();
+  } catch (_e) {
+    const message = {
+      message: `Exercise ID ${exerciseId} not found`,
+    };
+    return NextResponse.json(message, {
+      status: 404,
+    });
+  }
+
+  // --------------------------------------------------------------------------------------------//
+
+  // fetch exercise ID activity from database
+
+  const session = await getServerSession();
+
+  const selectPreparedStatement = db
+    .select({
+      id: activities.id,
+      exerciseId: activities.exerciseId,
+      reps: activities.reps,
+      weight: activities.weight,
+      weightUnit: activities.weightUnit,
+      distance: activities.distance,
+      distanceUnit: activities.distanceUnit,
+      duration: activities.duration,
+      date: activities.date,
+    })
+    .from(activities)
+    .where(
+      and(
+        eq(activities.userId, sql.placeholder('userId')),
+        eq(activities.exerciseId, sql.placeholder('exerciseId')),
+      ),
+    )
+    .orderBy(activities.date)
+    .prepare('select_exerciseId_activity');
+
+  const dbData = await selectPreparedStatement.execute({
+    userId: session?.user?.email as string,
+    exerciseId: +exerciseId,
+  });
+
+  return Response.json(dbData);
+};
 
 // ////////////////////////////////////////////////////////////////////////////////////////////// //
 
