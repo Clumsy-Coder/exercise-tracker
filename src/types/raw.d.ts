@@ -100,3 +100,49 @@ export interface Exercise {
    */
   target: string;
 }
+
+/**
+ * Data structure when querying exercise activity data from the database
+ */
+export interface ExerciseActivity {
+  /**
+   * Primary key in table `activities`
+   */
+  id: number;
+  /**
+   * User ID. Who performed the exercise
+   */
+  userId: string;
+  /**
+   * Exercise ID
+   */
+  exerciseId: string;
+  /**
+   * Number of reps performed for the exercise
+   */
+  reps?: number;
+  /**
+   * Weight used to perform the exercise
+   */
+  weight?: number;
+  /**
+   * Weight unit used for property `weight`
+   */
+  weightUnit?: 'lbs' | 'kg';
+  /**
+   * Distance travelled for an exercise
+   */
+  distance?: number;
+  /**
+   * Distance unit used for property `distance`
+   */
+  distanceUnit?: 'km' | 'mile';
+  /**
+   * Duration of an exercise performed
+   */
+  duration: string;
+  /**
+   * Date of the exercise performed
+   */
+  date: Date;
+}
