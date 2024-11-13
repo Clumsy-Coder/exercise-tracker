@@ -1,14 +1,13 @@
-import { eq, and, sql } from 'drizzle-orm';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { db } from '@/db';
+import { selectExerciseIdActivity } from '@/db/prepared-statements';
 import { activities, InsertActivities } from '@/db/schema';
 import { exerciseEntry as schema, exerciseIdSchema } from '@/schema';
 import { exerciseIdUrl } from '@/utils/fetchData';
-import { Exercise } from '@/types/raw';
 
 type GetParamsType = {
   params: z.infer<typeof exerciseIdSchema>;
@@ -53,29 +52,7 @@ export const GET = async (_request: Request, { params }: GetParamsType) => {
 
   const session = await getServerSession();
 
-  const selectPreparedStatement = db
-    .select({
-      id: activities.id,
-      exerciseId: activities.exerciseId,
-      reps: activities.reps,
-      weight: activities.weight,
-      weightUnit: activities.weightUnit,
-      distance: activities.distance,
-      distanceUnit: activities.distanceUnit,
-      duration: activities.duration,
-      date: activities.date,
-    })
-    .from(activities)
-    .where(
-      and(
-        eq(activities.userId, sql.placeholder('userId')),
-        eq(activities.exerciseId, sql.placeholder('exerciseId')),
-      ),
-    )
-    .orderBy(activities.date)
-    .prepare('select_exerciseId_activity');
-
-  const dbData = await selectPreparedStatement.execute({
+  const dbData = await selectExerciseIdActivity.execute({
     userId: session?.user?.email as string,
     exerciseId: +exerciseId,
   });
