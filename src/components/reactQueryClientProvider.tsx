@@ -1,26 +1,16 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { PropsWithChildren, useState } from 'react';
 
+import { getQueryClient } from '@/components/providers/react-query/get-query-client';
 import { QueryKey } from '@/hooks';
 import { Exercise } from '@/types/raw';
 import { allExercisesUrl } from '@/utils/fetchData';
 
 export const ReactQueryClientProvider = async ({ children }: PropsWithChildren) => {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            // With SSR, we usually want to set some default staleTime
-            // above 0 to avoid refetching immediately on the client
-            staleTime: 60 * 1000,
-          },
-        },
-      }),
-  );
+  const [queryClient] = useState(getQueryClient());
 
   // prefetch all exercises
   // the home page will display some of the popular exercises
