@@ -7,6 +7,7 @@ import {
   fetchEquipmentExercises,
   fetchEquipmentList,
   fetchExercise,
+  fetchExerciseIdActivity,
   fetchTargetExercises,
   fetchTargetList,
   postExerciseEntry,
@@ -58,6 +59,13 @@ export enum QueryKey {
    * Query key for fetching equipment list
    */
   bodyPartList = 'body-part-list',
+
+  // ------------------------------------------------------------------------------------------- //
+
+  /**
+   * Query key for fetching exercise id activity
+   */
+  exerciseIdActivity = 'exercise-id-activity',
 }
 
 // --------------------------------------------------------------------------------------------- //
@@ -222,5 +230,28 @@ export const usePostExerciseEntry = () => {
       // invalidate exercise activity for specific exercise id, so it will be forced to refetch
       // queryClient.invalidateQueries({ queryKey: ['todos'] })
     },
+  });
+};
+
+// --------------------------------------------------------------------------------------------- //
+
+/**
+ * React query hook for fetching exercise activity data by `exerciseId`.
+ * This is to ONLY run when the user is logged in.
+ *
+ * Uses server action `fetchExerciseIdActivity`
+ */
+export const useFetchExerciseIdActivity = (
+  exerciseId: string | number,
+  options: { enabled: boolean },
+) => {
+  return useQuery({
+    queryKey: [QueryKey.exerciseIdActivity, exerciseId],
+    queryFn: () => fetchExerciseIdActivity(exerciseId),
+    // refetchOnMount: false,
+    // refetchOnWindowFocus: false,
+    // staleTime: Infinity,
+    retry: false,
+    enabled: options.enabled,
   });
 };
