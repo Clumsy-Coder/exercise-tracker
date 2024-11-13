@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { z } from 'zod';
 
-import { Exercise } from '@/types/raw';
+import { Exercise, ExerciseActivity } from '@/types/raw';
 import { exerciseEntry as exerciseEntrySchema } from '@/schema';
 
 /**
@@ -88,4 +88,16 @@ export const fetchBodyPartList = () => {
  */
 export const postExerciseEntry = (data: z.infer<typeof exerciseEntrySchema>) => {
   return axios.post(`/api/exercises/id/${data.exerciseId}/activity`, data);
+};
+
+/**
+ * Server action for fetching exercise Id activity using exercise Id
+ *
+ * Uses URL: `/api/exercises/id/[exerciseId]/activity`
+ *
+ * @param exerciseId - exercise Id
+ * @returns Promise<AxiosResponse>
+ */
+export const fetchExerciseIdActivity = (exerciseId: string | number) => {
+  return axios.get<ExerciseActivity[]>(`/api/exercises/id/${exerciseId}/activity`);
 };
