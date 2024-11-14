@@ -4,9 +4,13 @@ import { AxiosError } from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import { z } from 'zod';
 
 import ExerciseIdPageLoading from '@/app/exercises/id/[exerciseId]/loading';
 import Error from '@/components/error';
+import AddExerciseEntry from '@/components/addExerciseEntry';
+import { columns } from '@/components/exercise-activity-table/columns';
+import ExerciseActivityTable from '@/components/exercise-activity-table';
 import { badgeVariants } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -18,12 +22,11 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
-import { useFetchExercise } from '@/hooks';
+import { useFetchExercise, useFetchExerciseIdActivity } from '@/hooks';
 import { cn } from '@/lib/utils';
 import { exerciseIdSchema as schema } from '@/schema';
-import { z } from 'zod';
+import { ExerciseActivity } from '@/types/raw';
 import { exerciseIdGifUrl } from '@/utils/fetchData';
-import AddExerciseEntry from '@/components/addExerciseEntry';
 
 type Props = {
   params: z.infer<typeof schema>;
@@ -32,12 +35,18 @@ type Props = {
 const ExerciseIdPage = ({ params }: Props) => {
   const { isPending, data, isError, error } = useFetchExercise(params.exerciseId);
   const { data: session } = useSession();
+  const {
+    isPending: isActivityPending,
+    data: activitiyData,
+    isError: isActivityError,
+    error: activityError,
+  } = useFetchExerciseIdActivity(params.exerciseId, { enabled: !!session?.user });
 
-  if (isPending) {
+  if (isPending || (!!session && isActivityPending)) {
     return <ExerciseIdPageLoading />;
   }
 
-  if (isError) {
+  if (isError || (!!session && isActivityError)) {
     type ErrorMessage = {
       message: string;
     };
@@ -167,6 +176,12 @@ const ExerciseIdPage = ({ params }: Props) => {
           {/* <Separator className='my-4' /> */}
           {session && <AddExerciseEntry data={data} />}
         </div>
+        {session && (
+          <ExerciseActivityTable
+            data={activitiyData?.data as ExerciseActivity[]}
+            columns={columns}
+          />
+        )}
       </div>
     </section>
   );
