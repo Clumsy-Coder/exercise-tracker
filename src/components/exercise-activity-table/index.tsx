@@ -1,11 +1,14 @@
 'use client';
 
 import * as React from 'react';
+import { Cross2Icon, MixerHorizontalIcon } from '@radix-ui/react-icons';
 import {
   ColumnDef,
+  ColumnFiltersState,
   VisibilityState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 
@@ -18,6 +21,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
 import {
   Table,
   TableBody,
@@ -28,7 +32,6 @@ import {
 } from '@/components/ui/table';
 import { useFetchExerciseIdActivity } from '@/hooks';
 import { Exercise, ExerciseActivity } from '@/types/raw';
-import { MixerHorizontalIcon } from '@radix-ui/react-icons';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -41,20 +44,42 @@ type Props = {
 
 const ExerciseActivityTable = <TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) => {
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+  const [globalFilter, setGlobalFilter] = React.useState('');
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
+    getFilteredRowModel: getFilteredRowModel(),
+    onGlobalFilterChange: setGlobalFilter,
     state: {
       columnVisibility,
+      globalFilter,
     },
   });
 
   return (
     <div>
       <div className='flex items-center py-4'>
+        <div className='flex items-center gap-4'>
+          <Input
+            placeholder='Filter any column'
+            value={globalFilter}
+            onChange={(event) => setGlobalFilter(event.target.value)}
+            className='max-w-sm'
+          />
+          {globalFilter.length > 0 && (
+            <Button
+              variant='outline'
+              onClick={() => setGlobalFilter('')}
+              className='h-10 px-2 lg:px-3'
+            >
+              Reset
+              <Cross2Icon className='ml-2 h-4 w-4' />
+            </Button>
+          )}
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
