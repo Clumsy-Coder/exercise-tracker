@@ -12,6 +12,7 @@ import {
   fetchTargetList,
   postExerciseEntry,
 } from '@/server/actions';
+import { getQueryClient } from '@/components/providers/react-query/get-query-client';
 
 export enum QueryKey {
   /**
@@ -226,9 +227,17 @@ export const useFetchBodyPartList = () => {
 export const usePostExerciseEntry = () => {
   return useMutation({
     mutationFn: postExerciseEntry,
-    onSuccess: () => {
+
+    // https://tanstack.com/query/v4/docs/framework/react/guides/mutations#mutation-side-effects
+    onSuccess: (_data, variables) => {
       // invalidate exercise activity for specific exercise id, so it will be forced to refetch
-      // queryClient.invalidateQueries({ queryKey: ['todos'] })
+      const queryClient = getQueryClient();
+      queryClient.invalidateQueries({
+        queryKey: [
+          QueryKey.exerciseIdActivity,
+          `${variables.exerciseId}`.padStart(4, '0').slice(-4),
+        ],
+      });
     },
   });
 };
