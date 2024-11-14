@@ -170,19 +170,19 @@ const ExerciseIdPage = ({ params }: Props) => {
       {/* Similar body part exercises */}
       <Separator className='my-4' />
       {/* Exercise history and adding an exercise entry */}
-      <div className='flex flex-col flex-wrap justify-between gap-5'>
-        <div className='flex justify-between'>
-          <h1 className='text-5xl font-bold capitalize'>Exercise history</h1>
-          {/* <Separator className='my-4' /> */}
-          {session && <AddExerciseEntry data={data} />}
-        </div>
-        {session && (
+      {session && (
+        <div className='flex flex-col flex-wrap justify-between gap-5'>
+          <div className='flex justify-between'>
+            <h1 className='text-5xl font-bold capitalize'>Exercise history</h1>
+            {/* <Separator className='my-4' /> */}
+            <AddExerciseEntry data={data} />
+          </div>
           <ExerciseActivityTable
             data={activitiyData?.data as ExerciseActivity[]}
             columns={columns}
           />
-        )}
-      </div>
+        </div>
+      )}
     </section>
   );
 };
