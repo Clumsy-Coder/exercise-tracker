@@ -8,6 +8,9 @@ export const columns: ColumnDef<ExerciseActivity>[] = [
     accessorKey: 'exerciseId',
     header: 'Exercise ID',
     accessorFn: (row) => `${row.exerciseId.padStart(4, '0').slice(-4)}`,
+    meta: {
+      headerTitle: 'Exercise ID',
+    },
   },
   {
     accessorKey: 'reps',
@@ -21,8 +24,11 @@ export const columns: ColumnDef<ExerciseActivity>[] = [
   },
   {
     accessorKey: 'weightUnit',
-    header: 'Weight unit',
+    header: 'Weight Unit',
     accessorFn: (row) => `${row.weightUnit ?? '-'}`,
+    meta: {
+      headerTitle: 'Weight Unit',
+    },
   },
   {
     accessorKey: 'distance',
@@ -31,8 +37,11 @@ export const columns: ColumnDef<ExerciseActivity>[] = [
   },
   {
     accessorKey: 'distanceUnit',
-    header: 'Distance unit',
+    header: 'Distance Unit',
     accessorFn: (row) => `${row.distanceUnit ?? '-'}`,
+    meta: {
+      headerTitle: 'Distance Unit',
+    },
   },
   {
     accessorKey: 'duration',

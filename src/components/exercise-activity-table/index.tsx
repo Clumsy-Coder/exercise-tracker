@@ -104,7 +104,21 @@ const ExerciseActivityTable = <TData, TValue>({ columns, data }: DataTableProps<
                     checked={column.getIsVisible()}
                     onCheckedChange={(value) => column.toggleVisibility(!!value)}
                   >
-                    {column.id}
+                    {
+                      /*
+                       * to use column.columnDef.meta.headerTitle , it needs to be set in the `columns.tsx`
+                       * export const columns: ColumnDef<ExerciseActivity>[] = [
+                       *  meta: {
+                       *    headerTitle: "Weight Unit"
+                       *  },
+                       *  ... // other config
+                       * ]
+                       *
+                       * code obtained from
+                       * - https://github.com/Clumsy-Coder/uva-uhunt/commit/ae7cedc515d76ef34f79204a04fa32e842974413
+                       */
+                      (column.columnDef.meta as { headerTitle: string })?.headerTitle || column.id
+                    }
                   </DropdownMenuCheckboxItem>
                 );
               })}
