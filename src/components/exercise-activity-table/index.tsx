@@ -36,14 +36,66 @@ import { Exercise, ExerciseActivity } from '@/types/raw';
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  /**
+   * Hide `Exercise Id` column. Default is `false`
+   */
+  hideExerciseId?: boolean;
+  /**
+   * Hide `Reps` column. Default is `false`
+   */
+  hideReps?: boolean;
+  /**
+   * Hide `Weight` column. Default is `false`
+   */
+  hideWeight?: boolean;
+  /**
+   * Hide `Weight Unit` column. Default is `false`
+   */
+  hideWeightUnit?: boolean;
+  /**
+   * Hide `Distance` column. Default is `false`
+   */
+  hideDistance?: boolean;
+  /**
+   * Hide `Distance Unit` column. Default is `false`
+   */
+  hideDistanceUnit?: boolean;
+  /**
+   * Hide `Duration` column. Default is `false`
+   */
+  hideDuration?: boolean;
+  /**
+   * Hide `Date` column. Default is `false`
+   */
+  hideDate?: boolean;
 }
 
 type Props = {
   data: ExerciseActivity[];
 };
 
-const ExerciseActivityTable = <TData, TValue>({ columns, data }: DataTableProps<TData, TValue>) => {
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+const ExerciseActivityTable = <TData, TValue>({
+  columns,
+  data,
+  hideExerciseId,
+  hideReps,
+  hideWeight,
+  hideWeightUnit,
+  hideDistance,
+  hideDistanceUnit,
+  hideDuration,
+  hideDate,
+}: DataTableProps<TData, TValue>) => {
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({
+    ...(hideExerciseId ? { exerciseId: false } : undefined),
+    ...(hideReps ? { reps: false } : undefined),
+    ...(hideWeight ? { weight: false } : undefined),
+    ...(hideWeightUnit ? { weightUnit: false } : undefined),
+    ...(hideDistance ? { distance: false } : undefined),
+    ...(hideDistanceUnit ? { distanceUnit: false } : undefined),
+    ...(hideDuration ? { duration: false } : undefined),
+    ...(hideDate ? { date: false } : undefined),
+  });
   const [globalFilter, setGlobalFilter] = React.useState('');
 
   const table = useReactTable({
