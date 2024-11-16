@@ -116,6 +116,7 @@ const ExerciseActivityTable = <TData, TValue>({
   return (
     <div>
       <div className='flex items-center py-4'>
+        {/* Filter table by input */}
         <div className='flex items-center gap-4'>
           <Input
             placeholder='Filter any column'
@@ -134,6 +135,7 @@ const ExerciseActivityTable = <TData, TValue>({
             </Button>
           )}
         </div>
+        {/* Show/hide columns */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -179,6 +181,7 @@ const ExerciseActivityTable = <TData, TValue>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      {/* Table content */}
       <div className='rounded-md border'>
         <Table>
           <TableHeader>
@@ -229,6 +232,7 @@ const ExerciseActivityTable = <TData, TValue>({
           </TableBody>
         </Table>
       </div>
+      {/* Pagination */}
       <div className='flex items-center justify-end space-x-2 py-4'>
         <Button
           variant='outline'
