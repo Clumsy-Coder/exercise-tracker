@@ -180,6 +180,7 @@ const ExerciseIdPage = ({ params }: Props) => {
           <ExerciseActivityTable
             data={activitiyData?.data as ExerciseActivity[]}
             columns={columns}
+            hideExerciseId
           />
         </div>
       )}
