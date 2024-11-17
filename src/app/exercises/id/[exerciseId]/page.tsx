@@ -171,7 +171,7 @@ const ExerciseIdPage = ({ params }: Props) => {
       <Separator className='my-4' />
       {/* Exercise history and adding an exercise entry */}
       {session && (
-        <div className='flex flex-col flex-wrap justify-between gap-5'>
+        <div className='flex flex-col justify-between gap-5'>
           <div className='flex justify-between'>
             <h1 className='text-5xl font-bold capitalize'>Exercise history</h1>
             {/* <Separator className='my-4' /> */}
