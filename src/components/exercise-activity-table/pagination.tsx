@@ -22,6 +22,14 @@ interface DataTablePaginationProps<TData> {
 // obtained from
 // - https://github.com/shadcn-ui/ui/blob/805ed41/apps/www/app/(app)/examples/tasks/components/data-table-pagination.tsx
 const DataTablePagination = <TData,>({ table }: DataTablePaginationProps<TData>) => {
+  const pageSize: { label: string; size: number }[] = [
+    { label: '10', size: 10 },
+    { label: '20', size: 20 },
+    { label: '30', size: 30 },
+    { label: '40', size: 40 },
+    { label: '50', size: 50 },
+    { label: 'All', size: table.getRowCount() },
+  ];
   return (
     <div className='flex items-center justify-end space-x-2 py-4'>
       <div className='flex-1 text-sm text-muted-foreground'>
@@ -41,12 +49,12 @@ const DataTablePagination = <TData,>({ table }: DataTablePaginationProps<TData>)
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
             <SelectContent side='top'>
-              {[10, 20, 30, 40, 50].map((pageSize) => (
+              {pageSize.map((pageSize) => (
                 <SelectItem
-                  key={pageSize}
-                  value={`${pageSize}`}
+                  key={pageSize.label}
+                  value={`${pageSize.size}`}
                 >
-                  {pageSize}
+                  {pageSize.label}
                 </SelectItem>
               ))}
             </SelectContent>
