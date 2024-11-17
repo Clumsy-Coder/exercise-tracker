@@ -183,7 +183,7 @@ const ExerciseActivityTable = <TData, TValue>({
         </DropdownMenu>
       </div>
       {/* Table content */}
-      <div className='rounded-md border'>
+      <div className='whitespace-nowrap rounded-md border'>
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
