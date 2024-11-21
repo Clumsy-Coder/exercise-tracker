@@ -28,7 +28,7 @@ const DataTablePagination = <TData,>({ table }: DataTablePaginationProps<TData>)
     { label: '30', size: 30 },
     { label: '40', size: 40 },
     { label: '50', size: 50 },
-    { label: 'All', size: table.getRowCount() },
+    { label: 'All', size: Number.MAX_SAFE_INTEGER },
   ];
   return (
     <div className='flex items-center justify-end space-x-2 py-4'>
