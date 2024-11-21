@@ -1,3 +1,5 @@
+# syntax=docker.io/docker/dockerfile:1
+
 # obtained from
 # https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
 # https://dev.to/maxdemaio/nextjs-and-docker-2496
