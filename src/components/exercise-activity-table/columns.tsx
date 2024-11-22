@@ -110,7 +110,7 @@ export const columns: ColumnDef<ExerciseActivity>[] = [
         />
       );
     },
-    // accessorFn: (row) => `${format(new Date(row.date), 'ccc, PPpp')}`,
+    accessorFn: (row) => `${format(new Date(row.date), 'ccc, PPpp')}`,
     cell: ({ row }) => `${format(new Date(row.getValue('date')), 'ccc, PPpp')}`,
     // header: () => <div className='mr-10 px-0 text-right'>Date</div>,
     // cell: ({ row }) => {
@@ -119,12 +119,12 @@ export const columns: ColumnDef<ExerciseActivity>[] = [
     //   return <div className='mr-10 text-right'>{formatted}</div>;
     // },
     //
-    sortingFn: 'datetime',
+    // sortingFn: 'datetime',
     // sort by date
     // obtained from
     // - https://stackoverflow.com/a/18246278/3053548
     // - https://tanstack.com/table/v8/docs/guide/sorting#sorting-fns
-    // sortingFn: (rowA, rowB) =>
-    //   new Date(rowA.original.date).getTime() - new Date(rowB.original.date).getTime(),
+    sortingFn: (rowA, rowB) =>
+      new Date(rowA.original.date).getTime() - new Date(rowB.original.date).getTime(),
   },
 ];
