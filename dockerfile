@@ -29,7 +29,7 @@
 ####################################################################################################
 
 # Base on official Node.js Alpine image
-FROM node:18-alpine AS base
+FROM node:23-alpine AS base
 
 #--------------------------------------------------------------------------------------------------#
 # Install dependencies only when needed
