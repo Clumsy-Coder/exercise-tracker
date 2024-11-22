@@ -5,11 +5,13 @@ import { Cross2Icon, MixerHorizontalIcon } from '@radix-ui/react-icons';
 import {
   ColumnDef,
   ColumnFiltersState,
+  SortingState,
   VisibilityState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 
@@ -99,6 +101,13 @@ const ExerciseActivityTable = <TData, TValue>({
     ...(hideDate ? { date: false } : undefined),
   });
   const [globalFilter, setGlobalFilter] = React.useState('');
+  const [sorting, setSorting] = React.useState<SortingState>([
+    // https://tanstack.com/table/v8/docs/guide/sorting#initial-sorting-state
+    {
+      id: 'date',
+      desc: false,
+    },
+  ]);
 
   const table = useReactTable({
     data,
@@ -108,9 +117,12 @@ const ExerciseActivityTable = <TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     onGlobalFilterChange: setGlobalFilter,
     getPaginationRowModel: getPaginationRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
     state: {
       columnVisibility,
       globalFilter,
+      sorting,
     },
   });
 
