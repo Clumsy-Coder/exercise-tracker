@@ -135,13 +135,13 @@ const ExerciseActivityTable = <TData, TValue>({
             placeholder='Filter any column'
             value={globalFilter}
             onChange={(event) => setGlobalFilter(event.target.value)}
-            className='max-w-sm'
+            className='max-w-sm '
           />
           {globalFilter.length > 0 && (
             <Button
               variant='outline'
               onClick={() => setGlobalFilter('')}
-              className='h-10 px-2 lg:px-3'
+              className='px-2 lg:px-3'
             >
               Reset
               <Cross2Icon className='ml-2 h-4 w-4' />
