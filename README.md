@@ -86,6 +86,27 @@ https://shields.io/badges/git-hub-actions-workflow-status
 
 ![Add exercise entry date desktop](docs/images/add-exercise-date-desktop.png)
 
+### View exercise ID history
+
+![Exercises Id  history](docs/images/view-exercise-id-entries.png)
+
+#### Searching
+
+![Exercises Id  history searching table](docs/images/view-exercise-id-activity-searching.png)
+
+#### Show/Hide columns
+
+![Exercises Id  history show/hide columns](docs/images/view-exercise-id-activity-show-hide-columns.png)
+
+#### Sorting column
+
+![Exercises Id  history sorting column](docs/images/view-exercise-id-activity-sorting-column.png)
+
+#### Pagination
+
+![Exercises Id  history table pagination](docs/images/view-exercise-id-activity-pagination.png)
+
+
 </details>
 
 ---
