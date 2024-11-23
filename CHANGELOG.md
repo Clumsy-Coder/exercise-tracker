@@ -1,3 +1,94 @@
+## [1.1.0-development.4](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.1.0-development.3...v1.1.0-development.4) (2024-11-23)
+
+### :sparkles: Features
+
+* **actions:** add server action for fetching exercise id activity by `exercise id` ([c2a22e9](https://github.com/Clumsy-Coder/exercise-tracker/commit/c2a22e95ee9ca32b1f72806f94be1d6112da8f75))
+* **api:exercises:[exerciseId]:activity:** add endpoint for fetching exercise data from the database ([98ebf31](https://github.com/Clumsy-Coder/exercise-tracker/commit/98ebf31482dae7dc21d5497578987e91c3fda713))
+* **components:exerciseIdActivityTable:columns:** use sorting component in column header ([9dc6b90](https://github.com/Clumsy-Coder/exercise-tracker/commit/9dc6b90288b17fbb48cc08340d5eb8ce9968bcbb))
+* **components:exerciseIdActivityTable:pagination:** add page size `all` ([79e615b](https://github.com/Clumsy-Coder/exercise-tracker/commit/79e615b60007e7a1f162c74eae6afa9f95956c75))
+* **components:exerciseIdActivityTable:pagination:** add table pagination component ([fc65ed4](https://github.com/Clumsy-Coder/exercise-tracker/commit/fc65ed46cc366fe2ca4e558f8d8d73a8e4d72d1b))
+* **components:exerciseIdActivityTable:sorting:** add table sorting component ([9455d7a](https://github.com/Clumsy-Coder/exercise-tracker/commit/9455d7a3bfb422890d6a8acfcf054814f87d006b))
+* **components:exerciseIdActivityTable:** add data table for exercise ID activity ([2aa3372](https://github.com/Clumsy-Coder/exercise-tracker/commit/2aa3372c41a1ee44b5f7dfb3070a79db1b54a0e7))
+* **components:exerciseIdActivityTable:** add option to filter table by a keyword ([938fdec](https://github.com/Clumsy-Coder/exercise-tracker/commit/938fdecb615b592933e632ef923d16107675a962))
+* **components:exerciseIdActivityTable:** add option to hide columns when first rendering `ExerciseActivityTable` ([302dfe4](https://github.com/Clumsy-Coder/exercise-tracker/commit/302dfe40fd7a0e36b8b38b8e446d76b841c95593))
+* **components:exerciseIdActivityTable:** add option to toggle column visibility ([ea530e5](https://github.com/Clumsy-Coder/exercise-tracker/commit/ea530e5bdaa774e09ec582c7d1375275a3702bad))
+* **components:exerciseIdActivityTable:** add table pagination ([e4cd099](https://github.com/Clumsy-Coder/exercise-tracker/commit/e4cd09900a06001bcb8b763bf2a88b45fc947325))
+* **components:exerciseIdActivityTable:** sort table by ascending date order by default ([8c9e1db](https://github.com/Clumsy-Coder/exercise-tracker/commit/8c9e1db2988a75a84afcf32ee5b27e167bbbaf95))
+* **hooks:** invalidate query `exercise-id-activity` after successfully adding an exercise id activity ([e7ade19](https://github.com/Clumsy-Coder/exercise-tracker/commit/e7ade1904ee8a65e2c7bf3441f7a7a54b25fd229))
+* **layout:exercises:[exerciseId]:** prefetch exercise activity IF the user's logged in ([1c07196](https://github.com/Clumsy-Coder/exercise-tracker/commit/1c07196d9dd4c769d742ccf954156d0c6777044e))
+* **page:exercises:[exerciseId]:** display exercise id activity using table ([329690f](https://github.com/Clumsy-Coder/exercise-tracker/commit/329690fc0734cf326e7c83b58b9971f42e1de44b))
+
+### :books: Documentation
+
+* **components:exerciseIdActivityTable:** add comment on component sections ([b3e25b7](https://github.com/Clumsy-Coder/exercise-tracker/commit/b3e25b73bbfcd0742ff4d74a0a0f80e46f98d7f2))
+* **docs:images:** add screenshot for `viewing exercise id history` ([6c6b187](https://github.com/Clumsy-Coder/exercise-tracker/commit/6c6b1874c6b95d1eb34fb1d0b479d30a8280c42b))
+* **readme:** display screenshot for `viewing exercise id history` ([f01adf3](https://github.com/Clumsy-Coder/exercise-tracker/commit/f01adf330dc52a460404d1266401f1f694beca61))
+
+### :lipstick: Styles
+
+* **components:exerciseIdActivityTable:** add left padding for first column ([e6d0c57](https://github.com/Clumsy-Coder/exercise-tracker/commit/e6d0c57f1b6de14a335e625b34515e050c69bd97))
+* **components:exerciseIdActivityTable:** prevent text wrapping for all table content ([429b2a0](https://github.com/Clumsy-Coder/exercise-tracker/commit/429b2a02699eb70b1ec5d18f1fc4096c9eaaca23))
+* **components:exerciseIdActivityTable:** set height of table filter input ([a5c812b](https://github.com/Clumsy-Coder/exercise-tracker/commit/a5c812b5c995a195cfe57e75d81c50ae626c6e2d))
+* **components:exerciseIdActivityTable:** set min height of table ([057598b](https://github.com/Clumsy-Coder/exercise-tracker/commit/057598bc96113be581160df76d7bb892f6557692))
+* **page:exercises:[exerciseId]:** remove `flex-wrap` when rendering logged in data ([e7f567d](https://github.com/Clumsy-Coder/exercise-tracker/commit/e7f567dfc273c01e2c52c7267cb0630c4eded2e2))
+
+### :octopus: Miscellaneous Chores
+
+* **components:exerciseIdActivityTable:** format the string in the dropdown when toggling column visibility ([99042fe](https://github.com/Clumsy-Coder/exercise-tracker/commit/99042fe810ba491b4b6683d57ed961302f088ca4))
+* **components:theme:** change import for `type ThemeProviderProps` ([110f663](https://github.com/Clumsy-Coder/exercise-tracker/commit/110f663a5e8e8b33d1a3e1b85c55cf79f485ac9f))
+* **docker:** add syntax parser directive to Dockerfile ([837816c](https://github.com/Clumsy-Coder/exercise-tracker/commit/837816cc15554a5ba9dade234c2e1e54e1ccdefc))
+* **hooks:** add react-query hook to fetch exercise id activity using `exercise id` ([4ccf452](https://github.com/Clumsy-Coder/exercise-tracker/commit/4ccf452354d19a850fcdee700eb86cfd068e9f96))
+* **page:exercises:[exerciseId]:** Hide column `Exercise ID` ([caec79a](https://github.com/Clumsy-Coder/exercise-tracker/commit/caec79a94309b2050c959160e831fda131052d8b))
+* **types:** add type for exercise activity ([65bc3b8](https://github.com/Clumsy-Coder/exercise-tracker/commit/65bc3b887e910e2a1d475577b2f6368e7146aa5b))
+
+### :recycle: Code Refactoring
+
+* **api:exercises:[exerciseId]:activity:** use prepared statement from another file ([9db6833](https://github.com/Clumsy-Coder/exercise-tracker/commit/9db68334871187d6808f613948c2f80f401b4037))
+* **components:exerciseIdActivityTable:columns:** use custom fn to sort by date ([ee44537](https://github.com/Clumsy-Coder/exercise-tracker/commit/ee44537302eac9a9bfef1e61b5f95947c11d9b9f))
+* **components:exerciseIdActivityTable:pagination:** change value for showing all entries ([e1053ad](https://github.com/Clumsy-Coder/exercise-tracker/commit/e1053ad6a80e1afb1a30ca4f79c63c7295db01ed))
+* **components:exerciseIdActivityTable:** use advanced table pagination ([10f759f](https://github.com/Clumsy-Coder/exercise-tracker/commit/10f759fc03696273b27e11cd4a9d0990e23c6b71))
+* **components:reactQueryClientProvider:** use function to create `QueryClient` from another file ([2a2a59a](https://github.com/Clumsy-Coder/exercise-tracker/commit/2a2a59a219dc6db99ad6196b72ab9893b871b406))
+* **docker:** change base image version to `node:18-alpine` ([2541728](https://github.com/Clumsy-Coder/exercise-tracker/commit/2541728274804ffedd647a22c461fe76aeb41006)), closes [/github.com/vercel/next.js/blob/8ea2830/examples/with-docker/Dockerfile#L3](https://github.com/Clumsy-Coder//github.com/vercel/next.js/blob/8ea2830/examples/with-docker/Dockerfile/issues/L3)
+* **page:exercises:[exerciseId]:** display exercise history ONLY when logged in ([63987b5](https://github.com/Clumsy-Coder/exercise-tracker/commit/63987b50fa34074584a5f36395e71867617673a9))
+
+### :package: Build System
+
+* **components:QueryClient:** add separate file creating `QueryClient` object ([6a222a6](https://github.com/Clumsy-Coder/exercise-tracker/commit/6a222a6bbdaf9a6a525a94d068822ce5d82e21af))
+* **database:prepared-statements:** add a prepared statement for querying exercise activity by `exercise id` ([aa35a51](https://github.com/Clumsy-Coder/exercise-tracker/commit/aa35a51afe27b92c77eb659a2f597ee9bf08cc4e))
+* **deps:** bump @hookform/resolvers from 3.9.0 to 3.9.1 ([a5a9b2d](https://github.com/Clumsy-Coder/exercise-tracker/commit/a5a9b2da1544033db32fc7f063ee7c7b8c0115a6))
+* **deps:** bump @radix-ui/react-icons from 1.3.1 to 1.3.2 ([0626c8f](https://github.com/Clumsy-Coder/exercise-tracker/commit/0626c8f04c93fca4ddd18f0fe69b7773e16a185d))
+* **deps:** bump @radix-ui/react-tooltip from 1.1.3 to 1.1.4 ([3a5544f](https://github.com/Clumsy-Coder/exercise-tracker/commit/3a5544f21094570faab439ff9bffb37e12e23a4c))
+* **deps:** bump @tanstack/react-query from 5.59.20 to 5.60.2 ([7b0e9ed](https://github.com/Clumsy-Coder/exercise-tracker/commit/7b0e9ed51e309af57fb9de6801024a49aead790d))
+* **deps:** bump @tanstack/react-query from 5.60.2 to 5.60.5 ([b040c76](https://github.com/Clumsy-Coder/exercise-tracker/commit/b040c76a908b606e4a28cbfbb2fb17880122209a))
+* **deps:** bump @tanstack/react-query from 5.60.5 to 5.61.0 ([0b80e6e](https://github.com/Clumsy-Coder/exercise-tracker/commit/0b80e6ea52478095584f8c7ac61fa2dae2df691b))
+* **deps:** bump @tanstack/react-query-devtools from 5.59.20 to 5.61.0 ([d8625ed](https://github.com/Clumsy-Coder/exercise-tracker/commit/d8625ed68a8ac6f5f8db8295bf7b68015e983ed4))
+* **deps:** bump @vercel/analytics from 1.3.2 to 1.4.0 ([0ef7593](https://github.com/Clumsy-Coder/exercise-tracker/commit/0ef7593b5dd4d90b468839d80f0bb37399013464))
+* **deps:** bump @vercel/analytics from 1.4.0 to 1.4.1 ([333f157](https://github.com/Clumsy-Coder/exercise-tracker/commit/333f157acb932e5d3fea594962a63500f74bd731))
+* **deps:** bump drizzle-orm from 0.36.1 to 0.36.2 ([f4084ee](https://github.com/Clumsy-Coder/exercise-tracker/commit/f4084eec5321a5e03e7595a6c336c3c8915e5b09))
+* **deps:** bump drizzle-orm from 0.36.2 to 0.36.3 ([bb9d256](https://github.com/Clumsy-Coder/exercise-tracker/commit/bb9d2560753b5d62c37a094840ba556c2a4d6e13))
+* **deps:** bump lucide-react from 0.454.0 to 0.456.0 ([e4c924e](https://github.com/Clumsy-Coder/exercise-tracker/commit/e4c924e12956e8d3bd91e19ea994f5a6d5523632))
+* **deps:** bump lucide-react from 0.456.0 to 0.460.0 ([6eb5bd5](https://github.com/Clumsy-Coder/exercise-tracker/commit/6eb5bd5dcf0defecdfab6fbc8226001764d4d2dc))
+* **deps:** bump next from 14.2.17 to 14.2.18 ([8d9ba51](https://github.com/Clumsy-Coder/exercise-tracker/commit/8d9ba513e62bd65b1b9211a608d4a5b93126562d))
+* **deps:** bump react-day-picker from 9.2.1 to 9.3.0 ([195d46a](https://github.com/Clumsy-Coder/exercise-tracker/commit/195d46a9b5c228ffa90e4f3c6eab465618da3a39))
+* **deps:** bump react-day-picker from 9.3.0 to 9.3.2 ([adf530f](https://github.com/Clumsy-Coder/exercise-tracker/commit/adf530fba1e6eedc6c45b7cd7b29d35fc7a130d0))
+* **deps:** bump react-hook-form from 7.53.1 to 7.53.2 ([985af2e](https://github.com/Clumsy-Coder/exercise-tracker/commit/985af2e8d5100fef233a4f4c4f36a22637b7c28c))
+* **devDep:** bump @types/node from 22.9.0 to 22.9.1 ([786528a](https://github.com/Clumsy-Coder/exercise-tracker/commit/786528acc788b7b2a4d898df8101409a84b8022a))
+* **devDep:** bump drizzle-kit from 0.28.0 to 0.28.1 ([1515bcf](https://github.com/Clumsy-Coder/exercise-tracker/commit/1515bcf3be0d72e8f011d51a899a5d2b4289fc2c))
+* **devDep:** bump eslint-config-next from 14.2.17 to 14.2.18 ([84bba46](https://github.com/Clumsy-Coder/exercise-tracker/commit/84bba462ea0534c633740420eaaf55ba4ea05de1))
+* **devDep:** bump postcss from 8.4.47 to 8.4.48 ([8405a76](https://github.com/Clumsy-Coder/exercise-tracker/commit/8405a76c26efc6e94cb8b2416c850c06e31f6939))
+* **devDep:** bump postcss from 8.4.48 to 8.4.49 ([24dc6e7](https://github.com/Clumsy-Coder/exercise-tracker/commit/24dc6e7a59027020c16e99291334570cca39c59c))
+* **devDep:** bump prettier-plugin-tailwindcss from 0.6.8 to 0.6.9 ([3111ebc](https://github.com/Clumsy-Coder/exercise-tracker/commit/3111ebcd170b221a773f8ac1dd384a82d4d7fc17))
+* **devDep:** bump tailwindcss from 3.4.14 to 3.4.15 ([6054b3c](https://github.com/Clumsy-Coder/exercise-tracker/commit/6054b3c7de16b52f3a116db2d6370fbf0d50698f))
+* **npm:** add package `@tanstack/react-table` ([dd6ab88](https://github.com/Clumsy-Coder/exercise-tracker/commit/dd6ab88ff8b0a780174e526890a35a388f172861))
+* **npm:** upgrade package `next-themes` to `0.4.3` ([8f533ea](https://github.com/Clumsy-Coder/exercise-tracker/commit/8f533eaa6f0e0291e77b11da142e4c2009f46998))
+* **npm:** upgrade package `vaul` to `1.1.1` ([805d03e](https://github.com/Clumsy-Coder/exercise-tracker/commit/805d03ef62471c52315d55cc75d0307f226c6dca))
+* **shadcn:** add component `table` ([1d27493](https://github.com/Clumsy-Coder/exercise-tracker/commit/1d274930223e8d91f77339fdacd469df6c32d1fa))
+
+### :construction_worker: Continuous Integration
+
+* **docker:** bump node from 18-alpine to 23-alpine ([7e5150c](https://github.com/Clumsy-Coder/exercise-tracker/commit/7e5150c78053984a2bc6fc8d00af26a677e4e1c6))
+* **github-action:** bump docker/metadata-action from 5.5.1 to 5.6.1 ([c647d1d](https://github.com/Clumsy-Coder/exercise-tracker/commit/c647d1dd0c3482c612c68dae29672db7f88bc7fe))
+
 ## [1.1.0-development.3](https://github.com/Clumsy-Coder/exercise-tracker/compare/v1.1.0-development.2...v1.1.0-development.3) (2024-11-07)
 
 ### :sparkles: Features
