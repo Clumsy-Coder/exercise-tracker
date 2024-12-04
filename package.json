@@ -47,7 +47,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "dotenv": "^16.4.6",
+    "dotenv": "^16.4.7",
     "drizzle-orm": "^0.37.0",
     "lucide-react": "^0.464.0",
     "moment": "^2.30.1",
