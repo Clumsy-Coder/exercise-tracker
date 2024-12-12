@@ -4,7 +4,11 @@ import { z } from 'zod';
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { db } from '@/db';
-import { selectExerciseIdActivity } from '@/db/prepared-statements';
+import {
+  checkActivityIdExists,
+  deleteActivityId,
+  selectExerciseIdActivity,
+} from '@/db/prepared-statements';
 import { activities, InsertActivities } from '@/db/schema';
 import { exerciseEntry as schema, exerciseIdSchema } from '@/schema';
 import { exerciseIdUrl } from '@/utils/fetchData';
@@ -227,6 +231,113 @@ export const POST = async (request: Request) => {
   // console.log('database inserted data', dbInsertResult);
 
   return Response.json({ message: 'success', data: dbInsertResult }, { status: 201 });
+};
+
+// ////////////////////////////////////////////////////////////////////////////////////////////// //
+
+type DeleteParamsType = {
+  params: z.infer<typeof exerciseIdSchema>;
+};
+
+/**
+ * Delete a row from `Activities` table using `id` and `userId`
+ *
+ * Expects to contain the following data
+ * - id     REQUIRED
+ *
+ * @param request - request body containing `id` to delete
+ * @param params - URL slug. For this api, it's `exerciseId` from URL `api/exercises/[exerciseId]/activity`
+ * @returns 400 if data is invalid, 404 if `id` or exerciseId doesn't exist. 200 if database row was deleted
+ */
+export const DELETE = async (request: Request, { params }: DeleteParamsType) => {
+  // validate exerciseId. return 400 otherwise
+  // check if exercise id exists. return 400 otherwise
+  // check if formData is formatted properly. check for invalid JSON; return 400 otherwise
+  // check if formData `id` exists. return 400 otherwise
+  // check if row in `activities` table exists; using `id` and `userId`. return 404 otherwise
+  // delete activity entry; using `id` and `userId`
+  // return 200. Provide `id` that was deleted
+
+  const { exerciseId } = params;
+
+  // --------------------------------------------------------------------------------------------//
+  // validate exerciseId
+
+  const schemaResponse = await exerciseIdSchema.safeParseAsync(params);
+  if (!schemaResponse.success) {
+    const message = {
+      message: schemaResponse.error.issues[0].message,
+    };
+
+    return NextResponse.json(message, {
+      status: 400,
+    });
+  }
+
+  // --------------------------------------------------------------------------------------------//
+  // check if exercise id exists
+
+  try {
+    const url = exerciseIdUrl(`${exerciseId}`);
+    const response = await fetch(url);
+
+    await response.json();
+  } catch (_e) {
+    const message = {
+      message: `Exercise ID ${exerciseId} not found`,
+    };
+    return NextResponse.json(message, {
+      status: 404,
+    });
+  }
+
+  // --------------------------------------------------------------------------------------------//
+  // check if formData is properly formatted
+
+  interface DeleteFormData {
+    id: number; // activity ID
+  }
+  let formData: DeleteFormData;
+  try {
+    formData = await request.json();
+    // console.log('data', formData);
+  } catch (e) {
+    return NextResponse.json({ message: 'JSON is NOT formatted properly' }, { status: 400 });
+  }
+
+  // --------------------------------------------------------------------------------------------//
+  // check if `id` exists in formData
+
+  if (!formData.id) {
+    return NextResponse.json({ message: "Activity 'id' is missing" }, { status: 400 });
+  }
+
+  // --------------------------------------------------------------------------------------------//
+  // check if database record with `id` and email address exists
+
+  const session = await getServerSession(authOptions);
+
+  const dbActivityIdExistsData = await checkActivityIdExists.execute({
+    userId: session?.user?.email,
+    id: +formData.id,
+  });
+
+  if (dbActivityIdExistsData[0].count === 0) {
+    return NextResponse.json(
+      { message: `Activity id '${formData.id}' doesn't exist` },
+      { status: 404 },
+    );
+  }
+
+  // --------------------------------------------------------------------------------------------//
+  // delete database row using activity `id` and `userId`
+
+  const deleteActivityIdData = await deleteActivityId.execute({
+    userId: session?.user?.email,
+    id: +formData.id,
+  });
+
+  return NextResponse.json({ message: `Activity id '${deleteActivityIdData[0].id}' deleted` });
 };
 
 // ////////////////////////////////////////////////////////////////////////////////////////////// //
