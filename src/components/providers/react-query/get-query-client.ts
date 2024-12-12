@@ -7,6 +7,7 @@ import { isServer, QueryClient } from '@tanstack/react-query';
 //
 // code obtained from
 // - https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr#initial-setup
+// - https://github.com/TanStack/query/blob/639363c/examples/react/nextjs-app-prefetching/app/get-query-client.ts
 
 /**
  * Creates a new QueryClient.
