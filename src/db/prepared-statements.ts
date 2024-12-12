@@ -64,3 +64,24 @@ export const checkActivityIdExists = db
     and(eq(activities.id, sql.placeholder('id')), eq(activities.userId, sql.placeholder('userId'))),
   )
   .limit(1);
+
+/**
+ * Prepared statement for checking if activity exists using user email and activity `id`
+ *
+ * @see {@link https://orm.drizzle.team/docs/delete}
+ * @example
+ * ```ts
+ * import { deleteActivityId } from '@/db/prepared-statements';
+ *
+ * const deleteActivityIdData = await deleteActivityId.execute({
+ *   userId: session?.user?.email,
+ *   id: +formData.id,
+ * });
+ * ```
+ */
+export const deleteActivityId = db
+  .delete(activities)
+  .where(
+    and(eq(activities.id, sql.placeholder('id')), eq(activities.userId, sql.placeholder('userId'))),
+  )
+  .returning({ id: activities.id });
