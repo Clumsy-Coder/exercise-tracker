@@ -69,8 +69,8 @@ importers:
         specifier: ^16.4.7
         version: 16.4.7
       drizzle-orm:
-        specifier: ^0.38.4
-        version: 0.38.4(@libsql/client-wasm@0.14.0)(@types/pg@8.11.11)(@types/react@18.3.13)(pg@8.13.1)(react@18.3.1)
+        specifier: ^0.39.0
+        version: 0.39.0(@libsql/client-wasm@0.14.0)(@types/pg@8.11.11)(@types/react@18.3.13)(pg@8.13.1)(react@18.3.1)
       lucide-react:
         specifier: ^0.474.0
         version: 0.474.0(react@18.3.1)
@@ -1890,8 +1890,8 @@ packages:
     resolution: {integrity: sha512-vhdLrxWA32WNVF77NabpSnX7pQBornx64VDQDmKddRonOB2Xe/yY4glQ7rECoa+ogqcQNo7VblLUbeBK6Zn9Ow==}
     hasBin: true
 
-  drizzle-orm@0.38.4:
-    resolution: {integrity: sha512-s7/5BpLKO+WJRHspvpqTydxFob8i1vo2rEx4pY6TGY7QSMuUfWUuzaY0DIpXCkgHOo37BaFC+SJQb99dDUXT3Q==}
+  drizzle-orm@0.39.0:
+    resolution: {integrity: sha512-kkZwo3Jvht0fdJD/EWGx0vYcEK0xnGrlNVaY07QYluRZA9N21B9VFbY+54bnb/1xvyzcg97tE65xprSAP/fFGQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -5947,7 +5947,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.38.4(@libsql/client-wasm@0.14.0)(@types/pg@8.11.11)(@types/react@18.3.13)(pg@8.13.1)(react@18.3.1):
+  drizzle-orm@0.39.0(@libsql/client-wasm@0.14.0)(@types/pg@8.11.11)(@types/react@18.3.13)(pg@8.13.1)(react@18.3.1):
     optionalDependencies:
       '@libsql/client-wasm': 0.14.0
       '@types/pg': 8.11.11
